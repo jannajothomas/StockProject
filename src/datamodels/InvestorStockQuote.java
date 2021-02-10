@@ -3,35 +3,54 @@ package datamodels;
 import java.util.Calendar;
 import java.util.Objects;
 
-//import utilities.DateFunctions;
-
 public class InvestorStockQuote {
 
 	private StockQuote stock;
 	private int shares;
 	
-	//TODO: Add  implementation of this
+	/**
+	 * no-arg constuctor
+	 */
 	public InvestorStockQuote() {
-		
 	}
 	
+    /**
+     * This constructor takes the stock and shares
+     *
+     * @param stock
+     * @param shares
+     */
 	public InvestorStockQuote(StockQuote stock, int shares) {
 		this.stock = stock;
 		this.shares = shares;
 	}
 	
+    /**
+     * Returns the shares of the InvestorStockQuote object
+     */
 	public int getShares() {
 		return shares;
 	}
 	
+	/**
+	 * sets the shares of the name of the InvestorStockQuote object
+	 * @param shares
+	 */
 	public void setShares(int shares) {
 		this.shares=shares;
 	}
 	
+    /**
+     * Returns the stock of the InvestorStockQuote object
+     */
 	public StockQuote getStock() {
 		return stock;
 	}
 	
+	/**
+	 * sets the stock of the name of the InvestorStockQuote object
+	 * @param stock
+	 */
 	public void setStock(StockQuote stock) {
 		this.stock = stock;
 	}
@@ -80,7 +99,7 @@ public class InvestorStockQuote {
 	
 	
     /**
-     * Returns a String representation of the StockQuote object in JSON format
+     * Returns a String representation of the InvestorStockQuote object
      */
     @Override
     public String toString() {
