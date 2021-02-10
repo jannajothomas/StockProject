@@ -113,7 +113,16 @@ public class Investor extends Person{
         final Investor other = (Investor) obj;
         //Probabaly should check Person  variables too
         //check classes variable by variable
-        
+        if(!Objects.equals(this.name, other.name)) {
+        	return false;
+        }
+        if(!Objects.equals(this.address, other.address)) {
+        	return false;
+        }
+        if(!Objects.equals(this.dateOfBirth, other.dateOfBirth)) {
+        	return false;
+        }
+        if(!Objects.equals(this.id, other.id)) {
         
         if (!Objects.equals(this.memberSince, other.memberSince)) {
             return false;

@@ -1,15 +1,14 @@
 package datamodels;
 
 import java.util.ArrayList;
-
-/**
- * This class creates a Broker object
- */
-
 import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
 import utilities.DateFunctions;
+
+/**
+ * This class creates a Broker object
+ */
 
 public class Broker extends Person {
 	private Calendar dateOfHire;
@@ -22,9 +21,9 @@ public class Broker extends Person {
      * no-arg constructor
      */
 	public Broker() {
-		//listOfClients= new List<Investor>();
-		//this.listOfClients = new List<Investor>();
+		this.listOfClients = new ArrayList<Investor>();
 	}
+	
 	
 	//TODO: How to add clients to list?
 	
@@ -50,12 +49,8 @@ public class Broker extends Person {
 		this.salary=salary;
 		this.status=status;
 		this.listOfClients = new ArrayList<Investor>();
-		//this.listOfClients = null;
 	}
-	
-	//TODO: DO I need a copy constructor?
-	
-	
+		
 	 /**
 	 * Returns the dateOfHire of the Broker object
 	 */
@@ -147,25 +142,35 @@ public class Broker extends Person {
     
     @Override
     public boolean equals(Object obj) {
-    	//The item you are comparing to is the exact object
+    	//Check to see if the obj is the exact object(this)
         if (this == obj) {
             return true;
         }
-        //The object is null.  This object is initialize and can't be null
+        //Check to see if the object you are comparing to is null.  
         if (obj == null) {
             return false;
         }
-        //If the objects are not the same class, they cannot be equal
+        //Now that we know the object isn't null, we can check to see if objects are the same class
         if (getClass() != obj.getClass()) {
             return false;
         }
         
-        //TODO: What does this do?
+        //We make an unchangable(final) copy of the object passed cast as a Broker so we can invoke its Broker methods
         final Broker other = (Broker) obj;
-        //Probabaly should check Person  variables too
+
         //check classes variable by variable
-        
-        
+        if(!Objects.equals(this.name, other.name)) {
+        	return false;
+        }
+        if(!Objects.equals(this.address, other.address)) {
+        	return false;
+        }
+        if(!Objects.equals(this.dateOfBirth, other.dateOfBirth)) {
+        	return false;
+        }
+        if(!Objects.equals(this.id, other.id)) {
+        	return false;
+        }
         if (!Objects.equals(this.dateOfHire, other.dateOfHire)) {
             return false;
         }
@@ -197,12 +202,9 @@ public class Broker extends Person {
                 + "}}";
     }
 
-    
     /**
      * Returns a unique long integer of the StockQuote object in JSON format
      */
-    
-    //TODO:  How does this return an object?  id is a long and isn't a class variable
 	public long getId() {
 		return id;
 	}
