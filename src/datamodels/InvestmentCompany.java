@@ -1,48 +1,72 @@
 package datamodels;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
-//import utilities.DateFunctions;
 
 public class InvestmentCompany {
 	private String companyName;
 	private List<Broker> listOfBrokers;
 	
-	//TODO: Implement This
+	/**
+	 * no-arg constuctor
+	 */
+	public InvestmentCompany() {
+		this.listOfBrokers = new ArrayList<Broker>();
+	}
+	
+    /**
+     * This constructor takes the companyName  and listOfBrokers
+     *
+     * @param companyName The name of the Investment Company
+     * @param listOfBrokers The listOfBrokers for the Investment Company
+     */
 	public InvestmentCompany(String companyName, List<Broker> listOfBrokers) {
 		this.companyName=companyName;
 		this.listOfBrokers=listOfBrokers;
-		
 	}
 	
-	//TODO: Implement This
-	public InvestmentCompany() {
-	}
-	
-	//TODO:
+    /**
+     * This constructor takes the companyName
+     *
+     * @param companyName The name of the Investment Company
+     */
 	public InvestmentCompany(String companyName) {
 		this.companyName=companyName;
-		this.listOfBrokers=null;
+		this.listOfBrokers = new ArrayList<Broker>();
 	}
 	
+    /**
+     * Returns the company name of the InvestmentCompany object
+     */
 	public String getCompanyName() {
 		return companyName;
 	}
 	
+	/**
+	 * sets the value of the memberSince date of the InvestmentCompany object
+	 * @param companyName
+	 */
 	public void setCompanyName(String companyName) {
 		this.companyName=companyName;
 	}
 	
+    /**
+     * Returns the listOfBrokers for the InvestmentCompany object
+     */
 	public List<Broker> getListOfBrokers(){
 		return listOfBrokers;
 	}
 	
-	//TODO: Implement This
-	public void addBroker(Broker newBroker) {
-		
-	}
 	
+	/**
+	 * Adds an individual broker to the InvestmentCompany object
+	 * @param newBroker
+	 */
+	
+	public void addBroker(Broker newBroker) {
+		listOfBrokers.add(newBroker);
+	}
 	
     /**
      * These methods compares two InvestmentCompany objects to determine equality.
@@ -74,11 +98,7 @@ public class InvestmentCompany {
             return false;
         }
         
-        //TODO: What does this do?
         final InvestmentCompany other = (InvestmentCompany) obj;
-        //Probabaly should check Person  variables too
-        //check classes variable by variable
-        
         
         if (!Objects.equals(this.companyName, other.companyName)) {
             return false;
@@ -90,7 +110,7 @@ public class InvestmentCompany {
     }
 	
     /**
-     * Returns a String representation of the StockQuote object in JSON format
+     * Returns a String representation of the Investment Company object 
      */
     @Override
     public String toString() {

@@ -178,4 +178,43 @@ public class TestDataModelsClasses {
     	assertEquals("Verify stock quote is not null",ISQ2,investor.getListOfStocks().get(1)); 
     }
     
+    /**
+     * Try to add an investor to the brokers list of clients.  Make sure size is right after each addition
+     * and make sure the list is populated with the investors where they are expected.
+     * @throws ParseException
+     */
+    @Test
+    public void testInvestmentCompanyAddBrokerToList() throws ParseException {
+    	
+    	InvestmentCompany testInvestmentCompany1 = new InvestmentCompany();
+    	InvestmentCompany testInvestmentCompany2 = new InvestmentCompany(testCompanyName);
+    	
+    	Broker testBroker1 = new Broker(testName, testAddress, testDate, testId, testDate,
+                 testDate, testSalary, testStatus);
+    	Broker testBroker2 = new Broker("Broky", "BB Broker Drive", testDate, testId, testDate,
+                testDate, testSalary, testStatus);
+    	
+    	assertEquals("Verify list is empty",0,testInvestmentCompany1.getListOfBrokers().size());
+    	assertEquals("Verify list is empty",0,testInvestmentCompany2.getListOfBrokers().size());
+    	testInvestmentCompany1.addBroker(testBroker1);
+    	testInvestmentCompany2.addBroker(testBroker2);
+    	assertEquals("Verify list is empty",1,testInvestmentCompany1.getListOfBrokers().size());
+    	assertEquals("Verify list is empty",1,testInvestmentCompany2.getListOfBrokers().size());
+    	assertEquals("Verify listOfBrokers is not null",testBroker1,testInvestmentCompany1.getListOfBrokers().get(0));
+    	assertEquals("Verify listOfBrokers is not null",testBroker2,testInvestmentCompany2.getListOfBrokers().get(0));
+    	testInvestmentCompany1.addBroker(testBroker2);
+    	testInvestmentCompany2.addBroker(testBroker1);
+    	assertEquals("Verify list is empty",2,testInvestmentCompany1.getListOfBrokers().size());
+    	assertEquals("Verify list is empty",2,testInvestmentCompany2.getListOfBrokers().size());
+    	assertEquals("Verify listOfBrokers is not null",testBroker1,testInvestmentCompany1.getListOfBrokers().get(0));
+    	assertEquals("Verify listOfBrokers is not null",testBroker2,testInvestmentCompany1.getListOfBrokers().get(1));
+    	assertEquals("Verify listOfBrokers is not null",testBroker2,testInvestmentCompany2.getListOfBrokers().get(0));
+    	assertEquals("Verify listOfBrokers is not null",testBroker1,testInvestmentCompany2.getListOfBrokers().get(1));
+    	
+    	InvestmentCompany testInvestmentCompany3 = new InvestmentCompany("NewCompany",testInvestmentCompany1.getListOfBrokers());
+    	assertEquals("Verify list is empty",2,testInvestmentCompany3.getListOfBrokers().size());
+    	assertEquals("Verify listOfBrokers is not null",testBroker1,testInvestmentCompany3.getListOfBrokers().get(0));
+    	assertEquals("Verify listOfBrokers is not null",testBroker2,testInvestmentCompany3.getListOfBrokers().get(1));
+    }
+    
 }

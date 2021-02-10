@@ -31,7 +31,6 @@ public class Investor extends Person{
      * @param id The id of the Investor object
      * @param memberSince The date of  memberSince of the Investor object
      */
-	
 	public Investor(String name, String address, Calendar dateOfBirth, long id, Calendar memberSince) {
 		super(name, address, dateOfBirth, id);
 		this.memberSince=memberSince;
