@@ -1,6 +1,5 @@
 package datamodels;
 
-import java.util.Calendar;
 import java.util.Objects;
 
 public class InvestorStockQuote {
