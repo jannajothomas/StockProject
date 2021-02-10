@@ -1,44 +1,41 @@
 package datamodels;
 
-
-/**
- * This class creates a Investor object
- */
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
 import utilities.DateFunctions;
 
+/**
+ * This class creates a Investor object
+ */
+
+
 public class Investor extends Person{
 	private Calendar memberSince;
 	private List<InvestorStockQuote> listOfStocks;
-	
-	//TODO: Shoudl I do something with this constructor
+
 	/**
 	 * no-arg constuctor
 	 */
 	public Investor() {
-		
+		this.listOfStocks = new ArrayList<InvestorStockQuote>();
 	}
-	
-	//TODO: Update parameter descriptions
 	
     /**
      * This constructor takes the value, tickerSymbol and quoteDate
      *
-     * @param name The monetary value of the StockQuote object
-     * @param address The stock ticker symbol of the StockQuote object
-     * @param dateOfBirth The date of the StockQuote object
-     * @param id The date of the StockQuote object
-     * @parammemberSnce The date of the StockQuote object
-     * @param quoteDate The date of the StockQuote object
+     * @param name The name of the Investor object
+     * @param address The address of the Investor object
+     * @param dateOfBirth The dateOfBirth of the Investor object
+     * @param id The id of the Investor object
+     * @param memberSince The date of  memberSince of the Investor object
      */
 	
-	//TODO: Implement This
 	public Investor(String name, String address, Calendar dateOfBirth, long id, Calendar memberSince) {
 		super(name, address, dateOfBirth, id);
 		this.memberSince=memberSince;
-		this.listOfStocks=null;	
+		this.listOfStocks = new ArrayList<InvestorStockQuote>();	
 	}
 	
     /**
@@ -70,13 +67,13 @@ public class Investor extends Person{
 	public List<InvestorStockQuote> getListOfStocks(){
 		return listOfStocks;
 	}
+	
 	/**
 	 * Adds an individual stock to the Investor object
 	 * @param value is the monetary value of  the  stock quote
 	 */
-	//TODO: Implement this
 	public void addStock(InvestorStockQuote value) {
-		
+		listOfStocks.add(value);
 	}
 
     /**
@@ -109,10 +106,7 @@ public class Investor extends Person{
             return false;
         }
         
-        //TODO: What does this do?
         final Investor other = (Investor) obj;
-        //Probabaly should check Person  variables too
-        //check classes variable by variable
         if(!Objects.equals(this.name, other.name)) {
         	return false;
         }
@@ -123,7 +117,8 @@ public class Investor extends Person{
         	return false;
         }
         if(!Objects.equals(this.id, other.id)) {
-        
+        	return false;
+        }
         if (!Objects.equals(this.memberSince, other.memberSince)) {
             return false;
         }
@@ -134,7 +129,7 @@ public class Investor extends Person{
     }
     
     /**
-     * Returns a String representation of the StockQuote object in JSON format
+     * Returns a String representation of the Investor object 
      */
     @Override
     public String toString() {
@@ -145,7 +140,9 @@ public class Investor extends Person{
                 + "}}";
     }
 
-    
+    /**
+     * Returns a unique long integer of the Investor object 
+     */
 	public long getId() {
 		return id;
 	}

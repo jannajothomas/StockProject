@@ -150,16 +150,32 @@ public class TestDataModelsClasses {
                 testDate, testSalary, testStatus);
     	 
     	assertEquals("Are Brokers equal",false,broker2.equals(broker3));
-    	//broker1.addClient(investor1);
-
-    	//assertEquals("Verify list length is 1",1,broker1.getListOfClients().size());
-    	//assertEquals("Verify client is testInvestorWithParameters",investor1,broker1.getListOfClients().get(0));
-    	
-    	//broker1.addClient(investor2);
-    	//assertEquals("Verify list length is 2",2,broker1.getListOfClients().size());
-    	//assertEquals("Verify client in spot 0 is investor 1",investor1,broker1.getListOfClients().get(0));
-    	//assertEquals("Verify client is spot 1 is investor 2",investor2,broker1.getListOfClients().get(1));   
     }
     
+    /**
+     * Try to add an investor to the brokers list of clients.  Make sure size is right after each addition
+     * and make sure the list is populated with the investors where they are expected.
+     * @throws ParseException
+     */
+    @Test
+    public void testInvestorAddStockQuoteToList() throws ParseException {
+    	
+    	 Investor investor  = new Investor("Janna Thomas", "14 Spooky way", ParseDate.parseDate("10/31/1999"), testId, ParseDate.parseDate("10/31/2020"));
+    	 StockQuote testQuote1 = new StockQuote(100, "MIME", ParseDate.parseDate("01/02/2020"));
+    	 StockQuote testQuote2 = new StockQuote(testValue, testSymbol, testDate);
+    	 InvestorStockQuote ISQ1 = new InvestorStockQuote(testQuote1, 200);
+    	 InvestorStockQuote ISQ2 = new InvestorStockQuote(testQuote2, 300);
+    	  
+    	assertEquals("Verify list is empty",0,investor.getListOfStocks().size());
+    	investor.addStock(ISQ1);
+
+    	assertEquals("Verify list length is 1",1,investor.getListOfStocks().size());
+    	assertEquals("Verify stock quote is not null",ISQ1,investor.getListOfStocks().get(0));
+    	
+    	investor.addStock(ISQ2);
+    	assertEquals("Verify list length is 2",2,investor.getListOfStocks().size());
+    	assertEquals("Verify stock quote is not null",ISQ1,investor.getListOfStocks().get(0));
+    	assertEquals("Verify stock quote is not null",ISQ2,investor.getListOfStocks().get(1)); 
+    }
     
 }
