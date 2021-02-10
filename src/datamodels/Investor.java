@@ -57,7 +57,11 @@ public class Investor extends Person{
      */
 	//TODO: Calculate this
 	public double getAccountValue() {
-		return 1.0;
+		double accountValue = 0;
+		for(InvestorStockQuote stock : listOfStocks) {
+			accountValue = stock.getShares() * stock.getStock().getValue();
+		}
+		return accountValue;
 	}
 	
     /**
@@ -132,11 +136,13 @@ public class Investor extends Person{
      */
     @Override
     public String toString() {
-        return "{\"Investor\":{" 
-        		+ "\"name\":\"" + this.getName() + "\""
-                + ", \"memberSince\":\"" + DateFunctions.dateToString(this.memberSince) + "\""
-                + ", \"listOfStocks\":\"" + this.listOfStocks + "\""
-                + "}}";
+        return "\nInvestor:\n"
+        		+ "------\n"
+        		+ this.getName() + "\n"
+        		+ this.getAddress() + "\n"
+        		+ "Date of Birth: " + DateFunctions.dateToString(this.dateOfBirth) + "\n"
+                + "Id: " + this.getId() + "\n"
+                + "Portfollio value: " + this.getAccountValue();
     }
 
     /**

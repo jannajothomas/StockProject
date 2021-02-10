@@ -10,7 +10,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
 import datamodels.InvestmentCompany;
 
 public class InvestmentCompanyDataContainer  {
@@ -23,7 +22,7 @@ public class InvestmentCompanyDataContainer  {
     /** Container that stores elements as a set of unique elements
      *  Random ordering
      */
-    private Set<InvestmentCompany> companySet = new HashSet<InvestmentCompany>();
+    private Set companySet = new HashSet();
 
     /** Container that stores elements as a map, can contain duplicates
      *  Order not enforced
@@ -55,4 +54,6 @@ public class InvestmentCompanyDataContainer  {
     public void setcompanyMap(Map companyMap) {
         this.companyMap = companyMap;
     }
+
+
 }

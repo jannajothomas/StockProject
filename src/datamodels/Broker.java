@@ -194,12 +194,25 @@ public class Broker extends Person {
      */
     @Override
     public String toString() {
-        return "{\"Broker\":{"
-                + "\"dateOfHire\":\"" + DateFunctions.dateToString(this.dateOfHire) + "\""
-                + ", \"dateOfTermination\":\"" + DateFunctions.dateToString(this.dateOfTermination) + "\""
-                + ", \"salary\":\"" + this.salary + "\""
-                + ", \"salary\":\"" + this.listOfClients + "\""
-                + "}}";
+    	StringBuilder builder = new StringBuilder();
+		builder.append( "\nBroker: \n"
+        		+ "---------------\n"
+        		+ this.name + "\n"
+        		+ this.address + "\n"
+        		+ "Date Of Birth : " + DateFunctions.dateToString(this.dateOfBirth) + "\n"
+                + "dateOfHire : " + DateFunctions.dateToString(this.dateOfHire) + "\n"
+                + "dateOfTermination : " + DateFunctions.dateToString(this.dateOfTermination) + "\n"
+                + "salary : " + this.salary + "\n"
+                + "status : " + this.status + "\n"
+                + "id : " + this.id + "\n"
+                + "\nList Of Clients : \n---------------\n" );
+                
+          for(Investor client: listOfClients) {
+        	  builder.append(client.getName());
+        	  builder.append("\n");
+          }
+          return  builder.toString();
+               
     }
 
     /**

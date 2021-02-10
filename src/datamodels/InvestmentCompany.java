@@ -114,9 +114,13 @@ public class InvestmentCompany {
      */
     @Override
     public String toString() {
-        return "{\"InvestmentCompany\":{"
-                + "\"companyName\":\"" + this.companyName + "\""
-                + ", \"listOfBrokers\":\"" + this.listOfBrokers + "\""
-                + "}}";
+    	StringBuilder builder = new StringBuilder();
+        builder.append( "\nInvestmentCompany : " +  this.companyName + "\n\n");
+        builder.append("List Of Brokers\n---------------\n");
+        for(Broker broker: listOfBrokers) {
+        	builder.append(broker.getName());
+        }
+        return builder.toString();
+              
     }
 }

@@ -145,17 +145,18 @@ public class TestAllClassesClassCreation {
         company1.setCompanyName("Fidelity Investments");
         company1.addBroker(broker1);
         // Store in the data container
-        investmentCompanyContainer.getCompanyList().add(company1);
+        investmentCompanyContainer.getcompanyList().add(company1);
 
         InvestmentCompany company2 = new InvestmentCompany();
         company2.setCompanyName("Charles Schwab");
         company2.addBroker(broker2);
         // Store in the data container
-        investmentCompanyContainer.getCompanyList().add(company2);
+        investmentCompanyContainer.getcompanyList().add(company2);
 
         // Verify the container values
         for (int i = 0; i < 2; i++) {
-            System.out.println(investmentCompanyContainer.getCompanyList().get(i));
+            System.out.println(investmentCompanyContainer.getcompanyList().get(i));
         }
 
-    }
+    }  
+   }
