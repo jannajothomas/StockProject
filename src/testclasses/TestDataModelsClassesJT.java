@@ -7,7 +7,7 @@ import java.util.Calendar;
 
 import datamodels.*;
 
-public class TestDataModelsClasses {
+public class TestDataModelsClassesJT {
 
     double testValue = 300;
     String testSymbol = "AAPL";
@@ -29,7 +29,7 @@ public class TestDataModelsClasses {
 
     
     
-    public TestDataModelsClasses() {
+    public TestDataModelsClassesJT() {
         super();
     }
     

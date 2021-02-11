@@ -11,7 +11,7 @@ import datamodels.Investor;
 import datamodels.InvestorStockQuote;
 import java.util.Calendar;
 
-public class TestAllClassesClassCreation {
+public class TestAllClassesClassCreationAssign3 {
 
     public static void main(String[] args) {
 

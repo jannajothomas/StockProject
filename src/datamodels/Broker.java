@@ -199,12 +199,12 @@ public class Broker extends Person {
         		+ "---------------\n"
         		+ this.name + "\n"
         		+ this.address + "\n"
-        		+ "Date Of Birth : " + DateFunctions.dateToString(this.dateOfBirth) + "\n"
-                + "dateOfHire : " + DateFunctions.dateToString(this.dateOfHire) + "\n"
-                + "dateOfTermination : " + DateFunctions.dateToString(this.dateOfTermination) + "\n"
-                + "salary : " + this.salary + "\n"
-                + "status : " + this.status + "\n"
-                + "id : " + this.id + "\n"
+        		+ "Date of Birth : " + DateFunctions.dateToString(this.dateOfBirth) + "\n"
+                + "Date of Hire : " + DateFunctions.dateToString(this.dateOfHire) + "\n"
+                + "Date of Termination : " + DateFunctions.dateToString(this.dateOfTermination) + "\n"
+                + "Salary : " + this.salary + "\n"
+                + "Status : " + this.status + "\n"
+                + "Id : " + this.id + "\n"
                 + "\nList Of Clients : \n---------------\n" );
                 
           for(Investor client: listOfClients) {
