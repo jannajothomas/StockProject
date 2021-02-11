@@ -1,5 +1,5 @@
 /*
- *  This Class contains several containers which can hold classroom objects 
+ *  This Class contains several containers which can hold objects 
  *  created in the UI
  */
 package datacontainers;
