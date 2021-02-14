@@ -55,7 +55,6 @@ public class Investor extends Person{
     /**
      * Returns the accountValue date of the Investor object
      */
-	//TODO: Calculate this
 	public double getAccountValue() {
 		double accountValue = 0;
 		for(InvestorStockQuote stock : listOfStocks) {
@@ -78,58 +77,6 @@ public class Investor extends Person{
 	public void addStock(InvestorStockQuote value) {
 		this.listOfStocks.add(value);
 	}
-
-    /**
-     * These methods compares two Investor objects to determine equality.
-     *
-     * @param obj the object being compared
-     * @return true if members are equal
-     */
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 67 * hash + Objects.hashCode(this.memberSince);
-        //TODO: Is this the proper hash code for a list???
-        hash = 67 * hash + Objects.hashCode(this.listOfStocks);
-        return hash;
-    }
-    
-    @Override
-    public boolean equals(Object obj) {
-    	//The item you are comparing to is the exact object
-        if (this == obj) {
-            return true;
-        }
-        //The object is null.  This object is initialize and can't be null
-        if (obj == null) {
-            return false;
-        }
-        //If the objects are not the same class, they cannot be equal
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        
-        final Investor other = (Investor) obj;
-        if(!Objects.equals(this.name, other.name)) {
-        	return false;
-        }
-        if(!Objects.equals(this.address, other.address)) {
-        	return false;
-        }
-        if(!Objects.equals(this.dateOfBirth, other.dateOfBirth)) {
-        	return false;
-        }
-        if(!Objects.equals(this.id, other.id)) {
-        	return false;
-        }
-        if (!Objects.equals(this.memberSince, other.memberSince)) {
-            return false;
-        }
-        if (!Objects.equals(this.listOfStocks, other.listOfStocks)) {
-            return false;
-        }
-        return true;
-    }
     
     /**
      * Returns a String representation of the Investor object 
@@ -150,6 +97,26 @@ public class Investor extends Person{
      */
 	public long getId() {
 		return id;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(listOfStocks, memberSince);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Investor other = (Investor) obj;
+		return Objects.equals(listOfStocks, other.listOfStocks) && Objects.equals(memberSince, other.memberSince);
 	}
 	
 }

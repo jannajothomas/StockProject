@@ -21,7 +21,6 @@ public class Broker extends Person {
      * no-arg constructor
      */
 	public Broker() {
-		//this.listOfClients = new ArrayList<Investor>();
 	}
 	
     /**
@@ -45,7 +44,6 @@ public class Broker extends Person {
 		this.dateOfTermination=dateOfTermination;
 		this.salary=salary;
 		this.status=status;
-		//this.listOfClients = new ArrayList<Investor>();
 	}
 		
 	 /**
@@ -114,78 +112,11 @@ public class Broker extends Person {
 	 /**
 	 * Adds a client to the listOfClients for the Broker object
 	 */
-	//TODO: Implement This
 	public void addClient(Investor newClient) {
 		this.listOfClients.add(newClient);
 	}
 	
-    /**
-     * These methods compares two Broker objects to determine equality.
-     *
-     * @param obj the object being compared
-     * @return true if members are equal
-     */
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 67 * hash + Objects.hashCode(this.dateOfHire);
-        hash = 67 * hash + Objects.hashCode(this.dateOfTermination);
-        hash = 67 * hash + (int) (Double.doubleToLongBits(this.salary) ^ (Double.doubleToLongBits(this.salary) >>> 32));
-        //TODO: Is this the proper hash code for a string and a list???
-        hash = 67 * hash + Objects.hashCode(this.status);
-        hash = 67 * hash + Objects.hashCode(this.listOfClients);
-        return hash;
-    }
-    
-    @Override
-    public boolean equals(Object obj) {
-    	//Check to see if the obj is the exact object(this)
-        if (this == obj) {
-            return true;
-        }
-        //Check to see if the object you are comparing to is null.  
-        if (obj == null) {
-            return false;
-        }
-        //Now that we know the object isn't null, we can check to see if objects are the same class
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        
-        //We make an unchangable(final) copy of the object passed cast as a Broker so we can invoke its Broker methods
-        final Broker other = (Broker) obj;
 
-        //check classes variable by variable
-        if(!Objects.equals(this.name, other.name)) {
-        	return false;
-        }
-        if(!Objects.equals(this.address, other.address)) {
-        	return false;
-        }
-        if(!Objects.equals(this.dateOfBirth, other.dateOfBirth)) {
-        	return false;
-        }
-        if(!Objects.equals(this.id, other.id)) {
-        	return false;
-        }
-        if (!Objects.equals(this.dateOfHire, other.dateOfHire)) {
-            return false;
-        }
-        if (!Objects.equals(this.dateOfTermination, other.dateOfTermination)) {
-            return false;
-        }
-        if (!Objects.equals(this.salary, other.salary)) {
-            return false;
-        }
-        if (!Objects.equals(this.status, other.status)) {
-            return false;
-        }
-        if (!Objects.equals(this.listOfClients, other.listOfClients)) {
-            return false;
-        }
-        return true;
-    }
-    
     /**
      * Returns a String representation of the StockQuote object in JSON format
      */
@@ -217,6 +148,38 @@ public class Broker extends Person {
      */
 	public long getId() {
 		return id;
+	}
+	
+    /**
+     * These methods compares two Broker objects to determine equality.
+     *
+     * @param obj the object being compared
+     * @return true if members are equal
+     */
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(dateOfHire, dateOfTermination, listOfClients, salary, status);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Broker other = (Broker) obj;
+		return Objects.equals(dateOfHire, other.dateOfHire)
+				&& Objects.equals(dateOfTermination, other.dateOfTermination)
+				&& Objects.equals(listOfClients, other.listOfClients)
+				&& Double.doubleToLongBits(salary) == Double.doubleToLongBits(other.salary)
+				&& Objects.equals(status, other.status);
 	}
 }
 

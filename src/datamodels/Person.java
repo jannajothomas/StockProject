@@ -94,55 +94,6 @@ public class Person implements IPerson{
 	}
 	
     /**
-     * These methods compares two Person objects to determine equality.
-     *
-     * @param obj the object being compared
-     * @return true if members are equal
-     */
-    @Override
-    public int hashCode() {
-        int hash = 5;
-      //TODO: Is this the proper hash code for a string???
-        hash = 67 * hash + Objects.hashCode(this.name);
-        hash = 67 * hash + Objects.hashCode(this.address);
-        hash = 67 * hash + Objects.hashCode(this.dateOfBirth);
-        //TODO: Is this the proper hash code for a long???
-        hash = 67 * hash + Objects.hashCode(this.id);
-        return hash;
-    }
-    
-    @Override
-	public boolean equals(Object obj) {
-    	//The item you are comparing to is the exact object
-        if (this == obj) {
-            return true;
-        }
-        //The object is null.  This object is initialize and can't be null
-        if (obj == null) {
-            return false;
-        }
-        //If the objects are not the same class, they cannot be equal
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        
-        final Investor other = (Investor) obj;
-        if(!Objects.equals(this.name, other.name)) {
-        	return false;
-        }
-        if(!Objects.equals(this.address, other.address)) {
-        	return false;
-        }
-        if(!Objects.equals(this.dateOfBirth, other.dateOfBirth)) {
-        	return false;
-        }
-        if(!Objects.equals(this.id, other.id)) {
-        	return false;
-        }
-        return true;
-	}
-	
-    /**
      * Returns a String representation of the Person object 
      */
     @Override
@@ -153,5 +104,23 @@ public class Person implements IPerson{
                 + "Date Of Birth: " + DateFunctions.dateToString(this.dateOfBirth) + "\n"
                 + "Id: " + this.id;
     }
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(address, dateOfBirth, id, name);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Person other = (Person) obj;
+		return Objects.equals(address, other.address) && Objects.equals(dateOfBirth, other.dateOfBirth)
+				&& Objects.equals(id, other.id) && Objects.equals(name, other.name);
+	}
 	
 }

@@ -99,45 +99,6 @@ public class StockQuote implements StockQuoteInterface {
     }
 
     /**
-     * These methods compares two StockQuote objects to determine equality.
-     *
-     * @param obj the object being compared
-     * @return true if members are equal
-     */
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 67 * hash + (int) (Double.doubleToLongBits(this.value) ^ (Double.doubleToLongBits(this.value) >>> 32));
-        hash = 67 * hash + Objects.hashCode(this.tickerSymbol);
-        hash = 67 * hash + Objects.hashCode(this.quoteDate);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final StockQuote other = (StockQuote) obj;
-        if (Double.doubleToLongBits(this.value) != Double.doubleToLongBits(other.value)) {
-            return false;
-        }
-        if (!Objects.equals(this.tickerSymbol, other.tickerSymbol)) {
-            return false;
-        }
-        if (!Objects.equals(this.quoteDate, other.quoteDate)) {
-            return false;
-        }
-        return true;
-    }
-
-    /**
      * Returns a String representation of the StockQuote object in JSON format
      */
     @Override
@@ -148,4 +109,22 @@ public class StockQuote implements StockQuoteInterface {
                 + ", \"quoteDate\":\"" + DateFunctions.dateToString(this.quoteDate) + "\""
                 + "}}";
     }
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(quoteDate, tickerSymbol, value);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		StockQuote other = (StockQuote) obj;
+		return Objects.equals(quoteDate, other.quoteDate) && Objects.equals(tickerSymbol, other.tickerSymbol)
+				&& Double.doubleToLongBits(value) == Double.doubleToLongBits(other.value);
+	}
 }

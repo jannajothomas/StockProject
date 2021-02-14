@@ -54,51 +54,6 @@ public class InvestorStockQuote {
 		this.stock = stock;
 	}
 	
-	
-    /**
-     * These methods compares two InvestorStockQuote objects to determine equality.
-     *
-     * @param obj the object being compared
-     * @return true if members are equal
-     */
-	
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 67 * hash + Objects.hashCode(this.stock);
-        //TODO: Is this the proper hash code for an int???
-        hash = 67 * hash + Objects.hashCode(this.shares);
-        return hash;
-    }
-    
-    @Override
-	public boolean equals(Object obj) {
-    	//The item you are comparing to is the exact object
-        if (this == obj) {
-            return true;
-        }
-        //The object is null.  This object is initialize and can't be null
-        if (obj == null) {
-            return false;
-        }
-        //If the objects are not the same class, they cannot be equal
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        
-        final InvestorStockQuote other = (InvestorStockQuote) obj;
-        //check classes variable by variable
-        if(!Objects.equals(this.stock, other.stock)) {
-        	return false;
-        }
-        if(!Objects.equals(this.shares, other.shares)) {
-        	return false;
-        }
- 
-        return true;
-	}
-	
-	
     /**
      * Returns a String representation of the InvestorStockQuote object
      */
@@ -109,5 +64,22 @@ public class InvestorStockQuote {
                 + ", \"shares\":\"" + this.shares + "\""
                 + "}}";
     }
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(shares, stock);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		InvestorStockQuote other = (InvestorStockQuote) obj;
+		return shares == other.shares && Objects.equals(stock, other.stock);
+	}
 	
 }
