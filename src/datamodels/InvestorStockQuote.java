@@ -28,7 +28,7 @@ public class InvestorStockQuote {
      * Returns the shares of the InvestorStockQuote object
      */
 	public int getShares() {
-		return shares;
+		return this.shares;
 	}
 	
 	/**
@@ -43,7 +43,7 @@ public class InvestorStockQuote {
      * Returns the stock of the InvestorStockQuote object
      */
 	public StockQuote getStock() {
-		return stock;
+		return this.stock;
 	}
 	
 	/**
@@ -54,12 +54,14 @@ public class InvestorStockQuote {
 		this.stock = stock;
 	}
 	
+	
     /**
      * These methods compares two InvestorStockQuote objects to determine equality.
      *
      * @param obj the object being compared
      * @return true if members are equal
      */
+	
     @Override
     public int hashCode() {
         int hash = 5;

@@ -37,7 +37,7 @@ public class Person implements IPerson{
      * Returns the name of the Person object
      */
 	public String getName() {
-		return name;
+		return this.name;
 	}
 	
 	/**
@@ -45,14 +45,14 @@ public class Person implements IPerson{
 	 * @param value
 	 */
 	public void setName(String value) {
-		name=value;
+		this.name=value;
 	}
 	
 	/**
      * Returns the address of the Person object
      */
 	public String getAddress() {
-		return address;
+		return this.address;
 	}
 	
 	/**
@@ -60,14 +60,14 @@ public class Person implements IPerson{
 	 * @param value
 	 */
 	public void setAddress(String value) {
-		address = value;
+		this.address = value;
 	}
 	
 	/**
      * Returns the dateOfBirth of the Person object
      */
 	public Calendar getDateOfBirth() {
-		return dateOfBirth;
+		return this.dateOfBirth;
 	}
 	
 	/**
@@ -75,14 +75,14 @@ public class Person implements IPerson{
 	 * @param value
 	 */
 	public void setDateOfBirth(Calendar value) {
-		dateOfBirth=value;
+		this.dateOfBirth=value;
 	}
 	
 	/**
      * Returns the id of the Person object
      */
 	public long getId() {
-		return id;
+		return this.id;
 	}
 	
 	/**

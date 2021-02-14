@@ -15,17 +15,14 @@ public class Broker extends Person {
 	private Calendar dateOfTermination;
 	private double salary;
 	private String status;
-	private List<Investor> listOfClients;
+	private List<Investor> listOfClients = new ArrayList<>();;
 
 	/**
      * no-arg constructor
      */
 	public Broker() {
-		this.listOfClients = new ArrayList<Investor>();
+		//this.listOfClients = new ArrayList<Investor>();
 	}
-	
-	
-	//TODO: How to add clients to list?
 	
     /**
      * This constructor takes the name, address, dateOfBirth, id, dateOfHire, dateOfTermiantion, salary and status
@@ -48,14 +45,14 @@ public class Broker extends Person {
 		this.dateOfTermination=dateOfTermination;
 		this.salary=salary;
 		this.status=status;
-		this.listOfClients = new ArrayList<Investor>();
+		//this.listOfClients = new ArrayList<Investor>();
 	}
 		
 	 /**
 	 * Returns the dateOfHire of the Broker object
 	 */
 	public Calendar getDateOfHire() {
-		return dateOfHire;
+		return this.dateOfHire;
 	}
 	
     /**
@@ -69,7 +66,7 @@ public class Broker extends Person {
 	 * Returns the dateOfTermination of the Broker object
 	 */
 	public Calendar getDateOfTermination() {
-		return dateOfTermination;
+		return this.dateOfTermination;
 	}
 	
     /**
@@ -83,7 +80,7 @@ public class Broker extends Person {
 	 * Returns the salary of the Broker object
 	 */
 	public double getSalary() {
-		return salary;
+		return this.salary;
 	}
 	
     /**
@@ -97,7 +94,7 @@ public class Broker extends Person {
 	 * Returns the status of the Broker object
 	 */
 	public String getStatus() {
-		return status;
+		return this.status;
 	}
 	
     /**
@@ -111,7 +108,7 @@ public class Broker extends Person {
 	 * Returns the listOfClient for the Broker object
 	 */
 	public List<Investor> getListOfClients(){
-		return listOfClients;
+		return this.listOfClients;
 	}
 	
 	 /**
@@ -119,7 +116,7 @@ public class Broker extends Person {
 	 */
 	//TODO: Implement This
 	public void addClient(Investor newClient) {
-		listOfClients.add(newClient);
+		this.listOfClients.add(newClient);
 	}
 	
     /**

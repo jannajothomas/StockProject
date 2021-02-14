@@ -19,39 +19,11 @@ public class BrokerDataContainer  {
      */
     private List<Broker> brokerList = new ArrayList<>();
     
-    /** Container that stores elements as a set of unique elements
-     *  Random ordering
-     */
-    private Set<Broker> brokerSet = new HashSet<Broker>();
-
-    /** Container that stores elements as a map, can contain duplicates
-     *  Order not enforced
-     */
-    private Map brokerMap = new HashMap();
-
-    
-    
     public List<Broker> getBrokerList() {
         return brokerList;
     }
 
     public void setBrokerList(List<Broker> brokerList) {
         this.brokerList = brokerList;
-    }
-
-    public Set getBrokerSet() {
-        return brokerSet;
-    }
-
-    public void setStockQuoteSet(Set brokerSet) {
-        this.brokerSet = brokerSet;
-    }
-
-    public Map getBrokerMap() {
-        return brokerMap;
-    }
-
-    public void setBrokerMap(Map brokerMap) {
-        this.brokerMap = brokerMap;
     }
 }

@@ -40,7 +40,7 @@ public class InvestmentCompany {
      * Returns the company name of the InvestmentCompany object
      */
 	public String getCompanyName() {
-		return companyName;
+		return this.companyName;
 	}
 	
 	/**
@@ -55,7 +55,7 @@ public class InvestmentCompany {
      * Returns the listOfBrokers for the InvestmentCompany object
      */
 	public List<Broker> getListOfBrokers(){
-		return listOfBrokers;
+		return this.listOfBrokers;
 	}
 	
 	
@@ -65,7 +65,7 @@ public class InvestmentCompany {
 	 */
 	
 	public void addBroker(Broker newBroker) {
-		listOfBrokers.add(newBroker);
+		this.listOfBrokers.add(newBroker);
 	}
 	
     /**

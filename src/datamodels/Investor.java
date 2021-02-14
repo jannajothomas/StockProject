@@ -41,7 +41,7 @@ public class Investor extends Person{
      * Returns the memberSince date of the Investor object
      */
 	public Calendar getMemberSince() {
-		return memberSince;
+		return this.memberSince;
 	}
 	
 	/**
@@ -68,7 +68,7 @@ public class Investor extends Person{
      * Returns the listOfStocks of the Investor object
      */
 	public List<InvestorStockQuote> getListOfStocks(){
-		return listOfStocks;
+		return this.listOfStocks;
 	}
 	
 	/**
@@ -76,7 +76,7 @@ public class Investor extends Person{
 	 * @param value is the monetary value of  the  stock quote
 	 */
 	public void addStock(InvestorStockQuote value) {
-		listOfStocks.add(value);
+		this.listOfStocks.add(value);
 	}
 
     /**
