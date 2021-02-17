@@ -3,6 +3,7 @@
  */
 package interfaces;
 
+import exceptionhandlers.InvalidDataException;
 import java.util.Calendar;
 
 public interface StockQuoteInterface {
@@ -40,7 +41,7 @@ public interface StockQuoteInterface {
     /**
      * Sets the ticker symbol of the StockQuote object
      */
-    public void setTickerSymbol(String tickerSymbol);
+    public void setTickerSymbol(String tickerSymbol) throws InvalidDataException;
 
     /**
      * Sets the value of the StockQuote object
