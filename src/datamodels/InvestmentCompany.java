@@ -3,6 +3,7 @@ package datamodels;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import exceptionhandlers.InvalidDataException;
 
 public class InvestmentCompany {
 	private String companyName;
