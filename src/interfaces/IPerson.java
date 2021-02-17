@@ -2,6 +2,8 @@ package interfaces;
 
 import java.util.Calendar;
 
+import exceptionhandlers.InvalidDataException;
+
 public interface IPerson {
 	
     /**
@@ -11,8 +13,9 @@ public interface IPerson {
 	
     /**
      * Sets the name symbol of the Person object
+     * @throws InvalidDataException 
      */
-	public void setName(String value);
+	public void setName(String value) throws InvalidDataException;
 	
     /**
      * Returns the address of the Person object
@@ -21,8 +24,9 @@ public interface IPerson {
 	
     /**
      * Sets the name symbol of the Person object
+     * @throws InvalidDataException 
      */
-	public void setAddress(String value);
+	public void setAddress(String value) throws InvalidDataException;
 	
     /**
      * Returns the dateOfBirth of the Person object
@@ -41,8 +45,9 @@ public interface IPerson {
 	
     /**
      * Sets the name dateOfBirth of the Person object
+     * @throws InvalidDataException 
      */
-	public void setId(long value);
+	public void setId(long value) throws InvalidDataException;
 	
 	 /**
      * These methods compares two StockQuote objects to determine equality.

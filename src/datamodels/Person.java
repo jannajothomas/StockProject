@@ -45,8 +45,12 @@ public class Person implements IPerson{
 	 * sets the value of the name of the Person object
 	 * @param value
 	 */
-	public void setName(String value) {
-		this.name=value;
+	public void setName(String value) throws InvalidDataException{
+		if(value.isEmpty()) {
+			throw new InvalidDataException("Setting Person name failed, no name specified");
+		}else {
+			this.name=value;
+		}
 	}
 	
 	/**
@@ -60,8 +64,12 @@ public class Person implements IPerson{
 	 * sets the value of the address of the Person object
 	 * @param value
 	 */
-	public void setAddress(String value) {
-		this.address = value;
+	public void setAddress(String value) throws InvalidDataException{
+		if(value.isEmpty()) {
+			throw new InvalidDataException("Setting Person address failed, no address specified");
+		}else {
+			this.address = value;
+		}
 	}
 	
 	/**
@@ -90,8 +98,13 @@ public class Person implements IPerson{
 	 * sets the value of the id of the Person object
 	 * @param value
 	 */
-	public void setId(long value) {
-		this.id = value;
+	public void setId(long value) throws InvalidDataException{
+		if(value<0) {
+			throw new InvalidDataException("Setting id failed, invalid id: " + value);
+		}else {
+			this.id = value;
+		}
+		
 	}
 	
     /**

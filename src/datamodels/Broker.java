@@ -85,8 +85,12 @@ public class Broker extends Person {
     /**
      * Sets the salary of the Broker object
      */
-	public void setSalary(double salary) {
-		this.salary=salary;
+	public void setSalary(double salary) throws InvalidDataException{
+		if(salary < 0) {
+			throw new InvalidDataException("Setting broker salary failed, invalid salary" + salary); 
+		}else {
+			this.salary=salary;
+		}
 	}
 	
 	 /**
@@ -99,8 +103,13 @@ public class Broker extends Person {
     /**
      * Sets the status of the Broker object
      */
-	public void setStatus(String status) {
-		this.status=status;
+	public void setStatus(String status) throws InvalidDataException {
+		if((status != "Fulltime")||(status!="Parttime"){
+			throw  new InvalidDataException("Setting broker status failed, broker status is invalid");
+		}else {
+			this.status=status;
+		}
+		
 	}
 	
 	 /**

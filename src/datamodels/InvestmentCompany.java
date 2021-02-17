@@ -48,8 +48,12 @@ public class InvestmentCompany {
 	 * sets the value of the memberSince date of the InvestmentCompany object
 	 * @param companyName
 	 */
-	public void setCompanyName(String companyName) {
-		this.companyName=companyName;
+	public void setCompanyName(String companyName) throws InvalidDataException {
+		if(companyName.isEmpty()) {
+			throw new InvalidDataException("Setting company name failed, no company name specified");
+		}else {
+			this.companyName=companyName;
+		}
 	}
 	
     /**
