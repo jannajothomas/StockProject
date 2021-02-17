@@ -68,7 +68,7 @@ public class TestErrorHandlingAllClasses {
         }
         
         /**
-         * Test setting an empty string for company name
+         * Test setting an emptry string for company name
          */
         try {
             InvestmentCompany company = new InvestmentCompany();

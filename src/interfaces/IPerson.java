@@ -55,8 +55,10 @@ public interface IPerson {
      * @param obj the object being compared
      * @return true if members are equal
      */
+	@Override
 	public boolean equals(Object obj);
 	
 	//TODO: CHECK AND ADD COMMENT  HERE
+	@Override
 	public  int hashCode();
 }

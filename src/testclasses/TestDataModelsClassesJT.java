@@ -6,6 +6,7 @@ import java.text.ParseException;
 import java.util.Calendar;
 
 import datamodels.*;
+import exceptionhandlers.InvalidDataException;
 
 public class TestDataModelsClassesJT {
 
@@ -61,11 +62,12 @@ public class TestDataModelsClassesJT {
     /**
      * See  if a broker initialized with an empty constructor is a valid constructor.  
      * @throws ParseException 
+     * @throws InvalidDataException 
      * 
      */
     //TODO: Lots of copy and paste here.  When I have more time it would be fun to write this more elegantly and in a way that I could easily add Investor and Person paramters just to be complete.
 	@Test
-    public void testBrokerEmptyConstructor() throws ParseException{
+    public void testBrokerEmptyConstructor() throws ParseException, InvalidDataException{
     	
     	Broker broker0 = new Broker();
     	
@@ -121,7 +123,7 @@ public class TestDataModelsClassesJT {
     	assertEquals("Check uninitialized broker status",null,broker0.getStatus());
     	
     	//add status
-    	String status = "Employed";
+    	String status = "Fulltime";
     	broker0.setStatus(status);
     	assertEquals("Verify Broker status",status,broker0.getStatus());
     	

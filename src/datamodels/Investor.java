@@ -95,6 +95,7 @@ public class Investor extends Person{
     /**
      * Returns a unique long integer of the Investor object 
      */
+	@Override
 	public long getId() {
 		return id;
 	}

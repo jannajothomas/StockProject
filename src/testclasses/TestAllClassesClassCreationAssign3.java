@@ -6,6 +6,7 @@ import datacontainers.InvestorDataContainer;
 import datacontainers.StockQuoteDataContainer;
 import datamodels.InvestmentCompany;
 import datamodels.StockQuote;
+import exceptionhandlers.InvalidDataException;
 import datamodels.Broker;
 import datamodels.Investor;
 import datamodels.InvestorStockQuote;
@@ -13,7 +14,7 @@ import java.util.Calendar;
 
 public class TestAllClassesClassCreationAssign3 {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InvalidDataException {
 
         // Create a date which will be used in all test methods
         Calendar testDate = Calendar.getInstance();

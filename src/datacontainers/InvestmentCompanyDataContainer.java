@@ -22,12 +22,12 @@ public class InvestmentCompanyDataContainer  {
     /** Container that stores elements as a set of unique elements
      *  Random ordering
      */
-    private Set companySet = new HashSet();
+    private Set<?> companySet = new HashSet<Object>();
 
     /** Container that stores elements as a map, can contain duplicates
      *  Order not enforced
      */
-    private Map companyMap = new HashMap();
+    private Map<Object, Object> companyMap = new HashMap<Object, Object>();
 
     
     
@@ -39,19 +39,19 @@ public class InvestmentCompanyDataContainer  {
         this.companyList = companyList;
     }
 
-    public Set getcompanySet() {
+    public Set<?> getcompanySet() {
         return companySet;
     }
 
-    public void setStockQuoteSet(Set companySet) {
+    public void setStockQuoteSet(Set<?> companySet) {
         this.companySet = companySet;
     }
 
-    public Map getcompanyMap() {
+    public Map<Object, Object> getcompanyMap() {
         return companyMap;
     }
 
-    public void setcompanyMap(Map companyMap) {
+    public void setcompanyMap(Map<Object, Object> companyMap) {
         this.companyMap = companyMap;
     }
 

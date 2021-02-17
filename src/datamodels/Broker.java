@@ -104,7 +104,7 @@ public class Broker extends Person {
      * Sets the status of the Broker object
      */
 	public void setStatus(String status) throws InvalidDataException {
-		if((status != "Fulltime")||(status!="Parttime"){
+		if((status != "Fulltime")||(status!="Parttime")){
 			throw  new InvalidDataException("Setting broker status failed, broker status is invalid");
 		}else {
 			this.status=status;
@@ -156,6 +156,7 @@ public class Broker extends Person {
     /**
      * Returns a unique long integer of the StockQuote object in JSON format
      */
+	@Override
 	public long getId() {
 		return id;
 	}

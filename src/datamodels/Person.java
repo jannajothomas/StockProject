@@ -37,6 +37,7 @@ public class Person implements IPerson{
     /**
      * Returns the name of the Person object
      */
+	@Override
 	public String getName() {
 		return this.name;
 	}
@@ -45,6 +46,7 @@ public class Person implements IPerson{
 	 * sets the value of the name of the Person object
 	 * @param value
 	 */
+	@Override
 	public void setName(String value) throws InvalidDataException{
 		if(value.isEmpty()) {
 			throw new InvalidDataException("Setting Person name failed, no name specified");
@@ -56,6 +58,7 @@ public class Person implements IPerson{
 	/**
      * Returns the address of the Person object
      */
+	@Override
 	public String getAddress() {
 		return this.address;
 	}
@@ -64,6 +67,7 @@ public class Person implements IPerson{
 	 * sets the value of the address of the Person object
 	 * @param value
 	 */
+	@Override
 	public void setAddress(String value) throws InvalidDataException{
 		if(value.isEmpty()) {
 			throw new InvalidDataException("Setting Person address failed, no address specified");
@@ -75,6 +79,7 @@ public class Person implements IPerson{
 	/**
      * Returns the dateOfBirth of the Person object
      */
+	@Override
 	public Calendar getDateOfBirth() {
 		return this.dateOfBirth;
 	}
@@ -83,6 +88,7 @@ public class Person implements IPerson{
 	 * sets the value of the dateOfBirth of the Person object
 	 * @param value
 	 */
+	@Override
 	public void setDateOfBirth(Calendar value) {
 		this.dateOfBirth=value;
 	}
@@ -90,6 +96,7 @@ public class Person implements IPerson{
 	/**
      * Returns the id of the Person object
      */
+	@Override
 	public long getId() {
 		return this.id;
 	}
@@ -98,6 +105,7 @@ public class Person implements IPerson{
 	 * sets the value of the id of the Person object
 	 * @param value
 	 */
+	@Override
 	public void setId(long value) throws InvalidDataException{
 		if(value<0) {
 			throw new InvalidDataException("Setting id failed, invalid id: " + value);

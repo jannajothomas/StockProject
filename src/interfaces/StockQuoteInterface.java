@@ -8,7 +8,8 @@ import java.util.Calendar;
 
 public interface StockQuoteInterface {
 
-    public boolean equals(Object obj);
+    @Override
+	public boolean equals(Object obj);
 
     /**
      * Returns the quoteDate of the StockQuote object
@@ -31,7 +32,8 @@ public interface StockQuoteInterface {
      * @param obj the object being compared
      * @return true if members are equal
      */
-   public  int hashCode();
+   @Override
+public  int hashCode();
 
     /**
      * Sets the quoteDate of the StockQuote object
@@ -51,6 +53,7 @@ public interface StockQuoteInterface {
     /**
      * Returns a String representation of the StockQuote object in JSON format
      */
-    public String toString();
+    @Override
+	public String toString();
     
 }

@@ -2,12 +2,14 @@ package testclasses;
 
 import datacontainers.StockQuoteDataContainer;
 import datamodels.StockQuote;
+import exceptionhandlers.InvalidDataException;
+
 import java.util.Calendar;
 import java.util.Iterator;
 
 public class TestStockQuoteDataContainer {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InvalidDataException {
 
         StockQuoteDataContainer stockQuoteContainer = new StockQuoteDataContainer();
 
