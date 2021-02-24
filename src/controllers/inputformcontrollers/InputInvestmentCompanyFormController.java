@@ -12,6 +12,8 @@ import java.awt.event.ActionListener;
 import datacontainers.InvestmentCompanyDataContainer;
 import datamodels.Broker;
 import datamodels.InvestmentCompany;
+import exceptionhandlers.InvalidDataException;
+
 import java.util.List;
 import view.inputforms.InvestmentCompanyInputForm;
 
@@ -74,7 +76,12 @@ public class InputInvestmentCompanyFormController implements ActionListener {
       String companyName = this.form.getCompanyNameField().getText();
 
       // Set the company name in the object
-      newInvestmentCompany.setCompanyName(companyName);
+      try {
+		newInvestmentCompany.setCompanyName(companyName);
+	} catch (InvalidDataException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 
       // Retrieve all selected brokers and add to drop down list
       // The list only contains broker names and ids.  Need to look them up

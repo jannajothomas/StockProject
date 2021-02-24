@@ -10,8 +10,11 @@ import datacontainers.BrokerDataContainer;
 import datacontainers.InvestorDataContainer;
 import datamodels.Broker;
 import datamodels.Investor;
+import exceptionhandlers.InvalidDataException;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import utilities.DateFunctions;
@@ -62,31 +65,51 @@ public class InputBrokerFormController implements ActionListener {
 
       // Create a new broker
       Broker newBroker = new Broker();
-      
-      try {
-    	  // Retrieve the XXX
-    	  String.
-      }
 
       // to-do - Add exception handling inside one or more try/catch blocks for the fields that require validation      
       
       // Retrieve data from all form fields and store directly into object
       // Retrieve name and address strings
-      newBroker.setName(form.getNameField().getText());
-      newBroker.setAddress(form.getAddressField().getText());
+      try {
+		newBroker.setName(form.getNameField().getText());
+	} catch (InvalidDataException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+      try {
+		newBroker.setAddress(form.getAddressField().getText());
+	} catch (InvalidDataException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 
       // Retrieve id string and convert to a long before storing in object
       long idString = Integer.parseInt(form.getIdField().getText());
-      newBroker.setId(idString);
+      try {
+		newBroker.setId(idString);
+	} catch (InvalidDataException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 
       // Retrieve status from drop down list
       String selectedStatus = (String) form.getStatusField().getSelectedItem();
-      newBroker.setStatus(selectedStatus);
+      try {
+		newBroker.setStatus(selectedStatus);
+	} catch (InvalidDataException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 
       // Retrieve salary and convert to a double before storing in object
       String salarystring = form.getSalaryField().getText();
       Double salarydouble = Double.parseDouble(salarystring);
-      newBroker.setSalary(salarydouble);
+      try {
+		newBroker.setSalary(salarydouble);
+	} catch (InvalidDataException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 
       // Retrieve the dates  and convert to Calendar objects
       String dateString = form.getDateOfBirthFormattedTextField().getText();

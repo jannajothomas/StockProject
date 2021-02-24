@@ -12,6 +12,8 @@ import datacontainers.*;
 import datamodels.Investor;
 import datamodels.InvestorStockQuote;
 import datamodels.StockQuote;
+import exceptionhandlers.InvalidDataException;
+
 import java.util.Calendar;
 import java.util.List;
 import utilities.DateFunctions;
@@ -67,10 +69,25 @@ public class InputInvestorFormController implements ActionListener {
 
       // to-do - Add exception handling inside one or more try/catch blocks for the fields that require validation      
       // Retrieve data from all text fields and store directly into object
-      newInvestor.setName(form.getNameField().getText());
-      newInvestor.setAddress(form.getAddressField().getText());
+      try {
+		newInvestor.setName(form.getNameField().getText());
+	} catch (InvalidDataException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+      try {
+		newInvestor.setAddress(form.getAddressField().getText());
+	} catch (InvalidDataException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
       long investorIdString = Long.parseLong(form.getIdField().getText());
-      newInvestor.setId(investorIdString);
+      try {
+		newInvestor.setId(investorIdString);
+	} catch (InvalidDataException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 
       // Retrieve the dates from the form and convert to Calendar objects
       String dateString = form.getDateOfBirthFormattedTextField().getText();
