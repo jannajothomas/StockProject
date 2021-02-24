@@ -65,9 +65,7 @@ public class InputBrokerFormController implements ActionListener {
    private void saveData() {
 
       // Create a new broker
-      Broker newBroker = new Broker();
-
-      // to-do - Add exception handling inside one or more try/catch blocks for the fields that require validation      
+      Broker newBroker = new Broker();      
       
       // Retrieve data from all form fields and store directly into object
       // Retrieve name and address strings

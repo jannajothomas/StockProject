@@ -70,8 +70,7 @@ public class InputInvestmentCompanyFormController implements ActionListener {
 
       // Create a new InvestmentCompany object
       InvestmentCompany newInvestmentCompany = new InvestmentCompany();
-
-      // to-do - Add exception handling inside one or more try/catch blocks for the fields that require validation      
+   
       try {
       
     	  // Retrieve the company name
@@ -82,8 +81,7 @@ public class InputInvestmentCompanyFormController implements ActionListener {
 			newInvestmentCompany.setCompanyName(companyName);
 	      } catch (InvalidDataException e) {
 			 throw new InvalidDataException("Invalid company Name.  Company name is required");}
-      } catch (InvalidDataException exp) {
-    	  new ErrorPopup(form,exp);}
+      
 
       // Retrieve all selected brokers and add to drop down list
       // The list only contains broker names and ids.  Need to look them up
@@ -114,8 +112,9 @@ public class InputInvestmentCompanyFormController implements ActionListener {
             }
          }
       }
-
-      // to-do - Add the new investment company to the data container
+      this.investmentCompanyDataContainer.getcompanyList().add(newInvestmentCompany);
+      } catch (InvalidDataException exp) {
+    	  new ErrorPopup(form,exp);}
    }
 
    /**

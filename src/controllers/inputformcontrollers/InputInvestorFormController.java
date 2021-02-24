@@ -97,9 +97,7 @@ public class InputInvestorFormController implements ActionListener {
     	      Calendar memberSince = DateFunctions.stringToDate(dateString);
     	      newInvestor.setMemberSince(memberSince);
     	  
-      } catch(InvalidDataException exp) {
-    	  new ErrorPopup(form, exp);
-      }
+      
       // to-do - Add exception handling inside one or more try/catch blocks for the fields that require validation      
       // Retrieve data from all text fields and store directly into object
       
@@ -134,8 +132,10 @@ public class InputInvestorFormController implements ActionListener {
             }
          }
       }
+      this.investorDataContainer.getInvestorList().add(newInvestor);
 
-      // to-do - Add the new investor to the data container
+      } catch (InvalidDataException exp) {
+ 	  new ErrorPopup(form,exp);}// to-do - Add the new investor to the data container
    }
 
    /**
