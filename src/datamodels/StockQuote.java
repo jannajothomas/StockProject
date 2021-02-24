@@ -6,7 +6,7 @@ package datamodels;
 import exceptionhandlers.InvalidDataException;
 import java.util.Calendar;
 import java.util.Objects;
-import utilities.DateFunctions;
+import utilities.date.DateFunctions;
 
 public class StockQuote {
 

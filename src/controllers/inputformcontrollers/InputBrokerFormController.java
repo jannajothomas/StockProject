@@ -15,10 +15,9 @@ import exceptionhandlers.InvalidDataException;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import utilities.DateFunctions;
+import utilities.date.DateFunctions;
 import view.inputforms.BrokerInputForm;
 
 public class InputBrokerFormController implements ActionListener {
@@ -68,9 +67,9 @@ public class InputBrokerFormController implements ActionListener {
       Broker newBroker = new Broker();      
       
       // Retrieve data from all form fields and store directly into object
-      // Retrieve name and address strings
-      
       try {
+    	  
+    	  // Retrieve name and address strings
 	      try {
 			newBroker.setName(form.getNameField().getText());
 	      } catch (InvalidDataException exp) {
@@ -82,12 +81,13 @@ public class InputBrokerFormController implements ActionListener {
 				throw new InvalidDataException("Invalid address. Address required");
 	      	}
 	
-	      // Retrieve id string and convert to a long before storing in object
-	      long idString = Integer.parseInt(form.getIdField().getText());
+	      // Retrieve id string and convert to a long before storing in object 
 	      try {
+	    	  
+	    	 long idString = Integer.parseInt(form.getIdField().getText());
 			newBroker.setId(idString);
-	      } catch (InvalidDataException exp) {
-			throw new InvalidDataException("Invalid ID.  Value must be a XXX");
+	      } catch (InvalidDataException | NumberFormatException exp) {
+	    	  throw new InvalidDataException("Invalid ID.  ID must be entered and it must be a number");
 	      	}
 	
 	      // Retrieve status from drop down list
@@ -98,13 +98,14 @@ public class InputBrokerFormController implements ActionListener {
 			throw new InvalidDataException("Invalid status.  Valid status value are fulltime and partime");
 	      	}
 	
-	      // Retrieve salary and convert to a double before storing in object
-	      String salarystring = form.getSalaryField().getText();
-	      Double salarydouble = Double.parseDouble(salarystring);
+	     
 	      try {
-			newBroker.setSalary(salarydouble);
-	      } catch (InvalidDataException exp) {
-			throw new InvalidDataException("Invalid salary.  Salary must be a number");
+	    	  // Retrieve salary and convert to a double before storing in object
+		      String salarystring = form.getSalaryField().getText();
+		      Double salarydouble = Double.parseDouble(salarystring);
+		      newBroker.setSalary(salarydouble);
+	      } catch (InvalidDataException | NumberFormatException exp) {
+			throw new InvalidDataException("Invalid salary.  Salary must entered and must be a number");
 	      	}
       
 

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
-import utilities.DateFunctions;
+import utilities.date.DateFunctions;
 
 /**
  * This class creates a Investor object

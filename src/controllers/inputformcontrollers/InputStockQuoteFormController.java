@@ -13,7 +13,7 @@ import datamodels.StockQuote;
 import exceptionhandlers.ErrorPopup;
 import exceptionhandlers.InvalidDataException;
 import java.util.Calendar;
-import utilities.DateFunctions;
+import utilities.date.DateFunctions;
 
 public class InputStockQuoteFormController implements ActionListener {
 

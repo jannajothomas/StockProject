@@ -7,14 +7,16 @@ import java.awt.Dimension;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTree;
 import javax.swing.WindowConstants;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeSelectionModel;
-import utilities.DateFunctions;
+import utilities.date.DateFunctions;
 
 /**
  * This class contains all the code for the investor report form. It creates the
@@ -23,60 +25,113 @@ import utilities.DateFunctions;
 public class InvestorReportForm extends JFrame {
 
     // Form components
-    
+	 private JLabel label1 = new JLabel("List Of Investors At A Glance");
+	   // Title of form
+	   private JLabel label2 = new JLabel("Investor Detail Data");
     private JButton closeButton = new JButton("Close Report");
-    private JScrollPane treeScrollPane;
+   // private JScrollPane treeScrollPane;
     private JTree investorTree;
     private DefaultMutableTreeNode topLevelNode;
-    private JTextArea investorData;
+    //private JTextArea investorData;
+    private JTextArea textAreaOfInvestors = new JTextArea(20, 5);
+    private JTable tableOfInvestors = new javax.swing.JTable();
 
-    public InvestorReportForm(ListAllInvestorsController controller) {
+    /**
+     * Free form text area
+     */
 
-        // Closes the form by default
+    
+    /**
+     * scrollable panels for the table and free form text area
+     */
+   private JScrollPane textAreaScrollPanel = new JScrollPane();
+   private JScrollPane tableScrollPanel = new JScrollPane();
+    public InvestorReportForm() {
+
+        /**
+         * set close function to dispose of the form
+         */
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
-        // Add to form in the bottom of the panel
-        getContentPane().add(closeButton, BorderLayout.SOUTH);
-        topLevelNode = new DefaultMutableTreeNode("Investors");
+        /**
+         * set the form layout to null, we'll place the components manually using
+         * x,y layout positions
+         */
+        getContentPane().setLayout(null);
 
-        // Create the tree with the top level node
-        investorTree = new JTree(topLevelNode);
-        // Create a scroll panel for the tree
-        treeScrollPane = new JScrollPane(investorTree);
-        // Allow only one tree selection at a time
-        investorTree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
-        //Listen for when the selection changes.
-        investorTree.addTreeSelectionListener(controller);
+        /**
+         * Add label component to the form
+         */
+        getContentPane().add(label1);
+        label1.setBounds(300, 20, 210, 14);
 
-        // Set up the text area for investor data
-        investorData = new JTextArea();
+        /**
+         * Put the table in the scrollable panel
+         */
+        textAreaScrollPanel.setViewportView(textAreaOfInvestors);
 
-        //Add the tree pane and the investor detail pain to a split pane.
-        JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-        splitPane.setTopComponent(treeScrollPane);
-        splitPane.setBottomComponent(investorData);
+        /**
+         * Add component to the form
+         */
+        getContentPane().add(textAreaScrollPanel);
+        textAreaScrollPanel.setBounds(10, 45, 720, 124);
 
-        // Set the default split location and size of the pane
-        splitPane.setDividerLocation(175);
-        splitPane.setPreferredSize(new Dimension(500, 300));
+        /**
+         * Add label component to the form
+         */
+        getContentPane().add(label2);
+        label2.setBounds(380, 190, 270, 14);
 
-        // Add the split pane to the form
-        getContentPane().add(splitPane, BorderLayout.CENTER);
+        /**
+         * Add component to the form
+         */
+        getContentPane().add(closeButton);
+        closeButton.setBounds(500, 380, 120, 23);
 
-        // Once the form is initialized, retrieve the data from the passed in 
-        // data model
-        List<Investor> listOfInvestors = controller.getInvestorDataContainer().getInvestorList();
-                
-        // Call private method that will add all investors to the tree
-        this.populateTree(listOfInvestors);
+        tableOfInvestors.setModel(new javax.swing.table.DefaultTableModel(
+                new Object[][]{
+                   {null, null, null, null, null, null, null, null},
+                   {null, null, null, null, null, null, null, null},
+                   {null, null, null, null, null, null, null, null},
+                   {null, null, null, null, null, null, null, null},
+                   {null, null, null, null, null, null, null, null},
+                   {null, null, null, null, null, null, null, null},
+                   {null, null, null, null, null, null, null, null},},
+                new String[]{
+                   "Name", "Address", "Status", "Salary", "ID", "Date of Birth", "Date of Hire", "Date of Termination"
+                }
+        ) {
+           Class[] types = new Class[]{
+              java.lang.String.class, java.lang.String.class, java.lang.String.class, 
+              java.lang.Double.class, java.lang.Double.class, java.lang.String.class, 
+              java.lang.String.class, java.lang.String.class
+           };
+           boolean[] canEdit = new boolean[]{
+              false, false, false, false, false, false, false, false
+           };
 
-        // Link the controller to the button
-        closeButton.addActionListener(controller);
+           public Class getColumnClass(int columnIndex) {
+              return types[columnIndex];
+           }
 
-         this.setTitle("Investor Report");
-         
-        // Set the size of the form
-        setSize(800, 350);
+           public boolean isCellEditable(int rowIndex, int columnIndex) {
+              return canEdit[columnIndex];
+           }
+        });
+        tableOfInvestors.setColumnSelectionAllowed(true);
+        // Put the table in a scrollablepanel
+        tableScrollPanel.setViewportView(tableOfInvestors);
+
+        // Add the panel to the form
+        getContentPane().add(tableScrollPanel);
+        tableScrollPanel.setBounds(10, 220, 1200, 138);
+
+        this.setTitle("Investor Report");
+        
+        /**
+         * set the overall size of the form
+         */
+        setSize(1250, 500);
 
     }
 
@@ -119,6 +174,14 @@ public class InvestorReportForm extends JFrame {
 
     public DefaultMutableTreeNode getTopLevelNode() {
         return topLevelNode;
+    }
+    
+    public JTable getTableOfInvestors() {
+    	return tableOfInvestors;
+    }
+    
+    public JTextArea getTextAreaofInvestors() {
+    	return textAreaOfInvestors;
     }
 
 }

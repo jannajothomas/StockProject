@@ -6,8 +6,7 @@
  */
 package controllers.inputformcontrollers;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 import datacontainers.*;
 import datamodels.Investor;
 import datamodels.InvestorStockQuote;
@@ -15,14 +14,16 @@ import datamodels.StockQuote;
 import exceptionhandlers.ErrorPopup;
 import exceptionhandlers.InvalidDataException;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Calendar;
 import java.util.List;
-import utilities.DateFunctions;
+import utilities.date.DateFunctions;
 import view.inputforms.InvestorInputForm;
 
 public class InputInvestorFormController implements ActionListener {
 
-   // The data datacontainers are passed in
+   // The data data containers are passed in
    InvestorDataContainer investorDataContainer;
    StockQuoteDataContainer stockquoteDataContainer;
 
@@ -32,13 +33,12 @@ public class InputInvestorFormController implements ActionListener {
    public InputInvestorFormController(InvestorDataContainer investorDataContainer,
            StockQuoteDataContainer stockquoteDataContainer) {
 
-      // store local pointers to the data datacontainers passed in
+      // store local pointers to the data data containers passed in
       this.investorDataContainer = investorDataContainer;
       this.stockquoteDataContainer = stockquoteDataContainer;
 
       // create the form, pass it this controller
       form = new InvestorInputForm(this);
-
    }
 
    /**
@@ -82,10 +82,11 @@ public class InputInvestorFormController implements ActionListener {
     		} catch (Exception exp) {
     			throw new InvalidDataException("Invalid address.  Address is required");
     		}
-    	      long investorIdString = Long.parseLong(form.getIdField().getText());
+    	      
     	      try {
+    	    	  long investorIdString = Long.parseLong(form.getIdField().getText());
     			newInvestor.setId(investorIdString);
-    		} catch (Exception exp) {
+    		} catch (InvalidDataException | NumberFormatException exp) {
     			throw new InvalidDataException("Invalid ID. ID must be a number");
     		}
 
@@ -97,10 +98,6 @@ public class InputInvestorFormController implements ActionListener {
     	      dateString = form.getMemberSinceFormattedTextField().getText();
     	      Calendar memberSince = DateFunctions.stringToDate(dateString);
     	      newInvestor.setMemberSince(memberSince);
-    	  
-      
-
-      
 
       // Retrieve all selected stocks and add to investor's stock list
       // The list only contains stock names.  Need to look them up
@@ -146,7 +143,7 @@ public class InputInvestorFormController implements ActionListener {
       form.getNameField().setText("");
       form.getIdField().setText("");
       form.getAddressField().setText("");
-      form.getGpaField().setText("");
+      //form.getGpaField().setText("");
       form.getDateOfBirthFormattedTextField().setText("");
       form.getMemberSinceFormattedTextField().setText("");
    }

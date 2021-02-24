@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
-import utilities.DateFunctions;
+import utilities.date.DateFunctions;
 import exceptionhandlers.InvalidDataException;
 
 /**
@@ -104,7 +104,7 @@ public class Broker extends Person {
      * Sets the status of the Broker object
      */
 	public void setStatus(String status) throws InvalidDataException {
-		if((status == "Fulltime"||status=="Parttime")) {
+		if((status == "Full Time"||status=="Part  Time")) {
 			this.status=status;
 		}else {
 			throw  new InvalidDataException("Setting broker status failed, broker status is invalid");
