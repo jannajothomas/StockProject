@@ -4,6 +4,9 @@
 package view.inputforms;
 
 import controllers.inputformcontroller.InputInvestmentCompanyFormController;
+import datacontainers.BrokerDataContainer;
+import datamodels.Broker;
+
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
