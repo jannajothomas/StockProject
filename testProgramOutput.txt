@@ -1,4 +1,4 @@
-{"StockQuote":{"value":"300.0", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
+{"StockQuote":{"value":"300.0", "tickerSymbol":"AAPL", "quoteDate":"2/24/2021"}}
 
 
 Investor:
@@ -6,7 +6,7 @@ Investor:
 Person: 
 Name: Tom Jones
 Address: 100 University Ave
-Date Of Birth: 2/19/2021
+Date Of Birth: 2/24/2021
 Id: 136900
 Portfollio value: 45000.0
 
@@ -15,7 +15,7 @@ Investor:
 Person: 
 Name: Sam Smith
 Address: 50 University Ave
-Date Of Birth: 2/19/2021
+Date Of Birth: 2/24/2021
 Id: 137200
 Portfollio value: 15000.0
 
@@ -24,10 +24,10 @@ Broker:
 Person: 
 Name: Alex Jones
 Address: 300 University Ave
-Date Of Birth: 2/19/2021
+Date Of Birth: 2/24/2021
 Id: 1234567
-Date of Hire : 2/19/2021
-Date of Termination : 2/19/2021
+Date of Hire : 2/24/2021
+Date of Termination : 2/24/2021
 Salary : 75000.0
 Status : Fulltime
 
@@ -44,7 +44,7 @@ Fidelity Investments
 List Of Brokers
 ---------------
 Alex Jones
-{"StockQuote":{"value":"300.0", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
+{"StockQuote":{"value":"300.0", "tickerSymbol":"AAPL", "quoteDate":"2/24/2021"}}
 
 
 Investor:
@@ -52,7 +52,7 @@ Investor:
 Person: 
 Name: Tom Jones
 Address: 100 University Ave
-Date Of Birth: 2/19/2021
+Date Of Birth: 2/24/2021
 Id: 136900
 Portfollio value: 45000.0
 
@@ -61,7 +61,7 @@ Investor:
 Person: 
 Name: Sam Smith
 Address: 50 University Ave
-Date Of Birth: 2/19/2021
+Date Of Birth: 2/24/2021
 Id: 137200
 Portfollio value: 15000.0
 
@@ -70,10 +70,10 @@ Broker:
 Person: 
 Name: Alex Jones
 Address: 300 University Ave
-Date Of Birth: 2/19/2021
+Date Of Birth: 2/24/2021
 Id: 1234567
-Date of Hire : 2/19/2021
-Date of Termination : 2/19/2021
+Date of Hire : 2/24/2021
+Date of Termination : 2/24/2021
 Salary : 75000.0
 Status : Fulltime
 
@@ -143,35 +143,35 @@ Invalid data : Setting company name failed, no company name specified
 
 Test 2 summary: 7 tests were run.  7 passed and 0 failed
 The List
-{"StockQuote":{"value":"12.68", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
-{"StockQuote":{"value":"13.02", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
-{"StockQuote":{"value":"13.36", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
-{"StockQuote":{"value":"13.7", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
-{"StockQuote":{"value":"14.04", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
-{"StockQuote":{"value":"14.379999999999999", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
-{"StockQuote":{"value":"14.719999999999999", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
-{"StockQuote":{"value":"15.059999999999999", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
-{"StockQuote":{"value":"15.399999999999999", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
-{"StockQuote":{"value":"15.739999999999998", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
+{"StockQuote":{"value":"12.68", "tickerSymbol":"AAPL", "quoteDate":"2/24/2021"}}
+{"StockQuote":{"value":"13.02", "tickerSymbol":"AAPL", "quoteDate":"2/24/2021"}}
+{"StockQuote":{"value":"13.36", "tickerSymbol":"AAPL", "quoteDate":"2/24/2021"}}
+{"StockQuote":{"value":"13.7", "tickerSymbol":"AAPL", "quoteDate":"2/24/2021"}}
+{"StockQuote":{"value":"14.04", "tickerSymbol":"AAPL", "quoteDate":"2/24/2021"}}
+{"StockQuote":{"value":"14.379999999999999", "tickerSymbol":"AAPL", "quoteDate":"2/24/2021"}}
+{"StockQuote":{"value":"14.719999999999999", "tickerSymbol":"AAPL", "quoteDate":"2/24/2021"}}
+{"StockQuote":{"value":"15.059999999999999", "tickerSymbol":"AAPL", "quoteDate":"2/24/2021"}}
+{"StockQuote":{"value":"15.399999999999999", "tickerSymbol":"AAPL", "quoteDate":"2/24/2021"}}
+{"StockQuote":{"value":"15.739999999999998", "tickerSymbol":"AAPL", "quoteDate":"2/24/2021"}}
 The Map
-{"StockQuote":{"value":"12.68", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
-{"StockQuote":{"value":"13.02", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
-{"StockQuote":{"value":"13.36", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
-{"StockQuote":{"value":"13.7", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
-{"StockQuote":{"value":"14.04", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
-{"StockQuote":{"value":"14.379999999999999", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
-{"StockQuote":{"value":"14.719999999999999", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
-{"StockQuote":{"value":"15.059999999999999", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
-{"StockQuote":{"value":"15.399999999999999", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
-{"StockQuote":{"value":"15.739999999999998", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
+{"StockQuote":{"value":"12.68", "tickerSymbol":"AAPL", "quoteDate":"2/24/2021"}}
+{"StockQuote":{"value":"13.02", "tickerSymbol":"AAPL", "quoteDate":"2/24/2021"}}
+{"StockQuote":{"value":"13.36", "tickerSymbol":"AAPL", "quoteDate":"2/24/2021"}}
+{"StockQuote":{"value":"13.7", "tickerSymbol":"AAPL", "quoteDate":"2/24/2021"}}
+{"StockQuote":{"value":"14.04", "tickerSymbol":"AAPL", "quoteDate":"2/24/2021"}}
+{"StockQuote":{"value":"14.379999999999999", "tickerSymbol":"AAPL", "quoteDate":"2/24/2021"}}
+{"StockQuote":{"value":"14.719999999999999", "tickerSymbol":"AAPL", "quoteDate":"2/24/2021"}}
+{"StockQuote":{"value":"15.059999999999999", "tickerSymbol":"AAPL", "quoteDate":"2/24/2021"}}
+{"StockQuote":{"value":"15.399999999999999", "tickerSymbol":"AAPL", "quoteDate":"2/24/2021"}}
+{"StockQuote":{"value":"15.739999999999998", "tickerSymbol":"AAPL", "quoteDate":"2/24/2021"}}
 The Set
-{"StockQuote":{"value":"15.059999999999999", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
-{"StockQuote":{"value":"14.04", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
-{"StockQuote":{"value":"13.02", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
-{"StockQuote":{"value":"13.36", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
-{"StockQuote":{"value":"13.7", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
-{"StockQuote":{"value":"14.379999999999999", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
-{"StockQuote":{"value":"12.68", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
-{"StockQuote":{"value":"15.399999999999999", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
-{"StockQuote":{"value":"14.719999999999999", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
-{"StockQuote":{"value":"15.739999999999998", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
+{"StockQuote":{"value":"15.399999999999999", "tickerSymbol":"AAPL", "quoteDate":"2/24/2021"}}
+{"StockQuote":{"value":"12.68", "tickerSymbol":"AAPL", "quoteDate":"2/24/2021"}}
+{"StockQuote":{"value":"14.379999999999999", "tickerSymbol":"AAPL", "quoteDate":"2/24/2021"}}
+{"StockQuote":{"value":"14.04", "tickerSymbol":"AAPL", "quoteDate":"2/24/2021"}}
+{"StockQuote":{"value":"13.7", "tickerSymbol":"AAPL", "quoteDate":"2/24/2021"}}
+{"StockQuote":{"value":"14.719999999999999", "tickerSymbol":"AAPL", "quoteDate":"2/24/2021"}}
+{"StockQuote":{"value":"15.059999999999999", "tickerSymbol":"AAPL", "quoteDate":"2/24/2021"}}
+{"StockQuote":{"value":"15.739999999999998", "tickerSymbol":"AAPL", "quoteDate":"2/24/2021"}}
+{"StockQuote":{"value":"13.02", "tickerSymbol":"AAPL", "quoteDate":"2/24/2021"}}
+{"StockQuote":{"value":"13.36", "tickerSymbol":"AAPL", "quoteDate":"2/24/2021"}}

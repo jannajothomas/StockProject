@@ -10,6 +10,7 @@ import datacontainers.BrokerDataContainer;
 import datacontainers.InvestorDataContainer;
 import datamodels.Broker;
 import datamodels.Investor;
+import exceptionhandlers.ErrorPopup;
 import exceptionhandlers.InvalidDataException;
 
 import java.awt.event.ActionEvent;
@@ -70,17 +71,17 @@ public class InputBrokerFormController implements ActionListener {
       
       // Retrieve data from all form fields and store directly into object
       // Retrieve name and address strings
+      
+      try {
       try {
 		newBroker.setName(form.getNameField().getText());
 	} catch (InvalidDataException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
+		throw new InvalidDataException("Invalid value.  Value must be a number");
 	}
       try {
 		newBroker.setAddress(form.getAddressField().getText());
 	} catch (InvalidDataException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
+		throw new InvalidDataException("Invalid value.  Value must be a number");
 	}
 
       // Retrieve id string and convert to a long before storing in object
@@ -88,8 +89,7 @@ public class InputBrokerFormController implements ActionListener {
       try {
 		newBroker.setId(idString);
 	} catch (InvalidDataException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
+		throw new InvalidDataException("Invalid value.  Value must be a number");
 	}
 
       // Retrieve status from drop down list
@@ -97,8 +97,7 @@ public class InputBrokerFormController implements ActionListener {
       try {
 		newBroker.setStatus(selectedStatus);
 	} catch (InvalidDataException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
+		throw new InvalidDataException("Invalid value.  Value must be a number");
 	}
 
       // Retrieve salary and convert to a double before storing in object
@@ -107,9 +106,12 @@ public class InputBrokerFormController implements ActionListener {
       try {
 		newBroker.setSalary(salarydouble);
 	} catch (InvalidDataException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
+		throw new InvalidDataException("Invalid value.  Value must be a number");
 	}
+      } catch (InvalidDataException exp) {
+          new ErrorPopup(form, exp);
+
+       }
 
       // Retrieve the dates  and convert to Calendar objects
       String dateString = form.getDateOfBirthFormattedTextField().getText();

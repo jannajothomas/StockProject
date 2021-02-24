@@ -69,7 +69,7 @@ public class InputStockQuoteFormController implements ActionListener {
             double value = Double.parseDouble(form.getStockValueTextField().getText());
             newQuote.setValue(value);
          } catch (Exception exp) {
-            throw new InvalidDataException("Invalid value");
+            throw new InvalidDataException("Invalid value.  Value must be a number");
          }
 
          // Retrieve the dates from the form and convert to Calendar objects
