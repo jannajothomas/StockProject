@@ -4,7 +4,7 @@
  * "actionPerformed" - this method contains all the logic to process the data
  * on the form, as well as several other events
  */
-package controllers.inputformcontroller;
+package controllers.inputformcontrollers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

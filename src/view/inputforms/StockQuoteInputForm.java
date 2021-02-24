@@ -1,6 +1,5 @@
 package view.inputforms;
 
-import controllers.inputformcontroller.InputStockQuoteFormController;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
@@ -8,6 +7,8 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
+
+import controllers.inputformcontrollers.InputStockQuoteFormController;
 
 public class StockQuoteInputForm extends JFrame {
 

@@ -1,6 +1,5 @@
 package view.inputforms;
 
-import controllers.inputformcontroller.InputBrokerFormController;
 import datacontainers.InvestorDataContainer;
 import datamodels.Investor;
 import java.util.List;
@@ -18,6 +17,8 @@ import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
+
+import controllers.inputformcontrollers.InputBrokerFormController;
 
 public class BrokerInputForm extends JFrame {
 

@@ -4,7 +4,7 @@
  * "actionPerformed" - this method contains all the logic to process the data
  * on the form, as well as several other events
  */
-package controllers.inputformcontroller;
+package controllers.inputformcontrollers;
 
 import datacontainers.BrokerDataContainer;
 import datacontainers.InvestorDataContainer;
@@ -62,6 +62,11 @@ public class InputBrokerFormController implements ActionListener {
 
       // Create a new broker
       Broker newBroker = new Broker();
+      
+      try {
+    	  // Retrieve the XXX
+    	  String.
+      }
 
       // to-do - Add exception handling inside one or more try/catch blocks for the fields that require validation      
       

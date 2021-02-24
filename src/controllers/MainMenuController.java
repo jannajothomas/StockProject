@@ -5,7 +5,7 @@
  */
 package controllers;
 
-import controllers.inputformcontroller.InputStockQuoteFormController;
+import controllers.inputformcontrollers.InputStockQuoteFormController;
 import controllers.reportformcontrollers.ListAllStockQuotesController;
 import java.awt.event.ActionListener;
 import datacontainers.StockQuoteDataContainer;
