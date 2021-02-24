@@ -74,18 +74,18 @@ public class InputInvestorFormController implements ActionListener {
     			newInvestor.setName(form.getNameField().getText());
     		} catch (Exception exp) {
 
-    			throw new InvalidDataException("Invalid value");
+    			throw new InvalidDataException("Invalid name.  Name  is required");
     		}
     	      try {
     			newInvestor.setAddress(form.getAddressField().getText());
     		} catch (Exception exp) {
-    			throw new InvalidDataException("Invalid value");
+    			throw new InvalidDataException("Invalid address.  Address is required");
     		}
     	      long investorIdString = Long.parseLong(form.getIdField().getText());
     	      try {
     			newInvestor.setId(investorIdString);
     		} catch (Exception exp) {
-    			throw new InvalidDataException("Invalid value");
+    			throw new InvalidDataException("Invalid ID. ID must be a number");
     		}
 
     	      // Retrieve the dates from the form and convert to Calendar objects

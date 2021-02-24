@@ -81,7 +81,7 @@ public class InputInvestmentCompanyFormController implements ActionListener {
 	      try {
 			newInvestmentCompany.setCompanyName(companyName);
 	      } catch (InvalidDataException e) {
-			 throw new InvalidDataException("Invalid value");}
+			 throw new InvalidDataException("Invalid company Name.  Company name is required");}
       } catch (InvalidDataException exp) {
     	  new ErrorPopup(form,exp);}
 

@@ -75,29 +75,29 @@ public class InputBrokerFormController implements ActionListener {
       try {
 	      try {
 			newBroker.setName(form.getNameField().getText());
-	      } catch (InvalidDataException e) {
-	    	  throw new InvalidDataException("Invalid value.  Value must be a number");
+	      } catch (InvalidDataException exp) {
+	    	  throw new InvalidDataException("Invalid name.  Name is required");
 	      	}
 	      try {
 				newBroker.setAddress(form.getAddressField().getText());
-	      } catch (InvalidDataException e) {
-				throw new InvalidDataException("Invalid value.  Value must be a number");
+	      } catch (InvalidDataException exp) {
+				throw new InvalidDataException("Invalid address. Address required");
 	      	}
 	
 	      // Retrieve id string and convert to a long before storing in object
 	      long idString = Integer.parseInt(form.getIdField().getText());
 	      try {
 			newBroker.setId(idString);
-	      } catch (InvalidDataException e) {
-			throw new InvalidDataException("Invalid value.  Value must be a number");
+	      } catch (InvalidDataException exp) {
+			throw new InvalidDataException("Invalid ID.  Value must be a XXX");
 	      	}
 	
 	      // Retrieve status from drop down list
 	      String selectedStatus = (String) form.getStatusField().getSelectedItem();
 	      try {
 			newBroker.setStatus(selectedStatus);
-	      } catch (InvalidDataException e) {
-			throw new InvalidDataException("Invalid value.  Value must be a number");
+	      } catch (InvalidDataException exp) {
+			throw new InvalidDataException("Invalid status.  Valid status value are fulltime and partime");
 	      	}
 	
 	      // Retrieve salary and convert to a double before storing in object
@@ -105,8 +105,8 @@ public class InputBrokerFormController implements ActionListener {
 	      Double salarydouble = Double.parseDouble(salarystring);
 	      try {
 			newBroker.setSalary(salarydouble);
-	      } catch (InvalidDataException e) {
-			throw new InvalidDataException("Invalid value.  Value must be a number");
+	      } catch (InvalidDataException exp) {
+			throw new InvalidDataException("Invalid salary.  Salary must be a number");
 	      	}
       } catch (InvalidDataException exp) {
           new ErrorPopup(form, exp);
