@@ -24,4 +24,11 @@ public class DateFunctions {
         }
         return dateString;
     }
+
+	public static Calendar stringToDate(String dateString) {
+		//TODO: This is just filled with a placeholder for now
+		Calendar testDate = Calendar.getInstance();
+		return testDate;
+
+	}
 }
