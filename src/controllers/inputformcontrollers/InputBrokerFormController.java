@@ -108,9 +108,7 @@ public class InputBrokerFormController implements ActionListener {
 	      } catch (InvalidDataException exp) {
 			throw new InvalidDataException("Invalid salary.  Salary must be a number");
 	      	}
-      } catch (InvalidDataException exp) {
-          new ErrorPopup(form, exp);
-       	}
+      
 
       // Retrieve the dates  and convert to Calendar objects
       String dateString = form.getDateOfBirthFormattedTextField().getText();
@@ -154,9 +152,11 @@ public class InputBrokerFormController implements ActionListener {
             }
          }
       }
+      this.brokerDataContainer.getBrokerList().add(newBroker);
 
-      // to-do - Add the new broker to the data container
-      
+      } catch (InvalidDataException exp) {
+          new ErrorPopup(form, exp);
+       	}
    }
 
    /**
