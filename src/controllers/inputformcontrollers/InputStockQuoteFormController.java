@@ -111,3 +111,4 @@ public class InputStockQuoteFormController implements ActionListener {
       return form;
    }
 }
+

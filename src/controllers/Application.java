@@ -11,7 +11,7 @@ public class Application {
     * main entry into the application 
     * args[0] - location of persisted data 
     */
-   public static void main() {
+   public static void main(String[] args) {
 
       // Create main menu controller, the controller creates the menu form
       MainMenuController controller = new MainMenuController();

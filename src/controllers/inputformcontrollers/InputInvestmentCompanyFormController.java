@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import datacontainers.InvestmentCompanyDataContainer;
 import datamodels.Broker;
 import datamodels.InvestmentCompany;
+import exceptionhandlers.ErrorPopup;
 import exceptionhandlers.InvalidDataException;
 
 import java.util.List;
@@ -71,7 +72,7 @@ public class InputInvestmentCompanyFormController implements ActionListener {
       InvestmentCompany newInvestmentCompany = new InvestmentCompany();
 
       // to-do - Add exception handling inside one or more try/catch blocks for the fields that require validation      
-      
+      try {
       // Retrieve the company name
       String companyName = this.form.getCompanyNameField().getText();
 
@@ -79,9 +80,11 @@ public class InputInvestmentCompanyFormController implements ActionListener {
       try {
 		newInvestmentCompany.setCompanyName(companyName);
 	} catch (InvalidDataException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
+		 throw new InvalidDataException("Invalid value");
 	}
+      } catch (InvalidDataException exp) {
+    	  new ErrorPopup(form,exp);
+      }
 
       // Retrieve all selected brokers and add to drop down list
       // The list only contains broker names and ids.  Need to look them up

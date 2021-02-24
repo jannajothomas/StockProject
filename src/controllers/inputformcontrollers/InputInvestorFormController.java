@@ -12,6 +12,7 @@ import datacontainers.*;
 import datamodels.Investor;
 import datamodels.InvestorStockQuote;
 import datamodels.StockQuote;
+import exceptionhandlers.ErrorPopup;
 import exceptionhandlers.InvalidDataException;
 
 import java.util.Calendar;
@@ -61,42 +62,47 @@ public class InputInvestorFormController implements ActionListener {
    /**
     * Private method to save all the data on the form and create a new investor
     * object
+ * @throws InvalidDataException 
     */
-   public void saveData() {
+   public void saveData()  {
 
       // Create a new Investor object used in the event methods
       Investor newInvestor = new Investor();
 
+      try {
+    	  try {
+    			newInvestor.setName(form.getNameField().getText());
+    		} catch (Exception exp) {
+
+    			throw new InvalidDataException("Invalid value");
+    		}
+    	      try {
+    			newInvestor.setAddress(form.getAddressField().getText());
+    		} catch (Exception exp) {
+    			throw new InvalidDataException("Invalid value");
+    		}
+    	      long investorIdString = Long.parseLong(form.getIdField().getText());
+    	      try {
+    			newInvestor.setId(investorIdString);
+    		} catch (Exception exp) {
+    			throw new InvalidDataException("Invalid value");
+    		}
+
+    	      // Retrieve the dates from the form and convert to Calendar objects
+    	      String dateString = form.getDateOfBirthFormattedTextField().getText();
+    	      Calendar dateOfBirth = DateFunctions.stringToDate(dateString);
+    	      newInvestor.setDateOfBirth(dateOfBirth);
+
+    	      dateString = form.getMemberSinceFormattedTextField().getText();
+    	      Calendar memberSince = DateFunctions.stringToDate(dateString);
+    	      newInvestor.setMemberSince(memberSince);
+    	  
+      } catch(InvalidDataException exp) {
+    	  new ErrorPopup(form, exp);
+      }
       // to-do - Add exception handling inside one or more try/catch blocks for the fields that require validation      
       // Retrieve data from all text fields and store directly into object
-      try {
-		newInvestor.setName(form.getNameField().getText());
-	} catch (InvalidDataException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-      try {
-		newInvestor.setAddress(form.getAddressField().getText());
-	} catch (InvalidDataException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-      long investorIdString = Long.parseLong(form.getIdField().getText());
-      try {
-		newInvestor.setId(investorIdString);
-	} catch (InvalidDataException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-
-      // Retrieve the dates from the form and convert to Calendar objects
-      String dateString = form.getDateOfBirthFormattedTextField().getText();
-      Calendar dateOfBirth = DateFunctions.stringToDate(dateString);
-      newInvestor.setDateOfBirth(dateOfBirth);
-
-      dateString = form.getMemberSinceFormattedTextField().getText();
-      Calendar memberSince = DateFunctions.stringToDate(dateString);
-      newInvestor.setMemberSince(memberSince);
+      
 
       // Retrieve all selected stocks and add to investor's stock list
       // The list only contains stock names.  Need to look them up
