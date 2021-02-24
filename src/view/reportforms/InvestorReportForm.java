@@ -90,24 +90,23 @@ public class InvestorReportForm extends JFrame {
 
         tableOfInvestors.setModel(new javax.swing.table.DefaultTableModel(
                 new Object[][]{
-                   {null, null, null, null, null, null, null, null},
-                   {null, null, null, null, null, null, null, null},
-                   {null, null, null, null, null, null, null, null},
-                   {null, null, null, null, null, null, null, null},
-                   {null, null, null, null, null, null, null, null},
-                   {null, null, null, null, null, null, null, null},
-                   {null, null, null, null, null, null, null, null},},
+                   {null, null, null, null, null},
+                   {null, null, null, null, null},
+                   {null, null, null, null, null},
+                   {null, null, null, null, null},
+                   {null, null, null, null, null},
+                   {null, null, null, null, null},
+                   {null, null, null, null, null},},
                 new String[]{
-                   "Name", "Address", "Status", "Salary", "ID", "Date of Birth", "Date of Hire", "Date of Termination"
+                   "Name", "Address", "Date of Birth", "ID", "Member Since"
                 }
         ) {
            Class[] types = new Class[]{
               java.lang.String.class, java.lang.String.class, java.lang.String.class, 
-              java.lang.Double.class, java.lang.Double.class, java.lang.String.class, 
-              java.lang.String.class, java.lang.String.class
+              java.lang.Double.class, java.lang.String.class
            };
            boolean[] canEdit = new boolean[]{
-              false, false, false, false, false, false, false, false
+              false, false, false, false, false
            };
 
            public Class getColumnClass(int columnIndex) {
@@ -134,7 +133,7 @@ public class InvestorReportForm extends JFrame {
         setSize(1250, 500);
 
     }
-
+/*
     private void populateTree(List<Investor> listOfInvestors) {
 
         // Add all investors to the tree
@@ -162,19 +161,19 @@ public class InvestorReportForm extends JFrame {
             topLevelNode.add(oneIinvestor);
         }
     }
-
+*/
     // Getters to access the controls on the form
     public JButton getCloseButton() {
         return closeButton;
     }
 
-    public JTree getInvestorTree() {
+   /* public JTree getInvestorTree() {
         return investorTree;
-    }
+    }*/
 
-    public DefaultMutableTreeNode getTopLevelNode() {
+   /* public DefaultMutableTreeNode getTopLevelNode() {
         return topLevelNode;
-    }
+    }*/
     
     public JTable getTableOfInvestors() {
     	return tableOfInvestors;

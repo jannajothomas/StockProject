@@ -23,7 +23,7 @@ import utilities.date.DateFunctions;
 //import view.reportforms.BrokerReportForm;
 import view.reportforms.InvestorReportForm;
 
-public class ListAllInvestorsController implements ActionListener, TreeSelectionListener {
+public class ListAllInvestorsController implements ActionListener{
 
    private InvestorReportForm form;
    private InvestorDataContainer investorDataContainer;
@@ -87,6 +87,7 @@ public class ListAllInvestorsController implements ActionListener, TreeSelection
    /**
     * Implements the valueChanged method in the TreeSelectionListener interface.
     */
+   /*
    public void valueChanged(TreeSelectionEvent e) {
       DefaultMutableTreeNode node = (DefaultMutableTreeNode) this.form.getInvestorTree().getLastSelectedPathComponent();
 
@@ -98,7 +99,7 @@ public class ListAllInvestorsController implements ActionListener, TreeSelection
       if (node.isLeaf()) {
          // Display investors info
       }
-   }
+   }*/
 
    // Getters used by the controller
    public InvestorReportForm getForm() {
@@ -120,12 +121,9 @@ public class ListAllInvestorsController implements ActionListener, TreeSelection
 	      // Add columns to table model
 	      tableModel.addColumn("Name");
 	      tableModel.addColumn("Address");
-	      tableModel.addColumn("Status");
-	      tableModel.addColumn("Salary");
-	      tableModel.addColumn("ID");
 	      tableModel.addColumn("Date Of Birth");
-	      tableModel.addColumn("Date Of Hire");
-	      tableModel.addColumn("Date Of Termination");
+	      tableModel.addColumn("ID");
+	      tableModel.addColumn("Member Since");
 
 	      // Add the Broker from the application data model to the table data model
 	      for (Investor ainvestor : investorDataContainer2.getInvestorList()) {
