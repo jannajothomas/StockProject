@@ -132,7 +132,20 @@ public class Broker extends Person {
     @Override
     public String toString() {
     	StringBuilder builder = new StringBuilder();
-		builder.append( "\nBroker: \n"
+    	builder.append( "\nBroker: \n"
+        		+ "---------------\n"
+    			+ super.toString()       		
+        		//+ this.name + "\n"
+        		//+ this.address + "\n"
+        		//+ "Date of Birth : " + DateFunctions.dateToString(this.dateOfBirth) + "\n"
+                + "Date of Hire : " + DateFunctions.dateToString(this.dateOfHire) + "\n"
+                + "Date of Termination : " + DateFunctions.dateToString(this.dateOfTermination) + "\n"
+                + "Salary : " + this.salary + "\n"
+                + "Status : " + this.status + "\n"
+                //+ "Id : " + this.id + "\n"
+                + "\nList Of Clients : \n---------------\n" );
+                
+		/*builder.append( "\nBroker: \n"
         		+ "---------------\n"
         		+ this.name + "\n"
         		+ this.address + "\n"
@@ -142,7 +155,7 @@ public class Broker extends Person {
                 + "Salary : " + this.salary + "\n"
                 + "Status : " + this.status + "\n"
                 + "Id : " + this.id + "\n"
-                + "\nList Of Clients : \n---------------\n" );
+                + "\nList Of Clients : \n---------------\n" );*/
                 
           for(Investor client: listOfClients) {
         	  builder.append(client.getName());

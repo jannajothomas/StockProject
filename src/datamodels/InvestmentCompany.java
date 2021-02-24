@@ -79,7 +79,12 @@ public class InvestmentCompany {
     @Override
     public String toString() {
     	StringBuilder builder = new StringBuilder();
-        builder.append( "\nInvestmentCompany : " +  this.companyName + "\n\n");
+    	
+        //return "\nInvestor:\n"
+		//+ "---------------\n"
+    	
+    	
+        builder.append( "\nInvestmentCompany \n" + "---------------\n" +  this.companyName + "\n\n");
         builder.append("List Of Brokers\n---------------\n");
         for(Broker broker: listOfBrokers) {
         	builder.append(broker.getName());

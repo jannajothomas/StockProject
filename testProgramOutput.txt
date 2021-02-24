@@ -1,0 +1,177 @@
+{"StockQuote":{"value":"300.0", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
+
+
+Investor:
+---------------
+Person: 
+Name: Tom Jones
+Address: 100 University Ave
+Date Of Birth: 2/19/2021
+Id: 136900
+Portfollio value: 45000.0
+
+Investor:
+---------------
+Person: 
+Name: Sam Smith
+Address: 50 University Ave
+Date Of Birth: 2/19/2021
+Id: 137200
+Portfollio value: 15000.0
+
+Broker: 
+---------------
+Person: 
+Name: Alex Jones
+Address: 300 University Ave
+Date Of Birth: 2/19/2021
+Id: 1234567
+Date of Hire : 2/19/2021
+Date of Termination : 2/19/2021
+Salary : 75000.0
+Status : Fulltime
+
+List Of Clients : 
+---------------
+Tom Jones
+Sam Smith
+
+
+InvestmentCompany 
+---------------
+Fidelity Investments
+
+List Of Brokers
+---------------
+Alex Jones
+{"StockQuote":{"value":"300.0", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
+
+
+Investor:
+---------------
+Person: 
+Name: Tom Jones
+Address: 100 University Ave
+Date Of Birth: 2/19/2021
+Id: 136900
+Portfollio value: 45000.0
+
+Investor:
+---------------
+Person: 
+Name: Sam Smith
+Address: 50 University Ave
+Date Of Birth: 2/19/2021
+Id: 137200
+Portfollio value: 15000.0
+
+Broker: 
+---------------
+Person: 
+Name: Alex Jones
+Address: 300 University Ave
+Date Of Birth: 2/19/2021
+Id: 1234567
+Date of Hire : 2/19/2021
+Date of Termination : 2/19/2021
+Salary : 75000.0
+Status : Fulltime
+
+List Of Clients : 
+---------------
+Tom Jones
+Sam Smith
+
+
+InvestmentCompany 
+---------------
+Fidelity Investments
+
+List Of Brokers
+---------------
+Alex Jones
+Invalid data : Setting ticker symbol failed, no ticker symbol specified
+Invalid data : Setting Person name failed, no name specified
+Invalid data : Setting Person address failed, no address specified
+Invalid data : Setting id failed, invalid id: -123
+Invalid data : Setting broker status failed, broker status is invalid
+Invalid data : Setting company name failed, no company name specified
+-----------------Part 1: Testing valid input________________
+
+test 1: valid string for ticker symbol
+                                                                                    test 1 passed
+test 2: valid string for name
+                                                                                    test 2 passed
+test 3: valid string for address
+                                                                                    test 3 passed
+test 4: valid id
+                                                                                    test 4 passed
+test 5: valid broker status
+                                                                                    test 5 passed
+test 6: valid broker status
+                                                                                    test 6 passed
+test 7: valid broker salary
+                                                                                    test 7 passed
+test 8: valid string for company name
+                                                                                    test 8 passed
+
+Test 1 summary: 8 tests were run.  8 passed and 0 failed
+
+---------Part 2: Throwing Errors for invalid output__________
+
+test 9: empty string for ticker symbol
+Invalid data : Setting ticker symbol failed, no ticker symbol specified
+                                                                                    test 9 passed
+test 10: empty string for name
+Invalid data : Setting Person name failed, no name specified
+                                                                                   test 10 passed
+test 11: empty string for address
+Invalid data : Setting Person address failed, no address specified
+                                                                                   test 11 passed
+test 12: invalid id
+Invalid data : Setting id failed, invalid id: -123
+                                                                                   test 12 passed
+test 13: invalid broker status
+Invalid data : Setting broker status failed, broker status is invalid
+                                                                                   test 13 passed
+test 14: invalid broker salary
+Invalid data : Setting broker salary failed, invalid salary: -10000.0
+                                                                                   test 14 passed
+test 15: empty string for company name
+Invalid data : Setting company name failed, no company name specified
+                                                                                   test 15 passed
+
+Test 2 summary: 7 tests were run.  7 passed and 0 failed
+The List
+{"StockQuote":{"value":"12.68", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
+{"StockQuote":{"value":"13.02", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
+{"StockQuote":{"value":"13.36", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
+{"StockQuote":{"value":"13.7", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
+{"StockQuote":{"value":"14.04", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
+{"StockQuote":{"value":"14.379999999999999", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
+{"StockQuote":{"value":"14.719999999999999", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
+{"StockQuote":{"value":"15.059999999999999", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
+{"StockQuote":{"value":"15.399999999999999", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
+{"StockQuote":{"value":"15.739999999999998", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
+The Map
+{"StockQuote":{"value":"12.68", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
+{"StockQuote":{"value":"13.02", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
+{"StockQuote":{"value":"13.36", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
+{"StockQuote":{"value":"13.7", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
+{"StockQuote":{"value":"14.04", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
+{"StockQuote":{"value":"14.379999999999999", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
+{"StockQuote":{"value":"14.719999999999999", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
+{"StockQuote":{"value":"15.059999999999999", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
+{"StockQuote":{"value":"15.399999999999999", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
+{"StockQuote":{"value":"15.739999999999998", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
+The Set
+{"StockQuote":{"value":"15.059999999999999", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
+{"StockQuote":{"value":"14.04", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
+{"StockQuote":{"value":"13.02", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
+{"StockQuote":{"value":"13.36", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
+{"StockQuote":{"value":"13.7", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
+{"StockQuote":{"value":"14.379999999999999", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
+{"StockQuote":{"value":"12.68", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
+{"StockQuote":{"value":"15.399999999999999", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
+{"StockQuote":{"value":"14.719999999999999", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}
+{"StockQuote":{"value":"15.739999999999998", "tickerSymbol":"AAPL", "quoteDate":"2/19/2021"}}

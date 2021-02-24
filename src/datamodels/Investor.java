@@ -84,11 +84,12 @@ public class Investor extends Person{
     @Override
     public String toString() {
         return "\nInvestor:\n"
-        		+ "---------------j\n"
-        		+ this.getName() + "\n"
-        		+ this.getAddress() + "\n"
-        		+ "Date of Birth: " + DateFunctions.dateToString(this.dateOfBirth) + "\n"
-                + "Id: " + this.getId() + "\n"
+        		+ "---------------\n"
+        		+ super.toString()
+        		//+ this.getName() + "\n"
+        		//+ this.getAddress() + "\n"
+        		//+ "Date of Birth: " + DateFunctions.dateToString(this.dateOfBirth) + "\n"
+                //+ "Id: " + this.getId() + "\n"
                 + "Portfollio value: " + this.getAccountValue();
     }
 

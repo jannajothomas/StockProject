@@ -124,7 +124,7 @@ public class Person implements IPerson{
                 + "Name: " + this.name + "\n"
                 + "Address: " + this.address + "\n"
                 + "Date Of Birth: " + DateFunctions.dateToString(this.dateOfBirth) + "\n"
-                + "Id: " + this.id;
+                + "Id: " + this.id + "\n";
     }
 
 	@Override
