@@ -5,21 +5,32 @@
  */
 package controllers;
 
+import controllers.inputformcontrollers.InputBrokerFormController;
+import controllers.inputformcontrollers.InputInvestmentCompanyFormController;
+import controllers.inputformcontrollers.InputInvestorFormController;
 import controllers.inputformcontrollers.InputStockQuoteFormController;
+import controllers.reportformcontrollers.ListAllBrokersController;
+import controllers.reportformcontrollers.ListAllInvestmentCompaniesController;
+import controllers.reportformcontrollers.ListAllInvestorsController;
 import controllers.reportformcontrollers.ListAllStockQuotesController;
 import java.awt.event.ActionListener;
+
+import datacontainers.BrokerDataContainer;
+import datacontainers.InvestmentCompanyDataContainer;
+import datacontainers.InvestorDataContainer;
 import datacontainers.StockQuoteDataContainer;
 
-// to-do - Add required imports
 import view.MainMenu;
 
 public class MainMenuController implements ActionListener {
 
    // The data models are declared and instantiated here and passed to the 
    // constructors for the controllers
+	private BrokerDataContainer brokerDataContainer = new BrokerDataContainer();
+	private InvestmentCompanyDataContainer investmentCompanyDataContainer = new InvestmentCompanyDataContainer();
+	private InvestorDataContainer investorDataContainer = new InvestorDataContainer();
    private StockQuoteDataContainer stockQuoteDataContainer = new StockQuoteDataContainer();
-
-   // to-do - Add the rest of the data containers
+  
    /**
     * Constructor
     */
@@ -53,20 +64,28 @@ public class MainMenuController implements ActionListener {
          // Create a report controller object for the investment company and pass the correct containers to the constructor         
          ListAllStockQuotesController reportController = new ListAllStockQuotesController(stockQuoteDataContainer);
       }
+      
       if (menuItemClicked.equals("Add Investment Company")) {
-         // to-do create an input form controller object for the investment compnay and pass the correct containers to the constructor      
+         // Create an input form controller object for the investment compnay and pass the correct containers to the constructor   
+    	  InputInvestmentCompanyFormController inputController = new InputInvestmentCompanyFormController(investmentCompanyDataContainer, brokerDataContainer);
       } else if (menuItemClicked.equals("List Investment Companies")) {
-         // to-do create a report controller object for the investment company and pass the correct containers to the constructor         
+         // Create a report controller object for the investment company and pass the correct containers to the constructor  
+    	  ListAllInvestmentCompaniesController reportController = new ListAllInvestmentCompaniesController(investmentCompanyDataContainer);
       }
+      
       if (menuItemClicked.equals("Add Broker")) {
-         // to-do create an input form controller object for the broker and pass the correct containers to the constructor
+         // Create an input form controller object for the broker and pass the correct containers to the constructor
+    	  InputBrokerFormController inputController = new InputBrokerFormController(brokerDataContainer, investorDataContainer);
       } else if (menuItemClicked.equals("List Brokers")) {
-         // to-do create a report controller object for the broker and pass the correct containers to the constructor     
+         // Create a report controller object for the broker and pass the correct containers to the constructor     
+    	  ListAllBrokersController reportController = new ListAllBrokersController(brokerDataContainer);
       }
       if (menuItemClicked.equals("Add Investor")) {
-         // to-do create an input form controller object for the investor and pass the correct containers to the constructor
+         // Create an input form controller object for the investor and pass the correct containers to the constructor
+    	  InputInvestorFormController inputController = new InputInvestorFormController(investorDataContainer, stockQuoteDataContainer);
       } else if (menuItemClicked.equals("List Investors")) {
-         // to-do create a report controller object for the investor and pass the correct containers to the constructor  
+         // Create a report controller object for the investor and pass the correct containers to the constructor  
+    	  ListAllInvestorsController reportController = new ListAllInvestorsController(investorDataContainer);
       } else if (menuItemClicked.equals("Exit")) {
          System.exit(0);
       }

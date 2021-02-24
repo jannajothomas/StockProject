@@ -58,7 +58,6 @@ public interface IPerson {
 	@Override
 	public boolean equals(Object obj);
 	
-	//TODO: CHECK AND ADD COMMENT  HERE
 	@Override
 	public  int hashCode();
 }

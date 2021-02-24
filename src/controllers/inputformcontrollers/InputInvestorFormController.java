@@ -69,6 +69,7 @@ public class InputInvestorFormController implements ActionListener {
       // Create a new Investor object used in the event methods
       Investor newInvestor = new Investor();
 
+      // Retrieve data from all text fields and store directly into object
       try {
     	  try {
     			newInvestor.setName(form.getNameField().getText());
@@ -98,8 +99,7 @@ public class InputInvestorFormController implements ActionListener {
     	      newInvestor.setMemberSince(memberSince);
     	  
       
-      // to-do - Add exception handling inside one or more try/catch blocks for the fields that require validation      
-      // Retrieve data from all text fields and store directly into object
+
       
 
       // Retrieve all selected stocks and add to investor's stock list
@@ -135,7 +135,7 @@ public class InputInvestorFormController implements ActionListener {
       this.investorDataContainer.getInvestorList().add(newInvestor);
 
       } catch (InvalidDataException exp) {
- 	  new ErrorPopup(form,exp);}// to-do - Add the new investor to the data container
+ 	  new ErrorPopup(form,exp);}
    }
 
    /**
