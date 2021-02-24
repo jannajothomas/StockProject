@@ -73,18 +73,17 @@ public class InputInvestmentCompanyFormController implements ActionListener {
 
       // to-do - Add exception handling inside one or more try/catch blocks for the fields that require validation      
       try {
-      // Retrieve the company name
-      String companyName = this.form.getCompanyNameField().getText();
+      
+    	  // Retrieve the company name
+    	  String companyName = this.form.getCompanyNameField().getText();
 
-      // Set the company name in the object
-      try {
-		newInvestmentCompany.setCompanyName(companyName);
-	} catch (InvalidDataException e) {
-		 throw new InvalidDataException("Invalid value");
-	}
+	      // Set the company name in the object
+	      try {
+			newInvestmentCompany.setCompanyName(companyName);
+	      } catch (InvalidDataException e) {
+			 throw new InvalidDataException("Invalid value");}
       } catch (InvalidDataException exp) {
-    	  new ErrorPopup(form,exp);
-      }
+    	  new ErrorPopup(form,exp);}
 
       // Retrieve all selected brokers and add to drop down list
       // The list only contains broker names and ids.  Need to look them up

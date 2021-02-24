@@ -73,45 +73,44 @@ public class InputBrokerFormController implements ActionListener {
       // Retrieve name and address strings
       
       try {
-      try {
-		newBroker.setName(form.getNameField().getText());
-	} catch (InvalidDataException e) {
-		throw new InvalidDataException("Invalid value.  Value must be a number");
-	}
-      try {
-		newBroker.setAddress(form.getAddressField().getText());
-	} catch (InvalidDataException e) {
-		throw new InvalidDataException("Invalid value.  Value must be a number");
-	}
-
-      // Retrieve id string and convert to a long before storing in object
-      long idString = Integer.parseInt(form.getIdField().getText());
-      try {
-		newBroker.setId(idString);
-	} catch (InvalidDataException e) {
-		throw new InvalidDataException("Invalid value.  Value must be a number");
-	}
-
-      // Retrieve status from drop down list
-      String selectedStatus = (String) form.getStatusField().getSelectedItem();
-      try {
-		newBroker.setStatus(selectedStatus);
-	} catch (InvalidDataException e) {
-		throw new InvalidDataException("Invalid value.  Value must be a number");
-	}
-
-      // Retrieve salary and convert to a double before storing in object
-      String salarystring = form.getSalaryField().getText();
-      Double salarydouble = Double.parseDouble(salarystring);
-      try {
-		newBroker.setSalary(salarydouble);
-	} catch (InvalidDataException e) {
-		throw new InvalidDataException("Invalid value.  Value must be a number");
-	}
+	      try {
+			newBroker.setName(form.getNameField().getText());
+	      } catch (InvalidDataException e) {
+	    	  throw new InvalidDataException("Invalid value.  Value must be a number");
+	      	}
+	      try {
+				newBroker.setAddress(form.getAddressField().getText());
+	      } catch (InvalidDataException e) {
+				throw new InvalidDataException("Invalid value.  Value must be a number");
+	      	}
+	
+	      // Retrieve id string and convert to a long before storing in object
+	      long idString = Integer.parseInt(form.getIdField().getText());
+	      try {
+			newBroker.setId(idString);
+	      } catch (InvalidDataException e) {
+			throw new InvalidDataException("Invalid value.  Value must be a number");
+	      	}
+	
+	      // Retrieve status from drop down list
+	      String selectedStatus = (String) form.getStatusField().getSelectedItem();
+	      try {
+			newBroker.setStatus(selectedStatus);
+	      } catch (InvalidDataException e) {
+			throw new InvalidDataException("Invalid value.  Value must be a number");
+	      	}
+	
+	      // Retrieve salary and convert to a double before storing in object
+	      String salarystring = form.getSalaryField().getText();
+	      Double salarydouble = Double.parseDouble(salarystring);
+	      try {
+			newBroker.setSalary(salarydouble);
+	      } catch (InvalidDataException e) {
+			throw new InvalidDataException("Invalid value.  Value must be a number");
+	      	}
       } catch (InvalidDataException exp) {
           new ErrorPopup(form, exp);
-
-       }
+       	}
 
       // Retrieve the dates  and convert to Calendar objects
       String dateString = form.getDateOfBirthFormattedTextField().getText();
