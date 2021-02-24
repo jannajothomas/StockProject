@@ -124,6 +124,7 @@ public class ListAllInvestorsController implements ActionListener{
 	      tableModel.addColumn("Date Of Birth");
 	      tableModel.addColumn("ID");
 	      tableModel.addColumn("Member Since");
+	      tableModel.addColumn("Stocks");
 
 	      // Add the Broker from the application data model to the table data model
 	      for (Investor ainvestor : investorDataContainer2.getInvestorList()) {
@@ -137,8 +138,11 @@ public class ListAllInvestorsController implements ActionListener{
 	         //TODO: Add correct data rows
 	         //tableRow.add(ainvestor.getStatus());
 	         //tableRow.add(ainvestor.getSalary());
-	         //tableRow.add(ainvesor.getId());
+	         
 	         tableRow.add(DateFunctions.dateToString(ainvestor.getDateOfBirth()));
+	         tableRow.add(ainvestor.getId());
+	         tableRow.add(DateFunctions.dateToString(ainvestor.getMemberSince()));
+	    
 	         //tableRow.add(DateFunctions.dateToString(ainvestor.getDateOfHire()));
 	         //tableRow.add(DateFunctions.dateToString(ainvestor.getDateOfTermination()));
 
