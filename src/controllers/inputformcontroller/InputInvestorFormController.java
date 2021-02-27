@@ -4,26 +4,24 @@
  * "actionPerformed" - this method contains all the logic to process the data
  * on the form, as well as several other events
  */
-package controllers.inputformcontrollers;
+package controllers.inputformcontroller;
 
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import datacontainers.*;
 import datamodels.Investor;
 import datamodels.InvestorStockQuote;
 import datamodels.StockQuote;
 import exceptionhandlers.ErrorPopup;
 import exceptionhandlers.InvalidDataException;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Calendar;
 import java.util.List;
-import utilities.date.DateFunctions;
+import utilities.DateFunctions;
 import view.inputforms.InvestorInputForm;
 
 public class InputInvestorFormController implements ActionListener {
 
-   // The data data containers are passed in
+   // The data datacontainers are passed in
    InvestorDataContainer investorDataContainer;
    StockQuoteDataContainer stockquoteDataContainer;
 
@@ -33,12 +31,13 @@ public class InputInvestorFormController implements ActionListener {
    public InputInvestorFormController(InvestorDataContainer investorDataContainer,
            StockQuoteDataContainer stockquoteDataContainer) {
 
-      // store local pointers to the data data containers passed in
+      // store local pointers to the data datacontainers passed in
       this.investorDataContainer = investorDataContainer;
       this.stockquoteDataContainer = stockquoteDataContainer;
 
       // create the form, pass it this controller
       form = new InvestorInputForm(this);
+
    }
 
    /**
@@ -62,9 +61,8 @@ public class InputInvestorFormController implements ActionListener {
    /**
     * Private method to save all the data on the form and create a new investor
     * object
- * @throws InvalidDataException 
     */
-   public void saveData()  {
+   public void saveData() {
 
       // Create a new Investor object used in the event methods
       Investor newInvestor = new Investor();
@@ -90,14 +88,14 @@ public class InputInvestorFormController implements ActionListener {
     			throw new InvalidDataException("Invalid ID. ID must be a number");
     		}
 
-    	      // Retrieve the dates from the form and convert to Calendar objects
-    	      String dateString = form.getDateOfBirthFormattedTextField().getText();
-    	      Calendar dateOfBirth = DateFunctions.stringToDate(dateString);
-    	      newInvestor.setDateOfBirth(dateOfBirth);
+      // Retrieve the dates from the form and convert to Calendar objects
+      String dateString = form.getDateOfBirthFormattedTextField().getText();
+      Calendar dateOfBirth = DateFunctions.stringToDate(dateString);
+      newInvestor.setDateOfBirth(dateOfBirth);
 
-    	      dateString = form.getMemberSinceFormattedTextField().getText();
-    	      Calendar memberSince = DateFunctions.stringToDate(dateString);
-    	      newInvestor.setMemberSince(memberSince);
+      dateString = form.getMemberSinceFormattedTextField().getText();
+      Calendar memberSince = DateFunctions.stringToDate(dateString);
+      newInvestor.setMemberSince(memberSince);
 
       // Retrieve all selected stocks and add to investor's stock list
       // The list only contains stock names.  Need to look them up
@@ -143,8 +141,7 @@ public class InputInvestorFormController implements ActionListener {
       form.getNameField().setText("");
       form.getIdField().setText("");
       form.getAddressField().setText("");
-      //form.getGpaField().setText("");
-      form.getDateOfBirthFormattedTextField().setText("");
+     form.getDateOfBirthFormattedTextField().setText("");
       form.getMemberSinceFormattedTextField().setText("");
    }
 

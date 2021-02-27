@@ -1,7 +1,10 @@
 package view.inputforms;
 
+import controllers.inputformcontroller.InputBrokerFormController;
 import datacontainers.InvestorDataContainer;
 import datamodels.Investor;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
@@ -18,8 +21,6 @@ import javax.swing.WindowConstants;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 
-import controllers.inputformcontrollers.InputBrokerFormController;
-
 public class BrokerInputForm extends JFrame {
 
 // Form fields
@@ -34,7 +35,7 @@ public class BrokerInputForm extends JFrame {
    private JScrollPane jScrollPane1;
    private JTextArea jTextArea1;
    private JTextField nameField;
-   private JTextField salaryField;
+   private JFormattedTextField salaryField;
    private JButton saveButton;
    private JComboBox statusField;
    private JTextField idField;
@@ -64,7 +65,7 @@ public class BrokerInputForm extends JFrame {
       this.controller = controller;
 
       // Initialize all the components on the form
-       jScrollPane1 = new JScrollPane();
+      jScrollPane1 = new JScrollPane();
       jTextArea1 = new JTextArea();
       nameField = new JTextField();
       addressField = new JTextField();
@@ -75,7 +76,7 @@ public class BrokerInputForm extends JFrame {
       clearButton = new JButton("Clear");
       statusLabel = new JLabel("Status:");
       statusField = new JComboBox();
-      salaryField = new JTextField();
+      salaryField = new JFormattedTextField();
       salaryLabel = new JLabel("Salary");
       salaryHint = new JLabel();
       idLabel = new JLabel("Id:");
@@ -117,6 +118,15 @@ public class BrokerInputForm extends JFrame {
       getContentPane().add(idLabel);
       idLabel.setBounds(10, 110, 100, 14);
 
+        idField.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char caracter = e.getKeyChar();
+                if (((caracter < '0') || (caracter > '9'))
+                        && (caracter != '\b')) {
+                    e.consume();
+                }
+            }
+        });
       getContentPane().add(idField);
       idField.setBounds(160, 110, 200, 20);
 
@@ -166,6 +176,15 @@ public class BrokerInputForm extends JFrame {
       getContentPane().add(salaryLabel);
       salaryLabel.setBounds(10, 265, 130, 14);
 
+       salaryField.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char caracter = e.getKeyChar();
+                if ( ((caracter < '0') || (caracter > '9'))
+                        && (caracter != '\b')  &&  (caracter != '.')) {
+                    e.consume();
+                }
+            }
+        });
       getContentPane().add(salaryField);
       salaryField.setBounds(160, 265, 130, 20);
 

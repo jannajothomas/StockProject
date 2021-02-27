@@ -1,5 +1,8 @@
 package view.inputforms;
 
+import controllers.inputformcontroller.InputStockQuoteFormController;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
@@ -7,8 +10,6 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
-
-import controllers.inputformcontrollers.InputStockQuoteFormController;
 
 public class StockQuoteInputForm extends JFrame {
 
@@ -76,6 +77,16 @@ public class StockQuoteInputForm extends JFrame {
       // add value to form
       getContentPane().add(stockValueLabel);
       stockValueLabel.setBounds(30, 50, 120, 14);
+      
+       stockValueTextField.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char caracter = e.getKeyChar();
+                if ( ((caracter < '0') || (caracter > '9'))
+                        && (caracter != '\b')  &&  (caracter != '.')) {
+                    e.consume();
+                }
+            }
+        });
       getContentPane().add(stockValueTextField);
       stockValueTextField.setBounds(120, 50, 100, 20);
 
@@ -122,4 +133,3 @@ public class StockQuoteInputForm extends JFrame {
    }
 
 }
-

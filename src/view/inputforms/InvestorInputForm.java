@@ -1,6 +1,9 @@
 package view.inputforms;
 
+import controllers.inputformcontroller.InputInvestorFormController;
 import datamodels.StockQuote;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -13,8 +16,6 @@ import javax.swing.WindowConstants;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 
-import controllers.inputformcontrollers.InputInvestorFormController;
-
 public class InvestorInputForm extends javax.swing.JFrame {
 
 // Form fields
@@ -23,7 +24,6 @@ public class InvestorInputForm extends javax.swing.JFrame {
    private JButton closeButton;
    private JFormattedTextField dateOfBirthFormattedTextField;
    private JFormattedTextField memberSinceFormattedTextField;
-   private JTextField gpaField;
    private JLabel nameLabel;
    private JLabel addressLabel;
    private JLabel idLabel;
@@ -78,6 +78,16 @@ public class InvestorInputForm extends javax.swing.JFrame {
       nameField.setBounds(160, 50, 200, 30);
       getContentPane().add(addressField);
       addressField.setBounds(160, 90, 200, 30);
+      
+       idField.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char caracter = e.getKeyChar();
+                if (((caracter < '0') || (caracter > '9'))
+                        && (caracter != '\b')) {
+                    e.consume();
+                }
+            }
+        });
       getContentPane().add(idField);
       idField.setBounds(160, 130, 200, 30);
 
@@ -189,11 +199,7 @@ public class InvestorInputForm extends javax.swing.JFrame {
       return closeButton;
    }
 
-   public JTextField getGpaField() {
-      return gpaField;
-   }
-
-   public JLabel getMemberSinceLabel() {
+  public JLabel getMemberSinceLabel() {
       return memberSinceLabel;
    }
 

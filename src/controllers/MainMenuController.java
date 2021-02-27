@@ -5,16 +5,15 @@
  */
 package controllers;
 
-import controllers.inputformcontrollers.InputBrokerFormController;
-import controllers.inputformcontrollers.InputInvestmentCompanyFormController;
-import controllers.inputformcontrollers.InputInvestorFormController;
-import controllers.inputformcontrollers.InputStockQuoteFormController;
+import controllers.inputformcontroller.InputBrokerFormController;
+import controllers.inputformcontroller.InputInvestmentCompanyFormController;
+import controllers.inputformcontroller.InputInvestorFormController;
+import controllers.inputformcontroller.InputStockQuoteFormController;
 import controllers.reportformcontrollers.ListAllBrokersController;
 import controllers.reportformcontrollers.ListAllInvestmentCompaniesController;
 import controllers.reportformcontrollers.ListAllInvestorsController;
 import controllers.reportformcontrollers.ListAllStockQuotesController;
 import java.awt.event.ActionListener;
-
 import datacontainers.BrokerDataContainer;
 import datacontainers.InvestmentCompanyDataContainer;
 import datacontainers.InvestorDataContainer;
@@ -26,11 +25,13 @@ public class MainMenuController implements ActionListener {
 
    // The data models are declared and instantiated here and passed to the 
    // constructors for the controllers
+   
+   private StockQuoteDataContainer stockQuoteDataContainer = new StockQuoteDataContainer();
+  
 	private BrokerDataContainer brokerDataContainer = new BrokerDataContainer();
 	private InvestmentCompanyDataContainer investmentCompanyDataContainer = new InvestmentCompanyDataContainer();
 	private InvestorDataContainer investorDataContainer = new InvestorDataContainer();
-   private StockQuoteDataContainer stockQuoteDataContainer = new StockQuoteDataContainer();
-  
+   
    /**
     * Constructor
     */

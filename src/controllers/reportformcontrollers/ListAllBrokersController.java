@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 import datacontainers.*;
-import utilities.date.DateFunctions;
+import utilities.DateFunctions;
 import view.reportforms.BrokerReportForm;
 
 public class ListAllBrokersController implements ActionListener {

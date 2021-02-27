@@ -4,7 +4,7 @@
  * "actionPerformed" - this method contains all the logic to process the data
  * on the form, as well as several other events
  */
-package controllers.inputformcontrollers;
+package controllers.inputformcontroller;
 
 import datacontainers.BrokerDataContainer;
 import java.awt.event.ActionEvent;
@@ -14,7 +14,6 @@ import datamodels.Broker;
 import datamodels.InvestmentCompany;
 import exceptionhandlers.ErrorPopup;
 import exceptionhandlers.InvalidDataException;
-
 import java.util.List;
 import view.inputforms.InvestmentCompanyInputForm;
 

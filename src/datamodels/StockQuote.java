@@ -4,9 +4,10 @@ package datamodels;
  * This class creates a StockQuote object
  */
 import exceptionhandlers.InvalidDataException;
+import utilities.DateFunctions;
+
 import java.util.Calendar;
 import java.util.Objects;
-import utilities.date.DateFunctions;
 
 public class StockQuote {
 

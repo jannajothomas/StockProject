@@ -1,7 +1,7 @@
 /**
  * Static methods that can be used in any class that requires them
  */
-package utilities.date;
+package utilities;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

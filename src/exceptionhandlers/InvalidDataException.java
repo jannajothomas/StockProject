@@ -15,6 +15,6 @@ public class InvalidDataException extends Exception {
     }
     
     public InvalidDataException(String errorMessage) {
-        super("Invalid data : " + errorMessage);
+        super(errorMessage);
     }
 }

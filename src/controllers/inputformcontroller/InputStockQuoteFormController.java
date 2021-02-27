@@ -4,7 +4,7 @@
  * "actionPerformed" - this method contains all the logic to process the data
  * on the form, as well as several other events
  */
-package controllers.inputformcontrollers;
+package controllers.inputformcontroller;
 
 import java.awt.event.ActionListener;
 import view.inputforms.StockQuoteInputForm;
@@ -13,7 +13,7 @@ import datamodels.StockQuote;
 import exceptionhandlers.ErrorPopup;
 import exceptionhandlers.InvalidDataException;
 import java.util.Calendar;
-import utilities.date.DateFunctions;
+import utilities.DateFunctions;
 
 public class InputStockQuoteFormController implements ActionListener {
 
@@ -26,10 +26,10 @@ public class InputStockQuoteFormController implements ActionListener {
    // Constructor 
    public InputStockQuoteFormController(StockQuoteDataContainer p_stockQuoteDataContainer) {
 
-      // Store the passed in data container
+      // Store the passed in data container(s)
       this.m_stockQuoteDataContainer = p_stockQuoteDataContainer;
 
-      // create the form
+      // create the form, passing in this controller object to the constructor
       form = new StockQuoteInputForm(this);
 
       // make the form visible
@@ -37,7 +37,12 @@ public class InputStockQuoteFormController implements ActionListener {
    }
 
    /**
-    * Implements actionPerformed method of the ActionListener interface
+    * actionPerformed method implemented from the ActionListener interface
+    *
+    * This method figures out which button was clicked based on the text of the
+    * button. The button click event is passed in via the ActionEvent object.
+    *
+    * @param event
     */
    public void actionPerformed(java.awt.event.ActionEvent event) {
 
@@ -51,7 +56,7 @@ public class InputStockQuoteFormController implements ActionListener {
    }
 
    /**
-    * Private save method If an error is thrown, handle it by creating an error
+    * Private save method. If an error is thrown, handle it by creating an error
     * popup and don't save the stock quote
     */
    private void saveData() {
@@ -60,6 +65,7 @@ public class InputStockQuoteFormController implements ActionListener {
       StockQuote newQuote = new StockQuote();
 
       try {
+
          // Retrieve the stock ticker symbol
          String tickerSymbol = form.getTickerSymbolTextfield().getText();
          newQuote.setTickerSymbol(tickerSymbol);
@@ -77,13 +83,14 @@ public class InputStockQuoteFormController implements ActionListener {
          Calendar quoteDate = DateFunctions.stringToDate(dateString);
          newQuote.setQuoteDate(quoteDate);
 
+         // No errors, so add the new stock quote to the data container
          this.m_stockQuoteDataContainer.getStockQuoteList().add(newQuote);
 
       } catch (InvalidDataException exp) {
+         // If we caught any errors, create an error popup, passing the form
+         // that caused the error along with the actual error
          new ErrorPopup(form, exp);
-
       }
-
    }
 
    /**
@@ -110,5 +117,8 @@ public class InputStockQuoteFormController implements ActionListener {
    public StockQuoteInputForm getForm() {
       return form;
    }
-}
 
+   public StockQuoteDataContainer getM_stockQuoteDataContainer() {
+      return m_stockQuoteDataContainer;
+   }   
+}

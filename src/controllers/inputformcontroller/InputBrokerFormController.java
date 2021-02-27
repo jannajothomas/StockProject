@@ -4,7 +4,7 @@
  * "actionPerformed" - this method contains all the logic to process the data
  * on the form, as well as several other events
  */
-package controllers.inputformcontrollers;
+package controllers.inputformcontroller;
 
 import datacontainers.BrokerDataContainer;
 import datacontainers.InvestorDataContainer;
@@ -12,12 +12,11 @@ import datamodels.Broker;
 import datamodels.Investor;
 import exceptionhandlers.ErrorPopup;
 import exceptionhandlers.InvalidDataException;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
 import java.util.List;
-import utilities.date.DateFunctions;
+import utilities.DateFunctions;
 import view.inputforms.BrokerInputForm;
 
 public class InputBrokerFormController implements ActionListener {
@@ -64,7 +63,9 @@ public class InputBrokerFormController implements ActionListener {
    private void saveData() {
 
       // Create a new broker
-      Broker newBroker = new Broker();      
+      Broker newBroker = new Broker(); 
+	   
+	      
       
       // Retrieve data from all form fields and store directly into object
       try {
