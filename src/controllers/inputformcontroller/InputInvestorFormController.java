@@ -141,7 +141,7 @@ public class InputInvestorFormController implements ActionListener {
       form.getNameField().setText("");
       form.getIdField().setText("");
       form.getAddressField().setText("");
-     form.getDateOfBirthFormattedTextField().setText("");
+      form.getDateOfBirthFormattedTextField().setText("");
       form.getMemberSinceFormattedTextField().setText("");
    }
 

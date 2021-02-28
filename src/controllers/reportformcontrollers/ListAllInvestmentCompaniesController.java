@@ -63,7 +63,7 @@ public class ListAllInvestmentCompaniesController implements ActionListener {
       // Loop through the list and add the companies to the text area,
       // Each time adding a cr/lf between items for readibility.
       String companies = "";
-      for (InvestmentCompany company : investmentCompanyDataContainer.getInvestmentCompanyList()) {
+      for (InvestmentCompany company : investmentCompanyDataContainer.getcompanyList()) {
          companies = companies + company.getCompanyName() + "\n";
       }
       // Once all the data is in the string, set the text of the text area to the string value
@@ -88,7 +88,7 @@ public class ListAllInvestmentCompaniesController implements ActionListener {
       this.form.getCompaniesTableDisplay().setModel(defaultTableModel);
 
       // Add the companies to the table model
-      for (InvestmentCompany company : investmentCompanyDataContainer.getInvestmentCompanyList()) {
+      for (InvestmentCompany company : investmentCompanyDataContainer.getcompanyList()) {
 
          // Create a vector that is one row in the table
          Vector companyRow = new Vector();
