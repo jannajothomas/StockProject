@@ -84,7 +84,7 @@ public class ListAllStockQuotesController implements ActionListener {
       DefaultTableModel tableModel = new DefaultTableModel();
 
       // add columns to table model
-      tableModel.addColumn("Tciker Symbol");
+      tableModel.addColumn("Ticker Symbol");
       tableModel.addColumn("Date");
       tableModel.addColumn("Value");
 
