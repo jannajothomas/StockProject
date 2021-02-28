@@ -105,7 +105,7 @@ public class Broker extends Person {
      * Sets the status of the Broker object
      */
 	public void setStatus(String status) throws InvalidDataException {
-		if((status == "Full Time"||status=="Part  Time")) {
+		if((status == "Full Time"||status=="Part Time")) {
 			this.status=status;
 		}else {
 			throw  new InvalidDataException("Setting broker status failed, broker status is invalid");
