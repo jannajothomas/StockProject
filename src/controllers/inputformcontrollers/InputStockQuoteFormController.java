@@ -4,14 +4,14 @@
  * "actionPerformed" - this method contains all the logic to process the data
  * on the form, as well as several other events
  */
-package controllers.inputformcontroller;
+package controllers.inputformcontrollers;
 
 import java.awt.event.ActionListener;
 import view.inputforms.StockQuoteInputForm;
 import datacontainers.StockQuoteDataContainer;
 import datamodels.StockQuote;
 import exceptionhandlers.ErrorPopup;
-import exceptionhandlers.InvalidDataException;
+import exceptionhandlers.MyFileException;
 import java.util.Calendar;
 import utilities.DateFunctions;
 
@@ -56,7 +56,7 @@ public class InputStockQuoteFormController implements ActionListener {
    }
 
    /**
-    * Private save method. If an error is thrown, handle it by creating an error
+    * Private save method If an error is thrown, handle it by creating an error
     * popup and don't save the stock quote
     */
    private void saveData() {
@@ -65,17 +65,21 @@ public class InputStockQuoteFormController implements ActionListener {
       StockQuote newQuote = new StockQuote();
 
       try {
-
          // Retrieve the stock ticker symbol
          String tickerSymbol = form.getTickerSymbolTextfield().getText();
          newQuote.setTickerSymbol(tickerSymbol);
 
-         // retrieve value
+         // Retrieve stock value and convert to a double before storing in object
+         // Notice that we are future-proofing this code.  In the future, 
+         // an app may use this controller that doesn't trap bad data on the form!
+         // Also note that converting a string to a double may through a built in
+         // Java NumberFormatException.  So in this case, we can catch the built
+         // in exception and then throw our own, more user friendly exception!
          try {
             double value = Double.parseDouble(form.getStockValueTextField().getText());
             newQuote.setValue(value);
          } catch (Exception exp) {
-            throw new InvalidDataException("Invalid value.  Value must be a number");
+            throw new MyFileException("Invalid stock value");
          }
 
          // Retrieve the dates from the form and convert to Calendar objects
@@ -83,14 +87,14 @@ public class InputStockQuoteFormController implements ActionListener {
          Calendar quoteDate = DateFunctions.stringToDate(dateString);
          newQuote.setQuoteDate(quoteDate);
 
-         // No errors, so add the new stock quote to the data container
+         // Everything good, save the stock quote
          this.m_stockQuoteDataContainer.getStockQuoteList().add(newQuote);
 
-      } catch (InvalidDataException exp) {
-         // If we caught any errors, create an error popup, passing the form
-         // that caused the error along with the actual error
+      } catch (MyFileException exp) {
          new ErrorPopup(form, exp);
+
       }
+
    }
 
    /**
@@ -117,8 +121,4 @@ public class InputStockQuoteFormController implements ActionListener {
    public StockQuoteInputForm getForm() {
       return form;
    }
-
-   public StockQuoteDataContainer getM_stockQuoteDataContainer() {
-      return m_stockQuoteDataContainer;
-   }   
 }

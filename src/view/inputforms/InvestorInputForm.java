@@ -1,6 +1,5 @@
 package view.inputforms;
 
-import controllers.inputformcontroller.InputInvestorFormController;
 import datamodels.StockQuote;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -15,6 +14,8 @@ import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
+
+import controllers.inputformcontrollers.InputInvestorFormController;
 
 public class InvestorInputForm extends javax.swing.JFrame {
 
