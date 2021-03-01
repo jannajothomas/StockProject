@@ -3,6 +3,7 @@ package testclasses;
 import datamodels.InvestmentCompany;
 import datamodels.StockQuote;
 import exceptionhandlers.InvalidDataException;
+import exceptionhandlers.MyFileException;
 import datamodels.Broker;
 import datamodels.Investor;
 import datamodels.InvestorStockQuote;
@@ -10,7 +11,7 @@ import java.util.Calendar;
 
 public class TestAllClassesClassCreationAssign2 {
 
-    public static void main(String[] args) throws InvalidDataException {
+    public static void main(String[] args) throws InvalidDataException, MyFileException {
         
         // Create a date which will be used in all test methods
         Calendar testDate = Calendar.getInstance();

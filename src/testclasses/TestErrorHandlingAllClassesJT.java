@@ -4,6 +4,7 @@ import datamodels.Broker;
 import datamodels.InvestmentCompany;
 import datamodels.StockQuote;
 import exceptionhandlers.InvalidDataException;
+import exceptionhandlers.MyFileException;
 
 import java.util.ArrayList;
 
@@ -19,20 +20,15 @@ public class TestErrorHandlingAllClassesJT {
     static int testNum=1;
     static ArrayList<Boolean> successArray = new ArrayList<Boolean>();
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws MyFileException {
     	
     	System.out.println("-----------------Part 1: Testing valid input________________\n");
     	/**
          * Test setting an valid string for ticker symbol
          */
     	setup("valid string for ticker symbol");
-        try {
-            StockQuote quote = new StockQuote();
-            quote.setTickerSymbol("ABCD");
-        } catch (InvalidDataException exp) {
-            System.out.println(exp.getMessage());
-            success=false;
-        }
+        StockQuote quote = new StockQuote();
+		quote.setTickerSymbol("ABCD");
         cleanup();
         
         /**
@@ -151,12 +147,8 @@ public class TestErrorHandlingAllClassesJT {
         * Test setting an empty string for ticker symbol
         */
     	setup("empty string for ticker symbol");
-        try {
-            StockQuote quote = new StockQuote();
-            quote.setTickerSymbol("");
-        } catch (InvalidDataException exp) {
-            System.out.println(exp.getMessage());
-        }  
+        StockQuote quote = new StockQuote();
+		quote.setTickerSymbol("");  
         cleanup();
         
         /**

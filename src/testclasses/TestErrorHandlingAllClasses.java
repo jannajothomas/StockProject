@@ -4,6 +4,8 @@ import datamodels.Broker;
 import datamodels.InvestmentCompany;
 import datamodels.StockQuote;
 import exceptionhandlers.InvalidDataException;
+import exceptionhandlers.MyFileException;
+
 import java.util.Calendar;
 
 /**
@@ -15,17 +17,10 @@ import java.util.Calendar;
  */
 public class TestErrorHandlingAllClasses {
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws MyFileException, InvalidDataException {
 
-        /**
-         * Test setting an empty string for ticker symbol
-         */
-        try {
-            StockQuote quote = new StockQuote();
-            quote.setTickerSymbol("");
-        } catch (InvalidDataException exp) {
-            System.out.println(exp.getMessage());
-        }
+        StockQuote quote = new StockQuote();
+		quote.setTickerSymbol("");
 
         /**
          * Test setting an empty string for name

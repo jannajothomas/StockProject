@@ -6,6 +6,9 @@
 package controllers;
 
 import controllers.reportformcontrollers.ListAllStockQuotesController;
+import controllers.inputformcontrollers.InputBrokerFormController;
+import controllers.inputformcontrollers.InputInvestmentCompanyFormController;
+import controllers.inputformcontrollers.InputInvestorFormController;
 import controllers.inputformcontrollers.InputStockQuoteFormController;
 import controllers.reportformcontrollers.ListAllBrokersController;
 import controllers.reportformcontrollers.ListAllInvestmentCompaniesController;
@@ -93,7 +96,7 @@ public class MainMenuController implements ActionListener {
     	  InputInvestorFormController inputController = new InputInvestorFormController(investorDataContainer, stockQuoteDataContainer);
       } else if (menuItemClicked.equals("List Investors")) {
          // Create a report controller object for the investor and pass the correct containers to the constructor  
-    	  ListAllInvestorsController reportController = new ListAllInvestorsController(investorDataContainer);
+    	  ListAllInvestorsController reportController = new ListAllInvestorsController(investorDataContainer)}
       
 
 else if (menuItemClicked.equals("Exit")) {

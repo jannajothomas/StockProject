@@ -7,6 +7,7 @@ import java.util.Calendar;
 
 import datamodels.*;
 import exceptionhandlers.InvalidDataException;
+import exceptionhandlers.MyFileException;
 
 public class TestDataModelsClassesJT {
 
@@ -156,9 +157,10 @@ public class TestDataModelsClassesJT {
      * Try to add an investor to the brokers list of clients.  Make sure size is right after each addition
      * and make sure the list is populated with the investors where they are expected.
      * @throws ParseException
+     * @throws MyFileException 
      */
     @Test
-    public void testInvestorAddStockQuoteToList() throws ParseException {
+    public void testInvestorAddStockQuoteToList() throws ParseException, MyFileException {
     	
     	 Investor investor  = new Investor("Janna Thomas", "14 Spooky way", ParseDate.parseDate("10/31/1999"), testId, ParseDate.parseDate("10/31/2020"));
     	 StockQuote testQuote1 = new StockQuote(100, "MIME", ParseDate.parseDate("01/02/2020"));

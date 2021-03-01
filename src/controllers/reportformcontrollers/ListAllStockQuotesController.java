@@ -15,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
 import datacontainers.*;
 import datamodels.StockQuote;
 import utilities.date.DateFunctions;
+import utilities.formatters.NumberFormatter;
 import view.reportforms.StockQuoteReportForm;
 
 public class ListAllStockQuotesController implements ActionListener {

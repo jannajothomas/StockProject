@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.text.ParseException;
 import java.util.Calendar;
 import datamodels.StockQuote;
+import exceptionhandlers.MyFileException;
 
 public class TestStockQuoteClassJunitTest {
 	
@@ -39,14 +40,14 @@ public class TestStockQuoteClassJunitTest {
 	    }
 
 	@Test
-	    public void testGetQuoteDate() throws ParseException {
+	    public void testGetQuoteDate() throws ParseException, MyFileException {
 	        Calendar quoteDate = ParseDate.parseDate("4/5/2019");
 	        StockQuote testQuoteWithDate = new StockQuote(testValue, testSymbol, quoteDate);
 	        assertEquals("Verify quote date is correct", quoteDate, testQuoteWithDate.getQuoteDate());
 	    }
 
 	@Test
-	    public void testEqualsAndHashCode() throws ParseException {
+	    public void testEqualsAndHashCode() throws ParseException, MyFileException {
 	        Calendar quoteDate = ParseDate.parseDate("4/5/2019");
 	        StockQuote quote1 = new StockQuote(testValue, testSymbol, quoteDate);
 	        StockQuote quote2 = new StockQuote(testValue, testSymbol, quoteDate);
