@@ -41,12 +41,8 @@ public class ListAllStockQuotesController implements ActionListener {
    }
 
    /**
-    * actionPerformed method implemented from the ActionListener interface
-    *
-    * This method figures out which button was clicked based on the text of the
-    * button. The button click event is passed in via the ActionEvent object.
-    *
-    * @param event
+    * Implements the ActionListener controller actions In this case, there is
+    * just one control on the form, a close button
     */
    public void actionPerformed(java.awt.event.ActionEvent event) {
 
@@ -63,7 +59,7 @@ public class ListAllStockQuotesController implements ActionListener {
     */
    private void populateTextArea(StockQuoteDataContainer stockQuoteDataContainer) {
 
-      // Loop through the list and add the companies to the text area,
+      // Loop through the list and add the stock tickers to the text area,
       // Each time adding a cr/lf between items for readibility.
       String stocks = "";
       for (StockQuote stock : stockQuoteDataContainer.getStockQuoteList()) {
@@ -101,7 +97,7 @@ public class ListAllStockQuotesController implements ActionListener {
          // Add the data to the vector
          quoteForTable.add(quote.getTickerSymbol());
          quoteForTable.add(DateFunctions.dateToString(quote.getQuoteDate()));
-         quoteForTable.add(quote.getValue());
+         quoteForTable.add(NumberFormatter.formatCurrency(quote.getValue()));
 
          // Add the row to the  data model that is connected to the JTable         
          tableModel.addRow(quoteForTable);

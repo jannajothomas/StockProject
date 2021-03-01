@@ -4,15 +4,19 @@ package datamodels;
  * This class creates a StockQuote object
  */
 import exceptionhandlers.InvalidDataException;
-import utilities.DateFunctions;
 
+import exceptionhandlers.MyFileException;
+
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Objects;
+import utilities.DateFunctions;
 
-public class StockQuote {
+public class StockQuote implements Serializable {
 
     private double value;
     private String tickerSymbol;
+    
     private Calendar quoteDate;
 
     /**
@@ -28,7 +32,11 @@ public class StockQuote {
      * @param tickerSymbol The stock ticker symbol of the StockQuote object
      * @param quoteDate The date of the StockQuote object
      */
-    public StockQuote(double value, String tickerSymbol, Calendar quoteDate) {
+    public StockQuote(double value, String tickerSymbol, Calendar quoteDate)
+            throws MyFileException {
+        if (tickerSymbol.isEmpty()) {
+            throw new MyFileException("Creating StockQuote failed, ticker symbol not specified");
+        }
         this.value = value;
         this.tickerSymbol = tickerSymbol;
         this.quoteDate = quoteDate;
@@ -40,7 +48,10 @@ public class StockQuote {
      * @param value The monetary value of the StockQuote object
      * @param tickerSymbol The stock ticker symbol of the StockQuote object
      */
-    public StockQuote(double value, String tickerSymbol) {
+    public StockQuote(double value, String tickerSymbol) throws MyFileException {
+        if (tickerSymbol.isEmpty()) {
+            throw new MyFileException("Creating StockQuote failed, ticker symbol not specified");
+        }
         this.value = value;
         this.tickerSymbol = tickerSymbol;
     }
@@ -87,9 +98,9 @@ public class StockQuote {
     /**
      * Sets the ticker symbol of the StockQuote object
      */
-    public void setTickerSymbol(String tickerSymbol) throws InvalidDataException {
+    public void setTickerSymbol(String tickerSymbol) throws MyFileException {
         if (tickerSymbol.isEmpty()) {
-            throw new InvalidDataException("Setting ticker symbol failed, no ticker symbol specified");
+            throw new MyFileException("Setting ticker symbol failed, no ticker symbol specified");
         } else {
             this.tickerSymbol = tickerSymbol;
         }
@@ -98,11 +109,11 @@ public class StockQuote {
     /**
      * Sets the quoteDate of the StockQuote object
      */
-    public void setQuoteDate(Calendar quoteDate) {
+    public void setQuoteDate(Calendar quoteDate)  {
         if (quoteDate == null) {
             this.quoteDate = Calendar.getInstance();
         } else {
-            this.quoteDate = quoteDate;
+       this.quoteDate = quoteDate;
         }
     }
 
