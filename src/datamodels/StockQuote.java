@@ -6,11 +6,11 @@ package datamodels;
 import exceptionhandlers.InvalidDataException;
 
 import exceptionhandlers.MyFileException;
+import utilities.date.DateFunctions;
 
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Objects;
-import utilities.DateFunctions;
 
 public class StockQuote implements Serializable {
 

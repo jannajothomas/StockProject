@@ -2,6 +2,8 @@ package view.reportforms;
 
 import controllers.reportformcontrollers.ListAllInvestorsController;
 import datamodels.Investor;
+import utilities.date.DateFunctions;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.util.List;
@@ -14,7 +16,6 @@ import javax.swing.JTree;
 import javax.swing.WindowConstants;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeSelectionModel;
-import utilities.DateFunctions;
 
 /**
  * This class contains all the code for the investor report form. It creates the

@@ -12,8 +12,9 @@ import datacontainers.StockQuoteDataContainer;
 import datamodels.StockQuote;
 import exceptionhandlers.ErrorPopup;
 import exceptionhandlers.MyFileException;
+import utilities.date.DateFunctions;
+
 import java.util.Calendar;
-import utilities.DateFunctions;
 
 public class InputStockQuoteFormController implements ActionListener {
 

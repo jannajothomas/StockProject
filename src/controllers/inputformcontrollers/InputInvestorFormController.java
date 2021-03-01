@@ -14,9 +14,11 @@ import datamodels.InvestorStockQuote;
 import datamodels.StockQuote;
 import exceptionhandlers.ErrorPopup;
 import exceptionhandlers.InvalidDataException;
+import utilities.date.DateFunctions;
+
 import java.util.Calendar;
 import java.util.List;
-import utilities.DateFunctions;
+
 import view.inputforms.InvestorInputForm;
 
 public class InputInvestorFormController implements ActionListener {

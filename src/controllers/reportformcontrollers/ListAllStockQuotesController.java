@@ -14,7 +14,7 @@ import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 import datacontainers.*;
 import datamodels.StockQuote;
-import utilities.DateFunctions;
+import utilities.date.DateFunctions;
 import view.reportforms.StockQuoteReportForm;
 
 public class ListAllStockQuotesController implements ActionListener {

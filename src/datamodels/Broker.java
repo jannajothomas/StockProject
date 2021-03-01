@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Objects;
 
 import exceptionhandlers.InvalidDataException;
-import utilities.DateFunctions;
+import utilities.date.DateFunctions;
 
 /**
  * This class creates a Broker object
