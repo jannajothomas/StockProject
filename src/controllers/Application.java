@@ -14,7 +14,8 @@ public class Application {
    public static void main(String[] args) {
 
       // Create main menu controller, the controller creates the menu form
-      MainMenuController controller = new MainMenuController(args[0]);
+	   //TODO: What should  the file args be?
+      MainMenuController controller = new MainMenuController("./outputFiles/");
 
       // Retrieve the main menu form from the controller and make it visible
       controller.getMainMenu().setVisible(true);

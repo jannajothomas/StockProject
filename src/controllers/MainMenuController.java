@@ -119,11 +119,12 @@ else if (menuItemClicked.equals("Exit")) {
       
       } else if (menuItemClicked.equals("Save Data")) {
          try {
+        	 //TODO:  Trying to get these to work one at a time
             // All 4 types for demonstration
-            StockQuoteIO.writeSerializedFile(fileLocation, stockQuoteDataContainer);
+            //StockQuoteIO.writeSerializedFile(fileLocation, stockQuoteDataContainer);
             StockQuoteIO.writeTextFile(fileLocation, stockQuoteDataContainer);
-            StockQuoteIO.writeXMLFile(fileLocation, stockQuoteDataContainer);
-            StockQuoteIO.writeJSONFile(fileLocation, stockQuoteDataContainer);
+           // StockQuoteIO.writeXMLFile(fileLocation, stockQuoteDataContainer);
+           // StockQuoteIO.writeJSONFile(fileLocation, stockQuoteDataContainer);
             
             // to-do  Add additional calls to write methods for the other objects
             

@@ -52,10 +52,11 @@ public class StockQuoteIO implements Serializable {
       PrintWriter textFile = null;
 
       try {
+
          // Create output file
          // We are putting it in a location specified when the program is run
          // This is done via a command line argument
-         textFile = new PrintWriter(fileLocation + "/stockquotes.txt");
+         textFile = new PrintWriter(fileLocation + "stockquotes.ser");
 
          // Loop through the array list of stockquotes and print delimited text to a file
          for (StockQuote quote : datacontainer.getStockQuoteList()) {
@@ -73,17 +74,24 @@ public class StockQuoteIO implements Serializable {
       }
    }
 
+   
+
+   
+   
    /**
     * Creates a serialized object output file containing all StockQuotes in the
     * StockQuote data container
     */
    public static void writeSerializedFile(String fileLocation, StockQuoteDataContainer datacontainer) throws MyFileException {
-      try {
+	   System.out.println(fileLocation + "/stockquotes.ser");
+	   try {
          // Create output file
          ObjectOutputStream serializedFile = new ObjectOutputStream(
-                 new FileOutputStream(fileLocation + "/stockquotes.ser"));
+        		 new FileOutputStream(fileLocation + "/stockquotes.ser"));
+                // new FileOutputStream(fileLocation + "/stockquotes.ser"));
          // Write out the data
          serializedFile.writeObject(datacontainer.getStockQuoteList());
+         serializedFile.close();
       } catch (IOException exp) {
          throw new MyFileException("Can't serialize file");
       }
@@ -145,16 +153,19 @@ public class StockQuoteIO implements Serializable {
    public static ArrayList<StockQuote> readSerializedFile(String fileLocation) throws MyFileException {
 
       ArrayList<StockQuote> listOfStockQuotes = new ArrayList<>();
-
+     
       try {
+    	 
          ObjectInputStream serializedFile = new ObjectInputStream(
                  new FileInputStream(fileLocation + "/stockquotes.ser"));
          // Read the serialized object and cast to its original type
          listOfStockQuotes = (ArrayList<StockQuote>) serializedFile.readObject();
+         serializedFile.close();
          return listOfStockQuotes;
       } catch (IOException | ClassNotFoundException exp) {
          throw new MyFileException("Can't deserialize file");
       }
+     
    }
 
    /**

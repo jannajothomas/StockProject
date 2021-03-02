@@ -129,7 +129,7 @@ public class InvestmentCompanyIO implements Serializable {
          
          //listOfStockQuotes.addAll(Arrays.asList(stockquoteArray));
          // Convert to arraylist for the data model
-         listOfCompanies.addAdd(Arrays.asList(investmentCompanyArray))
+         listOfCompanies.addAll(Arrays.asList(investmentCompanyArray));
          //companyList.addAll(Arrays.asList(listOfInvestmentCompanies)))
         // listOfInvestmentCompanys.addAll(Arrays.asList(InvestmentCompanyArray));
          return listOfCompanies;
@@ -137,4 +137,4 @@ public class InvestmentCompanyIO implements Serializable {
          throw new MyFileException(exp.getMessage());
       }
    }
-}}
+}

@@ -17,7 +17,7 @@ public class FileIOErrorPopup {
     public FileIOErrorPopup(JFrame badFormData, Exception exception) {
         JOptionPane.showMessageDialog(badFormData,
                 exception.getMessage(),
-                "FIle IO Error: ",
+                "File IO Error: ",
                 JOptionPane.WARNING_MESSAGE);
     }
 }
