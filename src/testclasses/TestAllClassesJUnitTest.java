@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.text.ParseException;
 import java.util.Calendar;
 import datamodels.*;
+import exceptionhandlers.MyFileException;
 
 public class TestAllClassesJUnitTest {
 
@@ -17,9 +18,10 @@ public class TestAllClassesJUnitTest {
     long testId = 1234567;
     String testCompanyName = "Fidelity Investments";
     Calendar testDate = Calendar.getInstance();
-
     StockQuote testQuoteNoParameters = new StockQuote();
-    StockQuote testQuoteWithParameters = new StockQuote(testValue, testSymbol);
+    StockQuote testQuoteWithParameters = new StockQuote();
+    
+    
     Investor testInvestorWithParameters
             = new Investor(testName, testAddress, testDate, testId, testDate);
     Broker testBrokerWithParameters
@@ -42,6 +44,13 @@ public class TestAllClassesJUnitTest {
     @Test
     public void testGetTickerSymbol() {
         assertNull("Verify ticker symbol is null", testQuoteNoParameters.getTickerSymbol());
+        testQuoteWithParameters.setValue(testValue);
+        try {
+			testQuoteWithParameters.setTickerSymbol(testSymbol);
+		} catch (MyFileException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         assertEquals("Verify ticker symbol is correct", testSymbol, testQuoteWithParameters.getTickerSymbol());
     }
 
@@ -55,14 +64,14 @@ public class TestAllClassesJUnitTest {
     }
 
     @Test
-    public void testGetQuoteDate() throws ParseException {
+    public void testGetQuoteDate() throws ParseException, MyFileException {
         Calendar quoteDate = ParseDate.parseDate("4/5/2019");
         StockQuote testQuoteWithDate = new StockQuote(testValue, testSymbol, quoteDate);
         assertEquals("Verify quote date is correct", quoteDate, testQuoteWithDate.getQuoteDate());
     }
 
     @Test
-    public void testEqualsAndHashCodeForStockClass() throws ParseException {
+    public void testEqualsAndHashCodeForStockClass() throws ParseException, MyFileException {
         Calendar quoteDate = ParseDate.parseDate("4/5/2019");
         StockQuote quote1 = new StockQuote(testValue, testSymbol, quoteDate);
         StockQuote quote2 = new StockQuote(testValue, testSymbol, quoteDate);
@@ -115,7 +124,7 @@ public class TestAllClassesJUnitTest {
     }
 
     @Test
-    public void testEqualsAndHashCodeForAllClasses() throws ParseException {
+    public void testEqualsAndHashCodeForAllClasses() throws ParseException, MyFileException {
         Calendar testDate = ParseDate.parseDate("4/5/2019");
         StockQuote quote1 = new StockQuote(testValue, testSymbol, testDate);
         StockQuote quote2 = new StockQuote(testValue, testSymbol, testDate);

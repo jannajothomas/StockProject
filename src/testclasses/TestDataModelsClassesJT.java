@@ -21,13 +21,15 @@ public class TestDataModelsClassesJT {
     String testCompanyName = "Fidelity Investments";
     Calendar testDate = Calendar.getInstance();
 
-    StockQuote testQuoteNoParameters = new StockQuote();
-    StockQuote testQuoteWithParameters = new StockQuote(testValue, testSymbol, testDate);
+    //StockQuote testQuoteNoParameters = new StockQuote();
+    //StockQuote testQuoteWithParameters = new StockQuote(testValue, testSymbol, testDate);
+
+    
     Investor testInvestorWithParameters = new Investor();
     Broker testBrokerWithParameters = new Broker(testName, testAddress, testDate, testId, testDate,
                     testDate, testSalary, testStatus);
-    InvestmentCompany testInvestmentCompanyWithParameters
-            = new InvestmentCompany(testCompanyName);
+    //InvestmentCompany testInvestmentCompanyWithParameters
+           // = new InvestmentCompany(testCompanyName);
 
     
     
@@ -140,7 +142,7 @@ public class TestDataModelsClassesJT {
     }
     
 	 /**
-     * Check to see if two different people with the same Broker characterists are equal. (shouldn't be)
+     * Check to see if two different people with the same Broker characters are equal. (shouldn't be)
      * @throws ParseException
      */
     @Test

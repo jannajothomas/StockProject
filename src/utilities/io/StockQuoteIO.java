@@ -110,7 +110,7 @@ public class StockQuoteIO implements Serializable {
 
    /**
     * Writes out the StockQuote data in JSON format containing all StockQuotes
-    * in the stockquote data container
+    * in the stock quote data container
     *
     */
    public static void writeJSONFile(String fileLocation, StockQuoteDataContainer datacontainer) throws MyFileException {
@@ -124,7 +124,7 @@ public class StockQuoteIO implements Serializable {
          // Create JSON object
          Gson gson = new GsonBuilder().create();
 
-         // Convert stockquote list to JSON format
+         // Convert stock quote list to JSON format
          gson.toJson(datacontainer.getStockQuoteList(), jsonFile);
 
       } catch (JsonIOException | FileNotFoundException exp) {
@@ -139,8 +139,8 @@ public class StockQuoteIO implements Serializable {
    }
 
    /**
-    * Reads a set of stockquote objects from a serialized file and returns an
-    * array list of stockquotes
+    * Reads a set of stock quote objects from a serialized file and returns an
+    * array list of stock quotes
     */
    public static ArrayList<StockQuote> readSerializedFile(String fileLocation) throws MyFileException {
 
@@ -158,8 +158,8 @@ public class StockQuoteIO implements Serializable {
    }
 
    /**
-    * Reads a delimited text file of stockquotes and returns an array list of
-    * stockquotes.
+    * Reads a delimited text file of stock quotes and returns an array list of
+    * stock quotes.
     *
     * An end of file flag is used to keep track of whether we hit the end of the
     * file, It starts out false and if we hit the end of file (null input), it
@@ -181,10 +181,10 @@ public class StockQuoteIO implements Serializable {
             if (lineFromFile == null) {
                eof = true;
             } else {
-               // Create a stockquote
+               // Create a stock quote
                StockQuote quote = new StockQuote();
 
-               // Split the input line into stockquote elements using the delimiter
+               // Split the input line into stock quote elements using the delimiter
                String[] lineElements = lineFromFile.split(",");
 
                // The first element is the ticker symbol
@@ -196,7 +196,7 @@ public class StockQuoteIO implements Serializable {
                // The third element is the date
               quote.setQuoteDate(DateFunctions.stringToDate(lineElements[1]));
                        
-               // add the stockquote to the arraylist
+               // add the stock quote to the array list
                listOfStockQuotes.add(quote);
             }
          }

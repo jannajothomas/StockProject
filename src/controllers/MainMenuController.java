@@ -13,7 +13,6 @@ import controllers.inputformcontrollers.InputStockQuoteFormController;
 import controllers.reportformcontrollers.ListAllBrokersController;
 import controllers.reportformcontrollers.ListAllInvestmentCompaniesController;
 import controllers.reportformcontrollers.ListAllInvestorsController;
-import controllers.reportformcontrollers.ListAllStockQuotesController;
 import java.awt.event.ActionListener;
 import datacontainers.BrokerDataContainer;
 import datacontainers.InvestmentCompanyDataContainer;
@@ -22,9 +21,6 @@ import datacontainers.StockQuoteDataContainer;
 import exceptionhandlers.FileIOErrorPopup;
 import exceptionhandlers.MyFileException;
 import utilities.io.StockQuoteIO;
-
-// to-do  Add additional import statements
-
 import view.MainMenu;
 
 public class MainMenuController implements ActionListener {
@@ -35,11 +31,9 @@ public class MainMenuController implements ActionListener {
    // The data models are instantiated here and passed to the 
    // constructors for the controllers
    private StockQuoteDataContainer stockQuoteDataContainer = new StockQuoteDataContainer();
-   // to-do Add additional data containers
-
-	private BrokerDataContainer brokerDataContainer = new BrokerDataContainer();
-	private InvestmentCompanyDataContainer investmentCompanyDataContainer = new InvestmentCompanyDataContainer();
-	private InvestorDataContainer investorDataContainer = new InvestorDataContainer();
+   private BrokerDataContainer brokerDataContainer = new BrokerDataContainer();
+   private InvestmentCompanyDataContainer investmentCompanyDataContainer = new InvestmentCompanyDataContainer();
+   private InvestorDataContainer investorDataContainer = new InvestorDataContainer();
    /**
     * Constructor
     *
@@ -65,21 +59,41 @@ public class MainMenuController implements ActionListener {
       // create the controller which will open the correct form (refer to the controller constructor
       // methods do determine which data container classes need to be passed to the controller constructors)
       if (menuItemClicked.equals("Add Stock Quote")) {
-         InputStockQuoteFormController inputController = new InputStockQuoteFormController(stockQuoteDataContainer);
+         @SuppressWarnings("unused")
+		InputStockQuoteFormController inputController = new InputStockQuoteFormController(stockQuoteDataContainer);
       } else if (menuItemClicked.equals("List Available Stocks")) {
-         ListAllStockQuotesController reportController = new ListAllStockQuotesController(stockQuoteDataContainer);
+         @SuppressWarnings("unused")
+		ListAllStockQuotesController reportController = new ListAllStockQuotesController(stockQuoteDataContainer);
       }
       
-      // to-do  Add additional menu items to add and report (this should already be done for assignment 5)
-      
       if (menuItemClicked.equals("Add Investment Company")) {
-         // Create an input form controller object for the investment compnay and pass the correct containers to the constructor   
+         // Create an input form controller object for the investment company and pass the correct containers to the constructor   
     	  InputInvestmentCompanyFormController inputController = new InputInvestmentCompanyFormController(investmentCompanyDataContainer, brokerDataContainer);
       } else if (menuItemClicked.equals("List Investment Companies")) {
-            StockQuoteIO.writeSerializedFile(fileLocation, stockQuoteDataContainer);
-            StockQuoteIO.writeTextFile(fileLocation, stockQuoteDataContainer);
-            StockQuoteIO.writeXMLFile(fileLocation, stockQuoteDataContainer);
-            StockQuoteIO.writeJSONFile(fileLocation, stockQuoteDataContainer);
+            try {
+				StockQuoteIO.writeSerializedFile(fileLocation, stockQuoteDataContainer);
+			} catch (MyFileException e3) {
+				// TODO Auto-generated catch block
+				e3.printStackTrace();
+			}
+            try {
+				StockQuoteIO.writeTextFile(fileLocation, stockQuoteDataContainer);
+			} catch (MyFileException e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			}
+            try {
+				StockQuoteIO.writeXMLFile(fileLocation, stockQuoteDataContainer);
+			} catch (MyFileException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+            try {
+				StockQuoteIO.writeJSONFile(fileLocation, stockQuoteDataContainer);
+			} catch (MyFileException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
          // Create a report controller object for the investment company and pass the correct containers to the constructor  
     	  ListAllInvestmentCompaniesController reportController = new ListAllInvestmentCompaniesController(investmentCompanyDataContainer);
       }
@@ -96,7 +110,7 @@ public class MainMenuController implements ActionListener {
     	  InputInvestorFormController inputController = new InputInvestorFormController(investorDataContainer, stockQuoteDataContainer);
       } else if (menuItemClicked.equals("List Investors")) {
          // Create a report controller object for the investor and pass the correct containers to the constructor  
-    	  ListAllInvestorsController reportController = new ListAllInvestorsController(investorDataContainer)}
+    	  ListAllInvestorsController reportController = new ListAllInvestorsController(investorDataContainer);}
       
 
 else if (menuItemClicked.equals("Exit")) {
@@ -105,7 +119,7 @@ else if (menuItemClicked.equals("Exit")) {
       
       } else if (menuItemClicked.equals("Save Data")) {
          try {
-            // All 4 types for demonstation
+            // All 4 types for demonstration
             StockQuoteIO.writeSerializedFile(fileLocation, stockQuoteDataContainer);
             StockQuoteIO.writeTextFile(fileLocation, stockQuoteDataContainer);
             StockQuoteIO.writeXMLFile(fileLocation, stockQuoteDataContainer);
@@ -118,7 +132,7 @@ else if (menuItemClicked.equals("Exit")) {
          }
       } else if (menuItemClicked.equals("Load Data")) {
          try {
-            // All 4 types for demonstation
+            // All 4 types for demonstration
             stockQuoteDataContainer.setStockQuoteList(StockQuoteIO.readSerializedFile(fileLocation));
             stockQuoteDataContainer.setStockQuoteList(StockQuoteIO.readTextFile(fileLocation));
             stockQuoteDataContainer.setStockQuoteList(StockQuoteIO.readXMLFile(fileLocation).getStockQuoteList());
