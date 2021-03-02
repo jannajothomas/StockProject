@@ -9,9 +9,14 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
 import datacontainers.BrokerDataContainer;
+import datacontainers.StockQuoteDataContainer;
+
 import java.io.PrintWriter;
 import datamodels.Broker;
+import datamodels.StockQuote;
 import exceptionhandlers.MyFileException;
+import utilities.date.DateFunctions;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -33,6 +38,36 @@ public class BrokerIO implements Serializable {
    private BrokerIO() {
    }
 
+   public static void writeTextFile(String fileLocation, BrokerDataContainer datacontainer) throws MyFileException {
+
+	      PrintWriter textFile = null;
+
+	      try {
+
+	         // Create output file
+	         // We are putting it in a location specified when the program is run
+	         // This is done via a command line argument
+	         textFile = new PrintWriter(fileLocation + "broker.ser");
+
+	         // Loop through the array list of stockquotes and print delimited text to a file
+	         //TODO: Make  sure quote has all required elements
+	         for (Broker broker : datacontainer.getBrokerList()) {
+	        	 textFile.println(broker.getName() + "," + broker.getAddress() + "," + broker.getId() + "," + DateFunctions.dateToString(broker.getDateOfBirth()) + "," + DateFunctions.dateToString(broker.getDateOfHire()) + "," + DateFunctions.dateToString(broker.getDateOfTermination()) +  "," + broker.getSalary() +  "," + broker.getStatus());
+	            //textFile.println(quote.getTickerSymbol() + "," + quote.getValue()
+	                //    + "," + DateFunctions.dateToString(quote.getQuoteDate()));
+	         }
+	      } catch (FileNotFoundException exp) {
+	         throw new MyFileException(exp.getMessage());
+	      } finally {
+	         // Flush the output stream and close the file
+	         if (textFile != null) {
+	            textFile.flush();
+	            textFile.close();
+	         }
+	      }
+	   }
+   
+   
    /**
     * Creates an xml output file containing all Brokers in the Broker
     * data container using the JAXB libraries

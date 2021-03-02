@@ -9,9 +9,14 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
 import datacontainers.InvestorDataContainer;
+import datacontainers.StockQuoteDataContainer;
+
 import java.io.PrintWriter;
 import datamodels.Investor;
+import datamodels.StockQuote;
 import exceptionhandlers.MyFileException;
+import utilities.date.DateFunctions;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -33,6 +38,42 @@ public class InvestorIO implements Serializable {
    private InvestorIO() {
    }
 
+   /**
+    * Writes out a text file containing all stock quotes in the stock quote data
+    * container
+    *
+    * The format of the text file is:
+    *
+    * Example: FA301,STOCKQUOTE
+    */
+   public static void writeTextFile(String fileLocation, InvestorDataContainer datacontainer) throws MyFileException {
+
+      PrintWriter textFile = null;
+
+      try {
+
+         // Create output file
+         // We are putting it in a location specified when the program is run
+         // This is done via a command line argument
+         textFile = new PrintWriter(fileLocation + "investors.ser");
+
+         // Loop through the array list of stockquotes and print delimited text to a file
+         for (Investor investor : datacontainer.getInvestorList()) {
+        	 textFile.println(investor.getName() + "," + investor.getAddress() + "," + investor.getId() + "," + DateFunctions.dateToString(investor.getDateOfBirth()) + "," + DateFunctions.dateToString(investor.getMemberSince()) + "," + investor.getListOfStocks());
+         }
+      } catch (FileNotFoundException exp) {
+         throw new MyFileException(exp.getMessage());
+      } finally {
+         // Flush the output stream and close the file
+         if (textFile != null) {
+            textFile.flush();
+            textFile.close();
+         }
+      }
+   }
+
+   
+   
    /**
     * Creates an xml output file containing all investors in the investor
     * data container using the JAXB libraries

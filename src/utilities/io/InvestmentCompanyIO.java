@@ -9,9 +9,14 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
 import datacontainers.InvestmentCompanyDataContainer;
+import datacontainers.StockQuoteDataContainer;
+
 import java.io.PrintWriter;
 import datamodels.InvestmentCompany;
+import datamodels.StockQuote;
 import exceptionhandlers.MyFileException;
+import utilities.date.DateFunctions;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -32,6 +37,44 @@ public class InvestmentCompanyIO implements Serializable {
     */
    private InvestmentCompanyIO() {
    }
+   
+   
+   /**
+    * Writes out a text file containing all stock quotes in the stock quote data
+    * container
+    *
+    * The format of the text file is:
+    *
+    * Example: FA301,STOCKQUOTE
+    */
+   public static void writeTextFile(String fileLocation, InvestmentCompanyDataContainer datacontainer) throws MyFileException {
+
+	      PrintWriter textFile = null;
+
+	      try {
+
+	         // Create output file
+	         // We are putting it in a location specified when the program is run
+	         // This is done via a command line argument
+	         textFile = new PrintWriter(fileLocation + "companies.ser");
+
+	         // Loop through the array list of stockquotes and print delimited text to a file
+	         for (InvestmentCompany company : datacontainer.getcompanyList()) {
+	        	 textFile.println(company.getCompanyName() + "," + company.getListOfBrokers());
+	           // textFile.println(quote.getTickerSymbol() + "," + quote.getValue()
+	                 //   + "," + DateFunctions.dateToString(quote.getQuoteDate()));
+	         }
+	      } catch (FileNotFoundException exp) {
+	         throw new MyFileException(exp.getMessage());
+	      } finally {
+	         // Flush the output stream and close the file
+	         if (textFile != null) {
+	            textFile.flush();
+	            textFile.close();
+	         }
+	      }
+	   }
+   
 
    /**
     * Creates an xml output file containing all InvestmentCompanys in the InvestmentCompany

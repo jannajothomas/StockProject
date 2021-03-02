@@ -20,6 +20,9 @@ import datacontainers.InvestorDataContainer;
 import datacontainers.StockQuoteDataContainer;
 import exceptionhandlers.FileIOErrorPopup;
 import exceptionhandlers.MyFileException;
+import utilities.io.BrokerIO;
+import utilities.io.InvestmentCompanyIO;
+import utilities.io.InvestorIO;
 import utilities.io.StockQuoteIO;
 import view.MainMenu;
 
@@ -122,7 +125,12 @@ else if (menuItemClicked.equals("Exit")) {
         	 //TODO:  Trying to get these to work one at a time
             // All 4 types for demonstration
             //StockQuoteIO.writeSerializedFile(fileLocation, stockQuoteDataContainer);
-            StockQuoteIO.writeTextFile(fileLocation, stockQuoteDataContainer);
+        	 BrokerIO.writeTextFile(fileLocation, brokerDataContainer);
+        	 InvestmentCompanyIO.writeTextFile(fileLocation, investmentCompanyDataContainer);
+        	 InvestorIO.writeTextFile(fileLocation, investorDataContainer);
+        	 StockQuoteIO.writeTextFile(fileLocation, stockQuoteDataContainer);
+            
+
            // StockQuoteIO.writeXMLFile(fileLocation, stockQuoteDataContainer);
            // StockQuoteIO.writeJSONFile(fileLocation, stockQuoteDataContainer);
             
