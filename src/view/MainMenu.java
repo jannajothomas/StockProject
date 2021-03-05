@@ -91,6 +91,12 @@ public class MainMenu extends javax.swing.JFrame {
       listAllInvestors.addActionListener(controller);
       saveData.addActionListener(controller);
       loadData.addActionListener(controller);
+      
+      //Add radio buttons to list
+      JSON.addActionListener(controller);
+      Text.addActionListener(controller);
+      XML.addActionListener(controller);
+      //group.addActionListener(controller);
 
       /**
        * set close function to dispose of the form

@@ -115,7 +115,7 @@ public class InputInvestorFormController implements ActionListener {
          String[] stockInfo = selectedStockString.split(":");
 
          //Hold on to the ticker symbol
-         String ticker = stockInfo[0].strip();
+         String ticker = stockInfo[0].trim();
 
          // Find the stock quote in the stock data container based on the ticker symbol
          // Temporay  arraylist of stock quotes from the stock quote data container

@@ -100,7 +100,7 @@ public class InputInvestmentCompanyFormController implements ActionListener {
          String[] name_id = selectedBrokerString.split(":");
 
          //Hold on to the id
-         long selectedId = Integer.parseInt(name_id[1].strip());
+         long selectedId = Integer.parseInt(name_id[1].trim());
 
          // Find the broker in the broker data container based on the id
          // Temporay  arraylist of brokers from the broker data container

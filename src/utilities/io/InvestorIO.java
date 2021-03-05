@@ -24,6 +24,8 @@ import java.io.FileReader;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -170,4 +172,9 @@ public class InvestorIO implements Serializable {
          throw new MyFileException(exp.getMessage());
       }
    }
+
+public static List<Investor> readTextFile(String fileLocation) {
+	// TODO Auto-generated method stub
+	return null;
+}
 }

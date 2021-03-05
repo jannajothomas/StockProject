@@ -37,6 +37,7 @@ public class MainMenuController implements ActionListener {
    private BrokerDataContainer brokerDataContainer = new BrokerDataContainer();
    private InvestmentCompanyDataContainer investmentCompanyDataContainer = new InvestmentCompanyDataContainer();
    private InvestorDataContainer investorDataContainer = new InvestorDataContainer();
+   private String saveFormat = "JSON";
    /**
     * Constructor
     *
@@ -56,16 +57,15 @@ public class MainMenuController implements ActionListener {
     */
    public void actionPerformed(java.awt.event.ActionEvent event) {
 
-      //  Figure out which button was clicked
       String menuItemClicked = event.getActionCommand();
-
+      
       // create the controller which will open the correct form (refer to the controller constructor
       // methods do determine which data container classes need to be passed to the controller constructors)
+      
       if (menuItemClicked.equals("Add Stock Quote")) {
-         @SuppressWarnings("unused")
+          // Create an input form controller object for the investment company and pass the correct containers to the constructor 
 		InputStockQuoteFormController inputController = new InputStockQuoteFormController(stockQuoteDataContainer);
       } else if (menuItemClicked.equals("List Available Stocks")) {
-         @SuppressWarnings("unused")
 		ListAllStockQuotesController reportController = new ListAllStockQuotesController(stockQuoteDataContainer);
       }
       
@@ -73,31 +73,6 @@ public class MainMenuController implements ActionListener {
          // Create an input form controller object for the investment company and pass the correct containers to the constructor   
     	  InputInvestmentCompanyFormController inputController = new InputInvestmentCompanyFormController(investmentCompanyDataContainer, brokerDataContainer);
       } else if (menuItemClicked.equals("List Investment Companies")) {
-            try {
-				StockQuoteIO.writeSerializedFile(fileLocation, stockQuoteDataContainer);
-			} catch (MyFileException e3) {
-				// TODO Auto-generated catch block
-				e3.printStackTrace();
-			}
-            try {
-				StockQuoteIO.writeTextFile(fileLocation, stockQuoteDataContainer);
-			} catch (MyFileException e2) {
-				// TODO Auto-generated catch block
-				e2.printStackTrace();
-			}
-            try {
-				StockQuoteIO.writeXMLFile(fileLocation, stockQuoteDataContainer);
-			} catch (MyFileException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-            try {
-				StockQuoteIO.writeJSONFile(fileLocation, stockQuoteDataContainer);
-			} catch (MyFileException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-         // Create a report controller object for the investment company and pass the correct containers to the constructor  
     	  ListAllInvestmentCompaniesController reportController = new ListAllInvestmentCompaniesController(investmentCompanyDataContainer);
       }
       
@@ -108,6 +83,7 @@ public class MainMenuController implements ActionListener {
          // Create a report controller object for the broker and pass the correct containers to the constructor     
     	  ListAllBrokersController reportController = new ListAllBrokersController(brokerDataContainer);
       }
+      
       if (menuItemClicked.equals("Add Investor")) {
          // Create an input form controller object for the investor and pass the correct containers to the constructor
     	  InputInvestorFormController inputController = new InputInvestorFormController(investorDataContainer, stockQuoteDataContainer);
@@ -122,39 +98,71 @@ public class MainMenuController implements ActionListener {
       
       } else if (menuItemClicked.equals("Save Data")) {
          try {
-
-            //StockQuoteIO.writeSerializedFile(fileLocation, stockQuoteDataContainer);
-        	 BrokerIO.writeTextFile(fileLocation, brokerDataContainer);
-        	 InvestmentCompanyIO.writeTextFile(fileLocation, investmentCompanyDataContainer);
-        	 InvestorIO.writeTextFile(fileLocation, investorDataContainer);
-        	 StockQuoteIO.writeTextFile(fileLocation, stockQuoteDataContainer);
+        	 System.out.println("Save format is " + saveFormat);
+        	 switch(saveFormat) {
         	 
-        	 //BrokerIO.writeXMLFile(fileLocation, brokerDataContainer);
-        	 //InvestmentCompanyIO.writeXMLFile(fileLocation, investmentCompanyDataContainer);
-        	 //InvestorIO.writeXMLFile(fileLocation, investorDataContainer);
-        	// StockQuoteIO.writeXMLFile(fileLocation, stockQuoteDataContainer);
-            
-        	 BrokerIO.writeJSONFile(fileLocation, brokerDataContainer);
-        	 InvestmentCompanyIO.writeJSONFile(fileLocation, investmentCompanyDataContainer);
-        	 InvestorIO.writeJSONFile(fileLocation, investorDataContainer);
-        	 StockQuoteIO.writeJSONFile(fileLocation, stockQuoteDataContainer);
-            
+        	 case "Text":
+        		 BrokerIO.writeTextFile(fileLocation, brokerDataContainer);
+            	 InvestmentCompanyIO.writeTextFile(fileLocation, investmentCompanyDataContainer);
+            	 InvestorIO.writeTextFile(fileLocation, investorDataContainer);
+            	 StockQuoteIO.writeTextFile(fileLocation, stockQuoteDataContainer);
+            	 break;
+        	 case "JSON":
+        		 BrokerIO.writeJSONFile(fileLocation, brokerDataContainer);
+            	 InvestmentCompanyIO.writeJSONFile(fileLocation, investmentCompanyDataContainer);
+            	 InvestorIO.writeJSONFile(fileLocation, investorDataContainer);
+            	 StockQuoteIO.writeJSONFile(fileLocation, stockQuoteDataContainer);
+            	 break;
+        	 case "XML":
+        		 BrokerIO.writeXMLFile(fileLocation, brokerDataContainer);
+            	 InvestmentCompanyIO.writeXMLFile(fileLocation, investmentCompanyDataContainer);
+            	 InvestorIO.writeXMLFile(fileLocation, investorDataContainer);
+            	 StockQuoteIO.writeXMLFile(fileLocation, stockQuoteDataContainer);
+        		 break;
+        	default:
+        		//TODO: Make this throw a popup error
+        		System.out.println("Save error");
+        	 }            
          } catch (MyFileException exp) {
             new FileIOErrorPopup(mainMenu, exp);
          }
       } else if (menuItemClicked.equals("Load Data")) {
          try {
-            // All 4 types for demonstration
-           // stockQuoteDataContainer.setStockQuoteList(StockQuoteIO.readSerializedFile(fileLocation));
-           // stockQuoteDataContainer.setStockQuoteList(StockQuoteIO.readTextFile(fileLocation));
-           // stockQuoteDataContainer.setStockQuoteList(StockQuoteIO.readXMLFile(fileLocation).getStockQuoteList());
-        	 investorDataContainer.setInvestorList(InvestorIO.readJSONFile(fileLocation));
-        	 brokerDataContainer.setBrokerList(BrokerIO.readJSONFile(fileLocation));
-        	 investmentCompanyDataContainer.setcompanyList(InvestmentCompanyIO.readJSONFile(fileLocation));
-        	 stockQuoteDataContainer.setStockQuoteList(StockQuoteIO.readJSONFile(fileLocation));
+        	 switch(saveFormat) {
+        	 case "Text":
+        		 investorDataContainer.setInvestorList(InvestorIO.readTextFile(fileLocation));
+            	 brokerDataContainer.setBrokerList(BrokerIO.readTextFile(fileLocation));
+            	 investmentCompanyDataContainer.setcompanyList(InvestmentCompanyIO.readTextFile(fileLocation));
+            	 stockQuoteDataContainer.setStockQuoteList(StockQuoteIO.readTextFile(fileLocation));
+        		 break;
+        	 case "JSON":
+            	 investorDataContainer.setInvestorList(InvestorIO.readJSONFile(fileLocation));
+            	 brokerDataContainer.setBrokerList(BrokerIO.readJSONFile(fileLocation));
+            	 investmentCompanyDataContainer.setcompanyList(InvestmentCompanyIO.readJSONFile(fileLocation));
+            	 stockQuoteDataContainer.setStockQuoteList(StockQuoteIO.readJSONFile(fileLocation));
+        		 break;
+        	 case "XML":
+        		 //investorDataContainer.setInvestorList(InvestorIO.readXMLFile(fileLocation));
+            	 //brokerDataContainer.setBrokerList(BrokerIO.readXMLFile(fileLocation));
+            	 //investmentCompanyDataContainer.setcompanyList(InvestmentCompanyIO.readXMLFile(fileLocation));
+            	 //stockQuoteDataContainer.setStockQuoteList(StockQuoteIO.readXMLFile(fileLocation));
+        		 break;
+        	 default:
+         		//TODO: Make this throw a popup error
+         		System.out.println("Save error");
+        	 }
+
          } catch (MyFileException exp) {
             new FileIOErrorPopup(mainMenu, exp);
          }
+      } else if(menuItemClicked.equals("XML")) {
+    	  saveFormat = "XML";
+    	  
+      } else if(menuItemClicked.equals("Text")) {
+    	  saveFormat = "Text";
+    	  
+      } else if(menuItemClicked.equals("JSON")) {
+    	  saveFormat = "JSON";
       }
    }
 

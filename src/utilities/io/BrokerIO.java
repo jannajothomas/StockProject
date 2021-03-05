@@ -14,6 +14,7 @@ import datacontainers.StockQuoteDataContainer;
 import java.io.PrintWriter;
 import datamodels.Broker;
 import datamodels.StockQuote;
+import exceptionhandlers.InvalidDataException;
 import exceptionhandlers.MyFileException;
 import utilities.date.DateFunctions;
 
@@ -21,9 +22,12 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -47,7 +51,7 @@ public class BrokerIO implements Serializable {
 	         // Create output file
 	         // We are putting it in a location specified when the program is run
 	         // This is done via a command line argument
-	         textFile = new PrintWriter(fileLocation + "broker.ser");
+	         textFile = new PrintWriter(fileLocation + "brokers.txt");
 
 	         // Loop through the array list of stockquotes and print delimited text to a file
 	         for (Broker broker : datacontainer.getBrokerList()) {
@@ -164,4 +168,39 @@ public class BrokerIO implements Serializable {
          throw new MyFileException(exp.getMessage());
       }
    }
+
+public static ArrayList<Broker> readTextFile(String fileLocation) throws MyFileException {
+	ArrayList<Broker> listOfBrokers = new ArrayList<>();
+	
+	try {
+		boolean eof = false;
+		BufferedReader textFile = new BufferedReader(new FileReader(fileLocation + "/brokers.txt"));
+		while(!eof) {
+			String lineFromFile = textFile.readLine();
+			if(lineFromFile == null) {
+				eof = true;
+			} else {
+				Broker broker = new Broker();
+				
+				String[] lineElements = lineFromFile.split(",");
+				System.out.println(lineElements);
+				broker.setName(lineElements[0]);
+				broker.setAddress(lineElements[1]);
+				broker.setId(Long.parseLong(lineElements[2]));
+				broker.setDateOfBirth(DateFunctions.stringToDate(lineElements[3]));
+				broker.setDateOfHire(DateFunctions.stringToDate(lineElements[4]));
+				broker.setDateOfTermination(DateFunctions.stringToDate(lineElements[5]));
+				broker.setSalary(Double.parseDouble(lineElements[6]));
+				System.out.println(":" + lineElements[7] + ":");
+				broker.setStatus(lineElements[7]);
+				listOfBrokers.add(broker);
+			}
+		}
+		return listOfBrokers;
+	} catch ( IOException | InvalidDataException exp) {
+	    throw new MyFileException(exp.getMessage());
+	 }
+	
+
+}
 }

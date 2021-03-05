@@ -56,7 +56,7 @@ public class StockQuoteIO implements Serializable {
          // Create output file
          // We are putting it in a location specified when the program is run
          // This is done via a command line argument
-         textFile = new PrintWriter(fileLocation + "stockquotes.ser");
+         textFile = new PrintWriter(fileLocation + "stockquotes.txt");
 
          // Loop through the array list of stockquotes and print delimited text to a file
          for (StockQuote quote : datacontainer.getStockQuoteList()) {
