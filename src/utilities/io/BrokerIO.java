@@ -50,7 +50,6 @@ public class BrokerIO implements Serializable {
 	         textFile = new PrintWriter(fileLocation + "broker.ser");
 
 	         // Loop through the array list of stockquotes and print delimited text to a file
-	         //TODO: Make  sure quote has all required elements
 	         for (Broker broker : datacontainer.getBrokerList()) {
 	        	 textFile.println(broker.getName() + "," + broker.getAddress() + "," + broker.getId() + "," + DateFunctions.dateToString(broker.getDateOfBirth()) + "," + DateFunctions.dateToString(broker.getDateOfHire()) + "," + DateFunctions.dateToString(broker.getDateOfTermination()) +  "," + broker.getSalary() +  "," + broker.getStatus());
 	            //textFile.println(quote.getTickerSymbol() + "," + quote.getValue()

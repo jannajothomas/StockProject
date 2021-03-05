@@ -103,6 +103,7 @@ public class StockQuoteIO implements Serializable {
     */
    public static void writeXMLFile(String fileLocation, StockQuoteDataContainer stockquoteDataContainer) throws MyFileException {
       try {
+    	  System.out.println(fileLocation + "/stockquotes.ser");
          // Create the format of the xml
          JAXBContext jaxbContext = JAXBContext.newInstance(StockQuoteDataContainer.class);
          // Create the marshaller

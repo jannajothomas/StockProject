@@ -116,25 +116,28 @@ public class MainMenuController implements ActionListener {
     	  ListAllInvestorsController reportController = new ListAllInvestorsController(investorDataContainer);}
       
 
-else if (menuItemClicked.equals("Exit")) {
-   System.exit(0);
+		else if (menuItemClicked.equals("Exit")) {
+		   System.exit(0);
 
       
       } else if (menuItemClicked.equals("Save Data")) {
          try {
-        	 //TODO:  Trying to get these to work one at a time
-            // All 4 types for demonstration
+
             //StockQuoteIO.writeSerializedFile(fileLocation, stockQuoteDataContainer);
         	 BrokerIO.writeTextFile(fileLocation, brokerDataContainer);
         	 InvestmentCompanyIO.writeTextFile(fileLocation, investmentCompanyDataContainer);
         	 InvestorIO.writeTextFile(fileLocation, investorDataContainer);
         	 StockQuoteIO.writeTextFile(fileLocation, stockQuoteDataContainer);
+        	 
+        	 //BrokerIO.writeXMLFile(fileLocation, brokerDataContainer);
+        	 //InvestmentCompanyIO.writeXMLFile(fileLocation, investmentCompanyDataContainer);
+        	 //InvestorIO.writeXMLFile(fileLocation, investorDataContainer);
+        	// StockQuoteIO.writeXMLFile(fileLocation, stockQuoteDataContainer);
             
-
-           // StockQuoteIO.writeXMLFile(fileLocation, stockQuoteDataContainer);
-           // StockQuoteIO.writeJSONFile(fileLocation, stockQuoteDataContainer);
-            
-            // to-do  Add additional calls to write methods for the other objects
+        	 BrokerIO.writeJSONFile(fileLocation, brokerDataContainer);
+        	 InvestmentCompanyIO.writeJSONFile(fileLocation, investmentCompanyDataContainer);
+        	 InvestorIO.writeJSONFile(fileLocation, investorDataContainer);
+        	 StockQuoteIO.writeJSONFile(fileLocation, stockQuoteDataContainer);
             
          } catch (MyFileException exp) {
             new FileIOErrorPopup(mainMenu, exp);
@@ -142,10 +145,13 @@ else if (menuItemClicked.equals("Exit")) {
       } else if (menuItemClicked.equals("Load Data")) {
          try {
             // All 4 types for demonstration
-            stockQuoteDataContainer.setStockQuoteList(StockQuoteIO.readSerializedFile(fileLocation));
-            stockQuoteDataContainer.setStockQuoteList(StockQuoteIO.readTextFile(fileLocation));
-            stockQuoteDataContainer.setStockQuoteList(StockQuoteIO.readXMLFile(fileLocation).getStockQuoteList());
-            stockQuoteDataContainer.setStockQuoteList(StockQuoteIO.readJSONFile(fileLocation));
+           // stockQuoteDataContainer.setStockQuoteList(StockQuoteIO.readSerializedFile(fileLocation));
+           // stockQuoteDataContainer.setStockQuoteList(StockQuoteIO.readTextFile(fileLocation));
+           // stockQuoteDataContainer.setStockQuoteList(StockQuoteIO.readXMLFile(fileLocation).getStockQuoteList());
+        	 investorDataContainer.setInvestorList(InvestorIO.readJSONFile(fileLocation));
+        	 brokerDataContainer.setBrokerList(BrokerIO.readJSONFile(fileLocation));
+        	 investmentCompanyDataContainer.setcompanyList(InvestmentCompanyIO.readJSONFile(fileLocation));
+        	 stockQuoteDataContainer.setStockQuoteList(StockQuoteIO.readJSONFile(fileLocation));
          } catch (MyFileException exp) {
             new FileIOErrorPopup(mainMenu, exp);
          }
