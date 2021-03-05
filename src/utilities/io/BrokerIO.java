@@ -26,7 +26,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+//import java.util.List;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -169,12 +169,12 @@ public class BrokerIO implements Serializable {
       }
    }
 
-public static ArrayList<Broker> readTextFile(String fileLocation) throws MyFileException {
+public static ArrayList<Broker> readTextFile(String fileLocation) throws MyFileException{
 	ArrayList<Broker> listOfBrokers = new ArrayList<>();
-	
+	BufferedReader textFile = null;
 	try {
 		boolean eof = false;
-		BufferedReader textFile = new BufferedReader(new FileReader(fileLocation + "/brokers.txt"));
+		textFile = new BufferedReader(new FileReader(fileLocation + "/brokers.txt"));
 		while(!eof) {
 			String lineFromFile = textFile.readLine();
 			if(lineFromFile == null) {
@@ -196,11 +196,11 @@ public static ArrayList<Broker> readTextFile(String fileLocation) throws MyFileE
 				listOfBrokers.add(broker);
 			}
 		}
+		textFile.close();
 		return listOfBrokers;
 	} catch ( IOException | InvalidDataException exp) {
 	    throw new MyFileException(exp.getMessage());
-	 }
+	 } 
 	
-
 }
 }

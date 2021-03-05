@@ -12,8 +12,11 @@ import datacontainers.InvestmentCompanyDataContainer;
 import datacontainers.StockQuoteDataContainer;
 
 import java.io.PrintWriter;
+
+import datamodels.Broker;
 import datamodels.InvestmentCompany;
 import datamodels.StockQuote;
+import exceptionhandlers.InvalidDataException;
 import exceptionhandlers.MyFileException;
 import utilities.date.DateFunctions;
 
@@ -21,10 +24,11 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+//import java.util.List;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -58,7 +62,7 @@ public class InvestmentCompanyIO implements Serializable {
 	         // Create output file
 	         // We are putting it in a location specified when the program is run
 	         // This is done via a command line argument
-	         textFile = new PrintWriter(fileLocation + "companies.ser");
+	         textFile = new PrintWriter(fileLocation + "companies.txt");
 
 	         // Loop through the array list of stockquotes and print delimited text to a file
 	         for (InvestmentCompany company : datacontainer.getcompanyList()) {
@@ -184,8 +188,34 @@ public class InvestmentCompanyIO implements Serializable {
    }
 
 
-public static List<InvestmentCompany> readTextFile(String fileLocation) {
-	// TODO Auto-generated method stub
-	return null;
+public static ArrayList<InvestmentCompany> readTextFile(String fileLocation) throws MyFileException {
+	ArrayList<InvestmentCompany> listOfCompanies = new  ArrayList<>();
+	BufferedReader textFile = null;
+	try {
+		boolean eof = false;
+	textFile = new BufferedReader(new FileReader(fileLocation + "/companies.txt"));
+	while(!eof) {
+		String lineFromFile = textFile.readLine();
+		if(lineFromFile == null) {
+			eof = true;
+		} else {
+			InvestmentCompany investmentCompany = new InvestmentCompany();
+			
+			String[] lineElements = lineFromFile.split(",");
+			investmentCompany.setCompanyName(lineElements[0]);
+			
+			listOfCompanies.add(investmentCompany);
+		}
+	}
+	textFile.close();
+	return listOfCompanies;
+		
+	}catch ( IOException | InvalidDataException exp) {
+	         throw new MyFileException(exp.getMessage());
+     }
 }
 }
+
+
+
+

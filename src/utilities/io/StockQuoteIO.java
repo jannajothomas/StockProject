@@ -103,16 +103,20 @@ public class StockQuoteIO implements Serializable {
     */
    public static void writeXMLFile(String fileLocation, StockQuoteDataContainer stockquoteDataContainer) throws MyFileException {
       try {
-    	  System.out.println(fileLocation + "/stockquotes.ser");
-         // Create the format of the xml
+    	  System.out.println("checkpoint1");
+    	  //System.out.println(fileLocation + "/stockquotes.xml");
          JAXBContext jaxbContext = JAXBContext.newInstance(StockQuoteDataContainer.class);
+         System.out.println("checkpoitn2");
          // Create the marshaller
          Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
          // Create nicely formatted xml
          jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
          //Marshal the stockquotes list into an xml file
          jaxbMarshaller.marshal(stockquoteDataContainer, new File(fileLocation + "/stockquotes.xml"));
+         jaxbMarshaller.marshal(stockquoteDataContainer, System.out);
       } catch (JAXBException exp) {
+    	  System.out.println(exp);
+    	  exp.printStackTrace();
          throw new MyFileException(exp.getMessage());
       }
    }
@@ -184,10 +188,10 @@ public class StockQuoteIO implements Serializable {
    public static ArrayList<StockQuote> readTextFile(String fileLocation) throws MyFileException {
 
       ArrayList<StockQuote> listOfStockQuotes = new ArrayList<>();
-
+      BufferedReader textFile = null;
       try {
          boolean eof = false;
-         BufferedReader textFile = new BufferedReader(new FileReader(fileLocation + "/stockquotes.txt"));
+         textFile = new BufferedReader(new FileReader(fileLocation + "/stockquotes.txt"));
          while (!eof) {
             String lineFromFile = textFile.readLine();
             if (lineFromFile == null) {
@@ -212,6 +216,7 @@ public class StockQuoteIO implements Serializable {
                listOfStockQuotes.add(quote);
             }
          }
+         textFile.close();
          return listOfStockQuotes;
       } catch (MyFileException | IOException exp) {
          throw new MyFileException(exp.getMessage());

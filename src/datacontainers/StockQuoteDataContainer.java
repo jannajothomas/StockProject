@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 // Required to use JAXB XML library
-@XmlRootElement(name = "stockQuoteList")
+@XmlRootElement(name = "stockQuoteDataContainer")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class StockQuoteDataContainer {
 
@@ -26,7 +26,7 @@ public class StockQuoteDataContainer {
     * Stores in FIFO order
     */
    // Required to use JAXB XML library
-   @XmlElement(name = "stockquote")   
+   @XmlElement(name = "stockQuote")   
    private List<StockQuote> stockQuoteList = new ArrayList<>();
 
    /**

@@ -98,7 +98,7 @@ public class MainMenuController implements ActionListener {
       
       } else if (menuItemClicked.equals("Save Data")) {
          try {
-        	 System.out.println("Save format is " + saveFormat);
+        	 //System.out.println("Save format is " + saveFormat);
         	 switch(saveFormat) {
         	 
         	 case "Text":
@@ -114,20 +114,25 @@ public class MainMenuController implements ActionListener {
             	 StockQuoteIO.writeJSONFile(fileLocation, stockQuoteDataContainer);
             	 break;
         	 case "XML":
+        		 System.out.println("but do I make it here?");
+        		 StockQuoteIO.writeXMLFile(fileLocation, stockQuoteDataContainer);
+        		 System.out.println("Marco");
         		 BrokerIO.writeXMLFile(fileLocation, brokerDataContainer);
             	 InvestmentCompanyIO.writeXMLFile(fileLocation, investmentCompanyDataContainer);
             	 InvestorIO.writeXMLFile(fileLocation, investorDataContainer);
-            	 StockQuoteIO.writeXMLFile(fileLocation, stockQuoteDataContainer);
+            	 
         		 break;
         	default:
         		//TODO: Make this throw a popup error
         		System.out.println("Save error");
         	 }            
          } catch (MyFileException exp) {
+        	 System.out.println("in  this place here");
             new FileIOErrorPopup(mainMenu, exp);
          }
       } else if (menuItemClicked.equals("Load Data")) {
          try {
+        	// System.out.println("hereeo");
         	 switch(saveFormat) {
         	 case "Text":
         		 investorDataContainer.setInvestorList(InvestorIO.readTextFile(fileLocation));
@@ -142,10 +147,11 @@ public class MainMenuController implements ActionListener {
             	 stockQuoteDataContainer.setStockQuoteList(StockQuoteIO.readJSONFile(fileLocation));
         		 break;
         	 case "XML":
-        		 //investorDataContainer.setInvestorList(InvestorIO.readXMLFile(fileLocation));
-            	 //brokerDataContainer.setBrokerList(BrokerIO.readXMLFile(fileLocation));
-            	 //investmentCompanyDataContainer.setcompanyList(InvestmentCompanyIO.readXMLFile(fileLocation));
-            	 //stockQuoteDataContainer.setStockQuoteList(StockQuoteIO.readXMLFile(fileLocation));
+        		 System.out.println("here");
+        		 investorDataContainer.setInvestorList(InvestorIO.readXMLFile(fileLocation).getInvestorList());
+            	 brokerDataContainer.setBrokerList(BrokerIO.readXMLFile(fileLocation).getBrokerList());
+            	 investmentCompanyDataContainer.setcompanyList(InvestmentCompanyIO.readXMLFile(fileLocation).getcompanyList());
+            	 stockQuoteDataContainer.setStockQuoteList(StockQuoteIO.readXMLFile(fileLocation).getStockQuoteList());
         		 break;
         	 default:
          		//TODO: Make this throw a popup error
@@ -153,6 +159,7 @@ public class MainMenuController implements ActionListener {
         	 }
 
          } catch (MyFileException exp) {
+        	 System.out.println("in  this catch");
             new FileIOErrorPopup(mainMenu, exp);
          }
       } else if(menuItemClicked.equals("XML")) {

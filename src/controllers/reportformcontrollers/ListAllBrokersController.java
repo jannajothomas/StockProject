@@ -101,7 +101,7 @@ public class ListAllBrokersController implements ActionListener {
       for (Broker abroker : brokerDataContainer.getBrokerList()) {
 
          // Create a vector that is one row in the table
-         Vector tableRow = new Vector();
+         Vector<Comparable> tableRow = new Vector();
 
          // Add the data to the vector
          tableRow.add(abroker.getName());
