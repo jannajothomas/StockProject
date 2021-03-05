@@ -1,5 +1,8 @@
 package view;
 
+import javax.swing.ButtonGroup;
+import javax.swing.JRadioButtonMenuItem;
+
 import controllers.MainMenuController;
 
 public class MainMenu extends javax.swing.JFrame {
@@ -24,8 +27,14 @@ public class MainMenu extends javax.swing.JFrame {
    private javax.swing.JMenuItem exitApplication = new javax.swing.JMenuItem("Exit");
    private javax.swing.JMenuItem saveData = new javax.swing.JMenuItem("Save Data");
    private javax.swing.JMenuItem loadData = new javax.swing.JMenuItem("Load Data");
-   private javax.swing.JMenu setLogLevel = new javax.swing.JMenu("Set Log Level");
-
+   
+   //Add menu items for set format menu
+   private javax.swing.JMenu setFormat = new  javax.swing.JMenu("Set Format");
+   private javax.swing.ButtonGroup group = new javax.swing.ButtonGroup();
+   private javax.swing.JRadioButtonMenuItem JSON = new  javax.swing.JRadioButtonMenuItem("JSON", true);
+   private javax.swing.JRadioButtonMenuItem Text = new  javax.swing.JRadioButtonMenuItem("Text");
+   private javax.swing.JRadioButtonMenuItem XML = new  javax.swing.JRadioButtonMenuItem("XML");
+   
    // Menu bar that contains the top level menu options
    private javax.swing.JMenuBar menuBar = new javax.swing.JMenuBar();
 
@@ -44,6 +53,19 @@ public class MainMenu extends javax.swing.JFrame {
       // Add the sub menu items
       fileMenuOption.add(saveData);
       fileMenuOption.add(loadData);
+      
+      //Add menu items for setFomat radio menu
+      fileMenuOption.addSeparator();
+      fileMenuOption.add(setFormat);
+      setFormat.add(JSON);
+      group.add(JSON);
+      setFormat.add(Text);
+      group.add(Text);
+      setFormat.add(XML);
+      group.add(XML);
+      fileMenuOption.addSeparator();
+      
+      //resume regular menu
       fileMenuOption.add(exitApplication);
       StockQuotesMenuOption.add(addStockQuote);
       StockQuotesMenuOption.add(listAllStockQuotes);
