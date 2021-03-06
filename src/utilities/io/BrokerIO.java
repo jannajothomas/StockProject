@@ -9,15 +9,11 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
 import datacontainers.BrokerDataContainer;
-import datacontainers.StockQuoteDataContainer;
-
 import java.io.PrintWriter;
 import datamodels.Broker;
-import datamodels.StockQuote;
 import exceptionhandlers.InvalidDataException;
 import exceptionhandlers.MyFileException;
 import utilities.date.DateFunctions;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -35,13 +31,16 @@ import javax.xml.bind.Unmarshaller;
 
 public class BrokerIO implements Serializable {
 
-   /**
+	private static final long serialVersionUID = 1L;
+
+/**
     * Constructor is declared private because the IO classes are utilities which
     * contain static methods and should never be instantiated
     */
    private BrokerIO() {
    }
 
+   /*
    public static void writeTextFile(String fileLocation, BrokerDataContainer datacontainer) throws MyFileException {
 
 	      PrintWriter textFile = null;
@@ -69,7 +68,7 @@ public class BrokerIO implements Serializable {
 	         }
 	      }
 	   }
-   
+   */
    
    /**
     * Creates an xml output file containing all Brokers in the Broker
@@ -98,7 +97,6 @@ public class BrokerIO implements Serializable {
    public static void writeJSONFile(String fileLocation, BrokerDataContainer datacontainer) throws MyFileException {
 
       PrintWriter jsonFile = null;
-
       try {
          // Create output file
          jsonFile = new PrintWriter(fileLocation + "/brokers.json");
@@ -123,12 +121,10 @@ public class BrokerIO implements Serializable {
 
    /**
     * Read in an XML file of Broker objects
-    *
     * @param fileLocation
     * @return
     */
    public static BrokerDataContainer readXMLFile(String fileLocation) throws MyFileException {
-
       try {
          // Create the format of the xml
          JAXBContext jaxbContext = JAXBContext.newInstance(BrokerDataContainer.class);
@@ -168,7 +164,7 @@ public class BrokerIO implements Serializable {
          throw new MyFileException(exp.getMessage());
       }
    }
-
+/*
 public static ArrayList<Broker> readTextFile(String fileLocation) throws MyFileException{
 	ArrayList<Broker> listOfBrokers = new ArrayList<>();
 	BufferedReader textFile = null;
@@ -202,5 +198,5 @@ public static ArrayList<Broker> readTextFile(String fileLocation) throws MyFileE
 	    throw new MyFileException(exp.getMessage());
 	 } 
 	
-}
+}*/
 }
