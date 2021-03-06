@@ -9,27 +9,16 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
 import datacontainers.InvestmentCompanyDataContainer;
-import datacontainers.StockQuoteDataContainer;
-
 import java.io.PrintWriter;
-
-import datamodels.Broker;
 import datamodels.InvestmentCompany;
-import datamodels.StockQuote;
-import exceptionhandlers.InvalidDataException;
 import exceptionhandlers.MyFileException;
-import utilities.date.DateFunctions;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
-//import java.util.List;
-
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -37,22 +26,13 @@ import javax.xml.bind.Unmarshaller;
 
 public class InvestmentCompanyIO implements Serializable {
 
-   /**
-    * Constructor is declared private because the IO classes are utilities which
-    * contain static methods and should never be instantiated
-    */
-   private InvestmentCompanyIO() {
-   }
+	private static final long serialVersionUID = 1L;
+
+	   private InvestmentCompanyIO() {
+	   }
+	   
    
-   
-   /**
-    * Writes out a text file containing all stock quotes in the stock quote data
-    * container
-    *
-    * The format of the text file is:
-    *
-    * Example: FA301,STOCKQUOTE
-    */
+  /*
    public static void writeTextFile(String fileLocation, InvestmentCompanyDataContainer datacontainer) throws MyFileException {
 
 	      PrintWriter textFile = null;
@@ -80,7 +60,7 @@ public class InvestmentCompanyIO implements Serializable {
 	         }
 	      }
 	   }
-   
+   */
 
    /**
     * Creates an xml output file containing all InvestmentCompanys in the InvestmentCompany
@@ -172,22 +152,16 @@ public class InvestmentCompanyIO implements Serializable {
          // fromJson returns an array
          InvestmentCompany[] investmentCompanyArray = gson.fromJson(jsonFile, InvestmentCompany[].class);
 
-         
-         //this.investmentCompanyDataContainer.getcompanyList().add(newInvestmentCompany);
-         
-         
-         //listOfStockQuotes.addAll(Arrays.asList(stockquoteArray));
          // Convert to arraylist for the data model
          listOfCompanies.addAll(Arrays.asList(investmentCompanyArray));
-         //companyList.addAll(Arrays.asList(listOfInvestmentCompanies)))
-        // listOfInvestmentCompanys.addAll(Arrays.asList(InvestmentCompanyArray));
+
          return listOfCompanies;
       } catch (JsonIOException | JsonSyntaxException | FileNotFoundException exp) {
          throw new MyFileException(exp.getMessage());
       }
    }
 
-
+/*
 public static ArrayList<InvestmentCompany> readTextFile(String fileLocation) throws MyFileException {
 	ArrayList<InvestmentCompany> listOfCompanies = new  ArrayList<>();
 	BufferedReader textFile = null;
@@ -213,7 +187,7 @@ public static ArrayList<InvestmentCompany> readTextFile(String fileLocation) thr
 	}catch ( IOException | InvalidDataException exp) {
 	         throw new MyFileException(exp.getMessage());
      }
-}
+}*/
 }
 
 
