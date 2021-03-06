@@ -100,13 +100,6 @@ public class MainMenuController implements ActionListener {
          try {
         	 //System.out.println("Save format is " + saveFormat);
         	 switch(saveFormat) {
-        	 
-        	 case "Text":
-        		 BrokerIO.writeTextFile(fileLocation, brokerDataContainer);
-            	 InvestmentCompanyIO.writeTextFile(fileLocation, investmentCompanyDataContainer);
-            	 InvestorIO.writeTextFile(fileLocation, investorDataContainer);
-            	 StockQuoteIO.writeTextFile(fileLocation, stockQuoteDataContainer);
-            	 break;
         	 case "JSON":
         		 BrokerIO.writeJSONFile(fileLocation, brokerDataContainer);
             	 InvestmentCompanyIO.writeJSONFile(fileLocation, investmentCompanyDataContainer);
@@ -132,12 +125,6 @@ public class MainMenuController implements ActionListener {
          try {
         	// System.out.println("hereeo");
         	 switch(saveFormat) {
-        	 case "Text":
-        		 investorDataContainer.setInvestorList(InvestorIO.readTextFile(fileLocation));
-            	 brokerDataContainer.setBrokerList(BrokerIO.readTextFile(fileLocation));
-            	 investmentCompanyDataContainer.setcompanyList(InvestmentCompanyIO.readTextFile(fileLocation));
-            	 stockQuoteDataContainer.setStockQuoteList(StockQuoteIO.readTextFile(fileLocation));
-        		 break;
         	 case "JSON":
             	 investorDataContainer.setInvestorList(InvestorIO.readJSONFile(fileLocation));
             	 brokerDataContainer.setBrokerList(BrokerIO.readJSONFile(fileLocation));
