@@ -39,36 +39,6 @@ public class BrokerIO implements Serializable {
     */
    private BrokerIO() {
    }
-
-   /*
-   public static void writeTextFile(String fileLocation, BrokerDataContainer datacontainer) throws MyFileException {
-
-	      PrintWriter textFile = null;
-
-	      try {
-
-	         // Create output file
-	         // We are putting it in a location specified when the program is run
-	         // This is done via a command line argument
-	         textFile = new PrintWriter(fileLocation + "brokers.txt");
-
-	         // Loop through the array list of stockquotes and print delimited text to a file
-	         for (Broker broker : datacontainer.getBrokerList()) {
-	        	 textFile.println(broker.getName() + "," + broker.getAddress() + "," + broker.getId() + "," + DateFunctions.dateToString(broker.getDateOfBirth()) + "," + DateFunctions.dateToString(broker.getDateOfHire()) + "," + DateFunctions.dateToString(broker.getDateOfTermination()) +  "," + broker.getSalary() +  "," + broker.getStatus());
-	            //textFile.println(quote.getTickerSymbol() + "," + quote.getValue()
-	                //    + "," + DateFunctions.dateToString(quote.getQuoteDate()));
-	         }
-	      } catch (FileNotFoundException exp) {
-	         throw new MyFileException(exp.getMessage());
-	      } finally {
-	         // Flush the output stream and close the file
-	         if (textFile != null) {
-	            textFile.flush();
-	            textFile.close();
-	         }
-	      }
-	   }
-   */
    
    /**
     * Creates an xml output file containing all Brokers in the Broker
@@ -164,39 +134,5 @@ public class BrokerIO implements Serializable {
          throw new MyFileException(exp.getMessage());
       }
    }
-/*
-public static ArrayList<Broker> readTextFile(String fileLocation) throws MyFileException{
-	ArrayList<Broker> listOfBrokers = new ArrayList<>();
-	BufferedReader textFile = null;
-	try {
-		boolean eof = false;
-		textFile = new BufferedReader(new FileReader(fileLocation + "/brokers.txt"));
-		while(!eof) {
-			String lineFromFile = textFile.readLine();
-			if(lineFromFile == null) {
-				eof = true;
-			} else {
-				Broker broker = new Broker();
-				
-				String[] lineElements = lineFromFile.split(",");
-				System.out.println(lineElements);
-				broker.setName(lineElements[0]);
-				broker.setAddress(lineElements[1]);
-				broker.setId(Long.parseLong(lineElements[2]));
-				broker.setDateOfBirth(DateFunctions.stringToDate(lineElements[3]));
-				broker.setDateOfHire(DateFunctions.stringToDate(lineElements[4]));
-				broker.setDateOfTermination(DateFunctions.stringToDate(lineElements[5]));
-				broker.setSalary(Double.parseDouble(lineElements[6]));
-				System.out.println(":" + lineElements[7] + ":");
-				broker.setStatus(lineElements[7]);
-				listOfBrokers.add(broker);
-			}
-		}
-		textFile.close();
-		return listOfBrokers;
-	} catch ( IOException | InvalidDataException exp) {
-	    throw new MyFileException(exp.getMessage());
-	 } 
-	
-}*/
+
 }

@@ -11,14 +11,11 @@ import com.google.gson.JsonSyntaxException;
 import datacontainers.InvestorDataContainer;
 import java.io.PrintWriter;
 import datamodels.Investor;
-import exceptionhandlers.InvalidDataException;
 import exceptionhandlers.MyFileException;
-import utilities.date.DateFunctions;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,33 +30,6 @@ public class InvestorIO implements Serializable {
 
 	private InvestorIO() {
 	}
-
-   /**
-    * Writes out a text file containing all investors in the investor data
-    * container
-    */
-	
-	/*
-   public static void writeTextFile(String fileLocation, InvestorDataContainer datacontainer) throws MyFileException {
-      PrintWriter textFile = null;
-      try {
-         // Create output file
-         textFile = new PrintWriter(fileLocation + "investors.txt");
-
-         // Loop through the array list of stockquotes and print delimited text to a file
-         for (Investor investor : datacontainer.getInvestorList()) {
-        	 textFile.println(investor.getName() + "," + investor.getAddress() + "," + investor.getId() + "," + DateFunctions.dateToString(investor.getDateOfBirth()) + "," + DateFunctions.dateToString(investor.getMemberSince()) + "," + investor.getListOfStocks()  + "," + investor.getListOfStocks());
-         }
-      } catch (FileNotFoundException exp) {
-         throw new MyFileException(exp.getMessage());
-      } finally {
-         // Flush the output stream and close the file
-         if (textFile != null) {
-            textFile.flush();
-            textFile.close();
-         }
-      }
-   }*/
 
    /**
     * Creates an xml output file containing all investors in the investor
@@ -154,71 +124,5 @@ public class InvestorIO implements Serializable {
          throw new MyFileException(exp.getMessage());
       }
    }
-
-   /*public static ArrayList<Investor> readTextFile(String fileLocation) throws MyFileException {
-		ArrayList<Investor> listOfInvestors = new ArrayList<>();
-		BufferedReader textFile = null;
-		try {
-			boolean eof = false;
-			textFile = new BufferedReader(new FileReader(fileLocation + "/investors.txt"));
-			while(!eof) {
-				String lineFromFile = textFile.readLine();
-				if(lineFromFile == null) {
-					eof = true;
-				} else {
-					Investor investor = new Investor();
-					
-					String[] lineElements = lineFromFile.split(",");
-					
-					System.out.println(lineElements[0]);
-					System.out.println(lineElements[1]);
-					System.out.println(lineElements[2]);
-					System.out.println(lineElements[3]);
-					System.out.println(lineElements[4]);
-					System.out.println("5" + lineElements[5]);
-					
-					
-					System.out.println("6" + lineElements[6]);
-					System.out.println(lineElements[7]);
-					System.out.println(lineElements[8]);
-					System.out.println(lineElements[9]);
-					System.out.println(lineElements[10]);
-					
-					investor.setName(lineElements[0]);
-					investor.setAddress(lineElements[1]);
-					investor.setId(Long.parseLong(lineElements[2]));
-					investor.setDateOfBirth(DateFunctions.stringToDate(lineElements[3]));
-					investor.setMemberSince(DateFunctions.stringToDate(lineElements[4]));
-					/*int x = 5;
-					while(lineElements[x] != null) {
-						InvestorStockQuote investorQuote = new InvestorStockQuote();
-						
-						quote.setStock(lineElements[x]);
-						quote.setShares(lineElements[x+1]);
-						investor.addStock(quote);
-
-			               
-			               // The third element is the date
-			              quote.setQuoteDate(DateFunctions.stringToDate(lineElements[x+2]));
-			              investor.
-			              investor.addStock(quote);
-						
-					}
-					//get total number of line elements
-					//itterate throught ot add stocks
-					
-					investor.addStock();
-					investor.setAccountValue(Double.parseDouble(lineElements[5]))
-					listOfInvestors.add(investor);
-				}
-			}
-			textFile.close();
-			return listOfInvestors;
-		} catch ( IOException | InvalidDataException exp) {
-		    throw new MyFileException(exp.getMessage());
-		 }
-		
-
-	}*/
 }
 
