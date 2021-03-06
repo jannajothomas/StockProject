@@ -105,7 +105,6 @@ public class StockQuoteIO implements Serializable {
 			throws MyFileException {
 		try {
 			JAXBContext jaxbContext = JAXBContext.newInstance(StockQuoteDataContainer.class);
-			System.out.println("checkpoitn2");
 			// Create the marshaller
 			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 			// Create nicely formatted xml

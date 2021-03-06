@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<brokerList>
+    <broker>
+        <address>4</address>
+        <dateOfBirth>2021-03-05T19:41:19-05:00</dateOfBirth>
+        <id>3</id>
+        <name>Sue</name>
+        <dateOfHire>2021-03-05T19:41:19-05:00</dateOfHire>
+        <dateOfTermination>2021-03-05T19:41:19-05:00</dateOfTermination>
+        <salary>1.0</salary>
+        <status>Full Time</status>
+    </broker>
+</brokerList>

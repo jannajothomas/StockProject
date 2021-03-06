@@ -1,19 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<stockQuoteDataContainer>
+<stockQuoteList>
     <stockQuote>
-        <quoteDate>2021-03-05T14:02:14-05:00</quoteDate>
-        <tickerSymbol>POE</tickerSymbol>
+        <quoteDate>2021-03-05T19:40:59-05:00</quoteDate>
+        <tickerSymbol>AAA</tickerSymbol>
         <value>1.0</value>
     </stockQuote>
-    <stockQuote>
-        <quoteDate>2021-03-05T14:02:14-05:00</quoteDate>
-        <tickerSymbol>OEM</tickerSymbol>
-        <value>2.0</value>
-    </stockQuote>
-    <stockQuote>
-        <quoteDate>2021-03-05T14:02:14-05:00</quoteDate>
-        <tickerSymbol>jjt</tickerSymbol>
-        <value>6.0</value>
-    </stockQuote>
     <stockQuoteMap/>
-</stockQuoteDataContainer>
+</stockQuoteList>
