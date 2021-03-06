@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 // Required to use JAXB XML library
-@XmlRootElement(name = "stockQuoteDataContainer")
+@XmlRootElement(name = "stockQuoteList")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class StockQuoteDataContainer {
 

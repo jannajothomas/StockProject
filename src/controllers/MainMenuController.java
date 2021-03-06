@@ -114,12 +114,10 @@ public class MainMenuController implements ActionListener {
             	 StockQuoteIO.writeJSONFile(fileLocation, stockQuoteDataContainer);
             	 break;
         	 case "XML":
-        		 System.out.println("but do I make it here?");
         		 StockQuoteIO.writeXMLFile(fileLocation, stockQuoteDataContainer);
-        		 System.out.println("Marco");
-        		 BrokerIO.writeXMLFile(fileLocation, brokerDataContainer);
-            	 InvestmentCompanyIO.writeXMLFile(fileLocation, investmentCompanyDataContainer);
-            	 InvestorIO.writeXMLFile(fileLocation, investorDataContainer);
+        		 //BrokerIO.writeXMLFile(fileLocation, brokerDataContainer);
+            	 //InvestmentCompanyIO.writeXMLFile(fileLocation, investmentCompanyDataContainer);
+            	 //InvestorIO.writeXMLFile(fileLocation, investorDataContainer);
             	 
         		 break;
         	default:

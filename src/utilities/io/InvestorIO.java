@@ -9,18 +9,11 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
 import datacontainers.InvestorDataContainer;
-import datacontainers.StockQuoteDataContainer;
-
 import java.io.PrintWriter;
-
-import datamodels.Broker;
 import datamodels.Investor;
-import datamodels.InvestorStockQuote;
-import datamodels.StockQuote;
 import exceptionhandlers.InvalidDataException;
 import exceptionhandlers.MyFileException;
 import utilities.date.DateFunctions;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -29,8 +22,6 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
-//import java.util.List;
-
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -38,30 +29,21 @@ import javax.xml.bind.Unmarshaller;
 
 public class InvestorIO implements Serializable {
 
-   /**
-    * Constructor is declared private because the IO classes are utilities which
-    * contain static methods and should never be instantiated
-    */
-   private InvestorIO() {
-   }
+	private static final long serialVersionUID = 1L;
+
+	private InvestorIO() {
+	}
 
    /**
-    * Writes out a text file containing all stock quotes in the stock quote data
+    * Writes out a text file containing all investors in the investor data
     * container
-    *
-    * The format of the text file is:
-    *
-    * Example: FA301,STOCKQUOTE
     */
+	
+	/*
    public static void writeTextFile(String fileLocation, InvestorDataContainer datacontainer) throws MyFileException {
-
       PrintWriter textFile = null;
-
       try {
-
          // Create output file
-         // We are putting it in a location specified when the program is run
-         // This is done via a command line argument
          textFile = new PrintWriter(fileLocation + "investors.txt");
 
          // Loop through the array list of stockquotes and print delimited text to a file
@@ -77,10 +59,8 @@ public class InvestorIO implements Serializable {
             textFile.close();
          }
       }
-   }
+   }*/
 
-   
-   
    /**
     * Creates an xml output file containing all investors in the investor
     * data container using the JAXB libraries
@@ -103,7 +83,6 @@ public class InvestorIO implements Serializable {
    /**
     * Writes out the investor data in JSON format containing all investors
     * in the stock quote data container
-    *
     */
    public static void writeJSONFile(String fileLocation, InvestorDataContainer datacontainer) throws MyFileException {
 
@@ -132,7 +111,6 @@ public class InvestorIO implements Serializable {
 
    /**
     * Read in an XML file of investor objects
-    *
     * @param fileLocation
     * @return
     */
@@ -148,7 +126,6 @@ public class InvestorIO implements Serializable {
       } catch (JAXBException exp) {
          throw new MyFileException(exp.getMessage());
       }
-
    }
 
    /**
@@ -178,7 +155,7 @@ public class InvestorIO implements Serializable {
       }
    }
 
-   public static ArrayList<Investor> readTextFile(String fileLocation) throws MyFileException {
+   /*public static ArrayList<Investor> readTextFile(String fileLocation) throws MyFileException {
 		ArrayList<Investor> listOfInvestors = new ArrayList<>();
 		BufferedReader textFile = null;
 		try {
@@ -231,7 +208,7 @@ public class InvestorIO implements Serializable {
 					//itterate throught ot add stocks
 					
 					investor.addStock();
-					investor.setAccountValue(Double.parseDouble(lineElements[5]))*/
+					investor.setAccountValue(Double.parseDouble(lineElements[5]))
 					listOfInvestors.add(investor);
 				}
 			}
@@ -242,6 +219,6 @@ public class InvestorIO implements Serializable {
 		 }
 		
 
-	}
+	}*/
 }
 

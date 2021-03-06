@@ -103,8 +103,6 @@ public class StockQuoteIO implements Serializable {
     */
    public static void writeXMLFile(String fileLocation, StockQuoteDataContainer stockquoteDataContainer) throws MyFileException {
       try {
-    	  System.out.println("checkpoint1");
-    	  //System.out.println(fileLocation + "/stockquotes.xml");
          JAXBContext jaxbContext = JAXBContext.newInstance(StockQuoteDataContainer.class);
          System.out.println("checkpoitn2");
          // Create the marshaller
@@ -115,7 +113,6 @@ public class StockQuoteIO implements Serializable {
          jaxbMarshaller.marshal(stockquoteDataContainer, new File(fileLocation + "/stockquotes.xml"));
          jaxbMarshaller.marshal(stockquoteDataContainer, System.out);
       } catch (JAXBException exp) {
-    	  System.out.println(exp);
     	  exp.printStackTrace();
          throw new MyFileException(exp.getMessage());
       }
