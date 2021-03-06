@@ -32,239 +32,241 @@ import utilities.date.DateFunctions;
 
 public class StockQuoteIO implements Serializable {
 
-   /**
-    * Constructor is declared private because the IO classes are utilities which
-    * contain static methods and should never be instantiated
-    */
-   private StockQuoteIO() {
-   }
+	private static final long serialVersionUID = 1L;
 
-   /**
-    * Writes out a text file containing all stock quotes in the stock quote data
-    * container
-    *
-    * The format of the text file is:
-    *
-    * Example: FA301,STOCKQUOTE
-    */
-   public static void writeTextFile(String fileLocation, StockQuoteDataContainer datacontainer) throws MyFileException {
+	/**
+	 * Constructor is declared private because the IO classes are utilities which
+	 * contain static methods and should never be instantiated
+	 */
+	private StockQuoteIO() {
+	}
 
-      PrintWriter textFile = null;
+	/**
+	 * Writes out a text file containing all stock quotes in the stock quote data
+	 * container
+	 *
+	 * The format of the text file is:
+	 *
+	 * Example: FA301,STOCKQUOTE
+	 */
+	public static void writeTextFile(String fileLocation, StockQuoteDataContainer datacontainer)
+			throws MyFileException {
 
-      try {
+		PrintWriter textFile = null;
 
-         // Create output file
-         // We are putting it in a location specified when the program is run
-         // This is done via a command line argument
-         textFile = new PrintWriter(fileLocation + "stockquotes.txt");
+		try {
 
-         // Loop through the array list of stockquotes and print delimited text to a file
-         for (StockQuote quote : datacontainer.getStockQuoteList()) {
-            textFile.println(quote.getTickerSymbol() + "," + quote.getValue()
-                    + "," + DateFunctions.dateToString(quote.getQuoteDate()));
-         }
-      } catch (FileNotFoundException exp) {
-         throw new MyFileException(exp.getMessage());
-      } finally {
-         // Flush the output stream and close the file
-         if (textFile != null) {
-            textFile.flush();
-            textFile.close();
-         }
-      }
-   }
+			// Create output file
+			// We are putting it in a location specified when the program is run
+			// This is done via a command line argument
+			textFile = new PrintWriter(fileLocation + "stockquotes.txt");
 
-   
+			// Loop through the array list of stockquotes and print delimited text to a file
+			for (StockQuote quote : datacontainer.getStockQuoteList()) {
+				textFile.println(quote.getTickerSymbol() + "," + quote.getValue() + ","
+						+ DateFunctions.dateToString(quote.getQuoteDate()));
+			}
+		} catch (FileNotFoundException exp) {
+			throw new MyFileException(exp.getMessage());
+		} finally {
+			// Flush the output stream and close the file
+			if (textFile != null) {
+				textFile.flush();
+				textFile.close();
+			}
+		}
+	}
 
-   
-   
-   /**
-    * Creates a serialized object output file containing all StockQuotes in the
-    * StockQuote data container
-    */
-   public static void writeSerializedFile(String fileLocation, StockQuoteDataContainer datacontainer) throws MyFileException {
-	   System.out.println(fileLocation + "/stockquotes.ser");
-	   try {
-         // Create output file
-         ObjectOutputStream serializedFile = new ObjectOutputStream(
-        		 new FileOutputStream(fileLocation + "/stockquotes.ser"));
-                // new FileOutputStream(fileLocation + "/stockquotes.ser"));
-         // Write out the data
-         serializedFile.writeObject(datacontainer.getStockQuoteList());
-         serializedFile.close();
-      } catch (IOException exp) {
-         throw new MyFileException("Can't serialize file");
-      }
-   }
+	/**
+	 * Creates a serialized object output file containing all StockQuotes in the
+	 * StockQuote data container
+	 */
+	public static void writeSerializedFile(String fileLocation, StockQuoteDataContainer datacontainer)
+			throws MyFileException {
+		System.out.println(fileLocation + "/stockquotes.ser");
+		try {
+			// Create output file
+			ObjectOutputStream serializedFile = new ObjectOutputStream(
+					new FileOutputStream(fileLocation + "/stockquotes.ser"));
+			// new FileOutputStream(fileLocation + "/stockquotes.ser"));
+			// Write out the data
+			serializedFile.writeObject(datacontainer.getStockQuoteList());
+			serializedFile.close();
+		} catch (IOException exp) {
+			throw new MyFileException("Can't serialize file");
+		}
+	}
 
-   /**
-    * Creates an xml output file containing all StockQuotes in the StockQuote
-    * data container using the JAXB libraries
-    */
-   public static void writeXMLFile(String fileLocation, StockQuoteDataContainer stockquoteDataContainer) throws MyFileException {
-      try {
-         JAXBContext jaxbContext = JAXBContext.newInstance(StockQuoteDataContainer.class);
-         System.out.println("checkpoitn2");
-         // Create the marshaller
-         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-         // Create nicely formatted xml
-         jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-         //Marshal the stockquotes list into an xml file
-         jaxbMarshaller.marshal(stockquoteDataContainer, new File(fileLocation + "/stockquotes.xml"));
-         jaxbMarshaller.marshal(stockquoteDataContainer, System.out);
-      } catch (JAXBException exp) {
-    	  exp.printStackTrace();
-         throw new MyFileException(exp.getMessage());
-      }
-   }
+	/**
+	 * Creates an xml output file containing all StockQuotes in the StockQuote data
+	 * container using the JAXB libraries
+	 */
+	public static void writeXMLFile(String fileLocation, StockQuoteDataContainer stockquoteDataContainer)
+			throws MyFileException {
+		try {
+			JAXBContext jaxbContext = JAXBContext.newInstance(StockQuoteDataContainer.class);
+			System.out.println("checkpoitn2");
+			// Create the marshaller
+			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+			// Create nicely formatted xml
+			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+			// Marshal the stockquotes list into an xml file
+			jaxbMarshaller.marshal(stockquoteDataContainer, new File(fileLocation + "/stockquotes.xml"));
+			jaxbMarshaller.marshal(stockquoteDataContainer, System.out);
+		} catch (JAXBException exp) {
+			exp.printStackTrace();
+			throw new MyFileException(exp.getMessage());
+		}
+	}
 
-   /**
-    * Writes out the StockQuote data in JSON format containing all StockQuotes
-    * in the stock quote data container
-    *
-    */
-   public static void writeJSONFile(String fileLocation, StockQuoteDataContainer datacontainer) throws MyFileException {
+	/**
+	 * Writes out the StockQuote data in JSON format containing all StockQuotes in
+	 * the stock quote data container
+	 *
+	 */
+	public static void writeJSONFile(String fileLocation, StockQuoteDataContainer datacontainer)
+			throws MyFileException {
 
-      PrintWriter jsonFile = null;
+		PrintWriter jsonFile = null;
 
-      try {
-         // Create output file
-         jsonFile = new PrintWriter(fileLocation + "/stockquotes.json");
+		try {
+			// Create output file
+			jsonFile = new PrintWriter(fileLocation + "/stockquotes.json");
 
-         // Create JSON object
-         Gson gson = new GsonBuilder().create();
+			// Create JSON object
+			Gson gson = new GsonBuilder().create();
 
-         // Convert stock quote list to JSON format
-         gson.toJson(datacontainer.getStockQuoteList(), jsonFile);
+			// Convert stock quote list to JSON format
+			gson.toJson(datacontainer.getStockQuoteList(), jsonFile);
 
-      } catch (JsonIOException | FileNotFoundException exp) {
-         throw new MyFileException(exp.getMessage());
-      } finally {
-         // Flush the output stream and close the file
-         if (jsonFile != null) {
-            jsonFile.flush();
-            jsonFile.close();
-         }
-      }
-   }
+		} catch (JsonIOException | FileNotFoundException exp) {
+			throw new MyFileException(exp.getMessage());
+		} finally {
+			// Flush the output stream and close the file
+			if (jsonFile != null) {
+				jsonFile.flush();
+				jsonFile.close();
+			}
+		}
+	}
 
-   /**
-    * Reads a set of stock quote objects from a serialized file and returns an
-    * array list of stock quotes
-    */
-   public static ArrayList<StockQuote> readSerializedFile(String fileLocation) throws MyFileException {
+	/**
+	 * Reads a set of stock quote objects from a serialized file and returns an
+	 * array list of stock quotes
+	 */
+	public static ArrayList<StockQuote> readSerializedFile(String fileLocation) throws MyFileException {
 
-      ArrayList<StockQuote> listOfStockQuotes = new ArrayList<>();
-     
-      try {
-    	 
-         ObjectInputStream serializedFile = new ObjectInputStream(
-                 new FileInputStream(fileLocation + "/stockquotes.ser"));
-         // Read the serialized object and cast to its original type
-         listOfStockQuotes = (ArrayList<StockQuote>) serializedFile.readObject();
-         serializedFile.close();
-         return listOfStockQuotes;
-      } catch (IOException | ClassNotFoundException exp) {
-         throw new MyFileException("Can't deserialize file");
-      }
-     
-   }
+		ArrayList<StockQuote> listOfStockQuotes = new ArrayList<>();
 
-   /**
-    * Reads a delimited text file of stock quotes and returns an array list of
-    * stock quotes.
-    *
-    * An end of file flag is used to keep track of whether we hit the end of the
-    * file, It starts out false and if we hit the end of file (null input), it
-    * changes to true and execution stops.
-    *
-    * The format of the text file is:
-    *
-    * Example: FA301,StockQuote
-    */
-   public static ArrayList<StockQuote> readTextFile(String fileLocation) throws MyFileException {
+		try {
 
-      ArrayList<StockQuote> listOfStockQuotes = new ArrayList<>();
-      BufferedReader textFile = null;
-      try {
-         boolean eof = false;
-         textFile = new BufferedReader(new FileReader(fileLocation + "/stockquotes.txt"));
-         while (!eof) {
-            String lineFromFile = textFile.readLine();
-            if (lineFromFile == null) {
-               eof = true;
-            } else {
-               // Create a stock quote
-               StockQuote quote = new StockQuote();
+			ObjectInputStream serializedFile = new ObjectInputStream(
+					new FileInputStream(fileLocation + "/stockquotes.ser"));
+			// Read the serialized object and cast to its original type
+			listOfStockQuotes = (ArrayList<StockQuote>) serializedFile.readObject();
+			serializedFile.close();
+			return listOfStockQuotes;
+		} catch (IOException | ClassNotFoundException exp) {
+			throw new MyFileException("Can't deserialize file");
+		}
 
-               // Split the input line into stock quote elements using the delimiter
-               String[] lineElements = lineFromFile.split(",");
+	}
 
-               // The first element is the ticker symbol
-               quote.setTickerSymbol(lineElements[0]);
+	/**
+	 * Reads a delimited text file of stock quotes and returns an array list of
+	 * stock quotes.
+	 *
+	 * An end of file flag is used to keep track of whether we hit the end of the
+	 * file, It starts out false and if we hit the end of file (null input), it
+	 * changes to true and execution stops.
+	 *
+	 * The format of the text file is:
+	 *
+	 * Example: FA301,StockQuote
+	 */
+	public static ArrayList<StockQuote> readTextFile(String fileLocation) throws MyFileException {
 
-               // The second element is the value
-               quote.setValue(Double.parseDouble(lineElements[1]));
-               
-               // The third element is the date
-              quote.setQuoteDate(DateFunctions.stringToDate(lineElements[1]));
-                       
-               // add the stock quote to the array list
-               listOfStockQuotes.add(quote);
-            }
-         }
-         textFile.close();
-         return listOfStockQuotes;
-      } catch (MyFileException | IOException exp) {
-         throw new MyFileException(exp.getMessage());
-      }
-   }
+		ArrayList<StockQuote> listOfStockQuotes = new ArrayList<>();
+		BufferedReader textFile = null;
+		try {
+			boolean eof = false;
+			textFile = new BufferedReader(new FileReader(fileLocation + "/stockquotes.txt"));
+			while (!eof) {
+				String lineFromFile = textFile.readLine();
+				if (lineFromFile == null) {
+					eof = true;
+				} else {
+					// Create a stock quote
+					StockQuote quote = new StockQuote();
 
-   /**
-    * Read in an XML file of StockQuote objects
-    *
-    * @param fileLocation
-    * @return
-    */
-   public static StockQuoteDataContainer readXMLFile(String fileLocation) throws MyFileException {
+					// Split the input line into stock quote elements using the delimiter
+					String[] lineElements = lineFromFile.split(",");
 
-      try {
-         // Create the format of the xml
-         JAXBContext jaxbContext = JAXBContext.newInstance(StockQuoteDataContainer.class);
-         // Create the unmarshaller
-         Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-         //Unmarshal the file
-         return (StockQuoteDataContainer) jaxbUnmarshaller.unmarshal(new File(fileLocation + "/stockquotes.xml"));
-      } catch (JAXBException exp) {
-         throw new MyFileException(exp.getMessage());
-      }
+					// The first element is the ticker symbol
+					quote.setTickerSymbol(lineElements[0]);
 
-   }
+					// The second element is the value
+					quote.setValue(Double.parseDouble(lineElements[1]));
 
-   /**
-    * Reads a JSON formatted file of stock quotes and returns an array list of
-    * StockQuotes.
-    *
-    */
-   public static ArrayList<StockQuote> readJSONFile(String fileLocation) throws MyFileException {
+					// The third element is the date
+					quote.setQuoteDate(DateFunctions.stringToDate(lineElements[1]));
 
-      ArrayList<StockQuote> listOfStockQuotes = new ArrayList<>();
+					// add the stock quote to the array list
+					listOfStockQuotes.add(quote);
+				}
+			}
+			textFile.close();
+			return listOfStockQuotes;
+		} catch (MyFileException | IOException exp) {
+			throw new MyFileException(exp.getMessage());
+		}
+	}
 
-      try {
-         // Create input file
-         BufferedReader jsonFile = new BufferedReader(new FileReader(fileLocation + "/stockquotes.json"));
+	/**
+	 * Read in an XML file of StockQuote objects
+	 *
+	 * @param fileLocation
+	 * @return
+	 */
+	public static StockQuoteDataContainer readXMLFile(String fileLocation) throws MyFileException {
 
-         // Create JSON object
-         Gson gson = new GsonBuilder().create();
+		try {
+			// Create the format of the xml
+			JAXBContext jaxbContext = JAXBContext.newInstance(StockQuoteDataContainer.class);
+			// Create the unmarshaller
+			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+			// Unmarshal the file
+			return (StockQuoteDataContainer) jaxbUnmarshaller.unmarshal(new File(fileLocation + "/stockquotes.xml"));
+		} catch (JAXBException exp) {
+			throw new MyFileException(exp.getMessage());
+		}
 
-         // fromJson returns an array
-         StockQuote[] stockquoteArray = gson.fromJson(jsonFile, StockQuote[].class);
+	}
 
-         // Convert to arraylist for the data model
-         listOfStockQuotes.addAll(Arrays.asList(stockquoteArray));
-         return listOfStockQuotes;
-      } catch (JsonIOException | JsonSyntaxException | FileNotFoundException exp) {
-         throw new MyFileException(exp.getMessage());
-      }
-   }
+	/**
+	 * Reads a JSON formatted file of stock quotes and returns an array list of
+	 * StockQuotes.
+	 *
+	 */
+	public static ArrayList<StockQuote> readJSONFile(String fileLocation) throws MyFileException {
+
+		ArrayList<StockQuote> listOfStockQuotes = new ArrayList<>();
+
+		try {
+			// Create input file
+			BufferedReader jsonFile = new BufferedReader(new FileReader(fileLocation + "/stockquotes.json"));
+
+			// Create JSON object
+			Gson gson = new GsonBuilder().create();
+
+			// fromJson returns an array
+			StockQuote[] stockquoteArray = gson.fromJson(jsonFile, StockQuote[].class);
+
+			// Convert to arraylist for the data model
+			listOfStockQuotes.addAll(Arrays.asList(stockquoteArray));
+			return listOfStockQuotes;
+		} catch (JsonIOException | JsonSyntaxException | FileNotFoundException exp) {
+			throw new MyFileException(exp.getMessage());
+		}
+	}
 }

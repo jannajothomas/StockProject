@@ -6,8 +6,6 @@ import datamodels.StockQuote;
 import exceptionhandlers.InvalidDataException;
 import exceptionhandlers.MyFileException;
 
-import java.util.Calendar;
-
 /**
  * This test class will test the setters for the Broker, InvestmentCompany, and
  * StockQuote classes. If a setter fails, an error is thrown and the set method

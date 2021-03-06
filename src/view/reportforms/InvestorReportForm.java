@@ -25,7 +25,8 @@ public class InvestorReportForm extends JFrame {
 
     // Form components
     
-    private JButton closeButton = new JButton("Close Report");
+	private static final long serialVersionUID = 1L;
+	private JButton closeButton = new JButton("Close Report");
     private JScrollPane treeScrollPane;
     private JTree investorTree;
     private DefaultMutableTreeNode topLevelNode;

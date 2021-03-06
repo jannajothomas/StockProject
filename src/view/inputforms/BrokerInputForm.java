@@ -24,6 +24,7 @@ import controllers.inputformcontrollers.InputBrokerFormController;
 
 public class BrokerInputForm extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 // Form fields
    private JTextField addressField;
    private JButton clearButton;

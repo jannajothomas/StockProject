@@ -2,7 +2,9 @@ package exceptionhandlers;
 
 public class MyFileException extends Exception {
 
-    public MyFileException() {
+	private static final long serialVersionUID = 1L;
+
+	public MyFileException() {
         super();
     }
     

@@ -3,20 +3,18 @@ package datamodels;
 /**
  * This class creates a StockQuote object
  */
-import exceptionhandlers.InvalidDataException;
 
 import exceptionhandlers.MyFileException;
 import utilities.date.DateFunctions;
-
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Objects;
 
 public class StockQuote implements Serializable {
 
-    private double value;
+	private static final long serialVersionUID = 1L;
+	private double value;
     private String tickerSymbol;
-    
     private Calendar quoteDate;
 
     /**

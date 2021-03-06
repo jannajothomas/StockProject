@@ -16,8 +16,9 @@ public class StockQuoteReportForm extends JFrame {
      /**
        * Form components
        */
-     
-   /**
+
+	private static final long serialVersionUID = 1L;
+/**
     * button to close the form
     */
    private JButton closeButton = new JButton("Close Report");

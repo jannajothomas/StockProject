@@ -14,7 +14,8 @@ import controllers.inputformcontrollers.InputStockQuoteFormController;
 
 public class StockQuoteInputForm extends JFrame {
 
-   // Form components  
+	private static final long serialVersionUID = 1L;
+// Form components  
    /**
     * use default constructors to create the form components and then use
     * setters to to set the values when the form is layout out

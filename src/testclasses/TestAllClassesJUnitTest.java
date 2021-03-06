@@ -42,21 +42,15 @@ public class TestAllClassesJUnitTest {
     }
 
     @Test
-    public void testGetTickerSymbol() {
+    public void testGetTickerSymbol() throws MyFileException {
         assertNull("Verify ticker symbol is null", testQuoteNoParameters.getTickerSymbol());
         testQuoteWithParameters.setValue(testValue);
-        try {
-			testQuoteWithParameters.setTickerSymbol(testSymbol);
-		} catch (MyFileException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		testQuoteWithParameters.setTickerSymbol(testSymbol);
         assertEquals("Verify ticker symbol is correct", testSymbol, testQuoteWithParameters.getTickerSymbol());
     }
 
     @Test
     public void testToStringAndDateToString() {
-        // also tests dateToString since toString calls it
     	System.out.println(testQuoteNoParameters.toString());
     	System.out.println(testQuoteWithParameters.toString());
         assertEquals("Verify toString() is correct", "{\"StockQuote\":{\"value\":\"0.0\", \"tickerSymbol\":\"null\", \"quoteDate\":\"null\"}}", testQuoteNoParameters.toString());

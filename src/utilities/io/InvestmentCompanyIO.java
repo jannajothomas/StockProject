@@ -28,111 +28,108 @@ public class InvestmentCompanyIO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	   private InvestmentCompanyIO() {
-	   }
-	   
-   
- 
-   /**
-    * Creates an xml output file containing all InvestmentCompanys in the InvestmentCompany
-    * data container using the JAXB libraries
-    */
-   public static void writeXMLFile(String fileLocation, InvestmentCompanyDataContainer InvestmentCompanyDataContainer) throws MyFileException {
-      try {
-         // Create the format of the xml
-         JAXBContext jaxbContext = JAXBContext.newInstance(InvestmentCompanyDataContainer.class);
-         // Create the marshaller
-         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-         // Create nicely formatted xml
-         jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-         //Marshal the investors list into an xml file
-         jaxbMarshaller.marshal(InvestmentCompanyDataContainer, new File(fileLocation + "/InvestmentCompanys.xml"));
-      } catch (JAXBException exp) {
-         throw new MyFileException(exp.getMessage());
-      }
-   }
+	private InvestmentCompanyIO() {
+	}
 
-   /**
-    * Writes out the InvestmentCompany data in JSON format containing all InvestmentCompanys
-    * in the stock quote data container
-    *
-    */
-   public static void writeJSONFile(String fileLocation, InvestmentCompanyDataContainer datacontainer) throws MyFileException {
+	/**
+	 * Creates an xml output file containing all InvestmentCompanys in the
+	 * InvestmentCompany data container using the JAXB libraries
+	 */
+	public static void writeXMLFile(String fileLocation, InvestmentCompanyDataContainer InvestmentCompanyDataContainer)
+			throws MyFileException {
+		try {
+			// Create the format of the xml
+			JAXBContext jaxbContext = JAXBContext.newInstance(InvestmentCompanyDataContainer.class);
+			// Create the marshaller
+			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+			// Create nicely formatted xml
+			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+			// Marshal the investors list into an xml file
+			jaxbMarshaller.marshal(InvestmentCompanyDataContainer, new File(fileLocation + "/InvestmentCompanys.xml"));
+		} catch (JAXBException exp) {
+			throw new MyFileException(exp.getMessage());
+		}
+	}
 
-      PrintWriter jsonFile = null;
+	/**
+	 * Writes out the InvestmentCompany data in JSON format containing all
+	 * InvestmentCompanys in the stock quote data container
+	 *
+	 */
+	public static void writeJSONFile(String fileLocation, InvestmentCompanyDataContainer datacontainer)
+			throws MyFileException {
 
-      try {
-         // Create output file
-         jsonFile = new PrintWriter(fileLocation + "/InvestmentCompanys.json");
+		PrintWriter jsonFile = null;
 
-         // Create JSON object
-         Gson gson = new GsonBuilder().create();
+		try {
+			// Create output file
+			jsonFile = new PrintWriter(fileLocation + "/InvestmentCompanys.json");
 
-         // Convert stock quote list to JSON format
-         gson.toJson(datacontainer.getcompanyList(), jsonFile);
+			// Create JSON object
+			Gson gson = new GsonBuilder().create();
 
-      } catch (JsonIOException | FileNotFoundException exp) {
-         throw new MyFileException(exp.getMessage());
-      } finally {
-         // Flush the output stream and close the file
-         if (jsonFile != null) {
-            jsonFile.flush();
-            jsonFile.close();
-         }
-      }
-   }
+			// Convert stock quote list to JSON format
+			gson.toJson(datacontainer.getcompanyList(), jsonFile);
 
-   /**
-    * Read in an XML file of InvestmentCompany objects
-    *
-    * @param fileLocation
-    * @return
-    */
-   public static InvestmentCompanyDataContainer readXMLFile(String fileLocation) throws MyFileException {
+		} catch (JsonIOException | FileNotFoundException exp) {
+			throw new MyFileException(exp.getMessage());
+		} finally {
+			// Flush the output stream and close the file
+			if (jsonFile != null) {
+				jsonFile.flush();
+				jsonFile.close();
+			}
+		}
+	}
 
-      try {
-         // Create the format of the xml
-         JAXBContext jaxbContext = JAXBContext.newInstance(InvestmentCompanyDataContainer.class);
-         // Create the unmarshaller
-         Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-         //Unmarshal the file
-         return (InvestmentCompanyDataContainer) jaxbUnmarshaller.unmarshal(new File(fileLocation + "/InvestmentCompanys.xml"));
-      } catch (JAXBException exp) {
-         throw new MyFileException(exp.getMessage());
-      }
+	/**
+	 * Read in an XML file of InvestmentCompany objects
+	 *
+	 * @param fileLocation
+	 * @return
+	 */
+	public static InvestmentCompanyDataContainer readXMLFile(String fileLocation) throws MyFileException {
 
-   }
+		try {
+			// Create the format of the xml
+			JAXBContext jaxbContext = JAXBContext.newInstance(InvestmentCompanyDataContainer.class);
+			// Create the unmarshaller
+			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+			// Unmarshal the file
+			return (InvestmentCompanyDataContainer) jaxbUnmarshaller
+					.unmarshal(new File(fileLocation + "/InvestmentCompanys.xml"));
+		} catch (JAXBException exp) {
+			throw new MyFileException(exp.getMessage());
+		}
 
-   /**
-    * Reads a JSON formatted file of stock quotes and returns an array list of
-    * InvestmentCompanys.
-    *
-    */
-   public static ArrayList<InvestmentCompany> readJSONFile(String fileLocation) throws MyFileException {
+	}
 
-      //ArrayList<InvestmentCompany> listOfInvestors = new ArrayList<>();
-      ArrayList<InvestmentCompany> listOfCompanies = new ArrayList<>();
+	/**
+	 * Reads a JSON formatted file of stock quotes and returns an array list of
+	 * InvestmentCompanys.
+	 *
+	 */
+	public static ArrayList<InvestmentCompany> readJSONFile(String fileLocation) throws MyFileException {
 
-      try {
-         // Create input file
-         BufferedReader jsonFile = new BufferedReader(new FileReader(fileLocation + "/InvestmentCompanys.json"));
+		// ArrayList<InvestmentCompany> listOfInvestors = new ArrayList<>();
+		ArrayList<InvestmentCompany> listOfCompanies = new ArrayList<>();
 
-         // Create JSON object
-         Gson gson = new GsonBuilder().create();
+		try {
+			// Create input file
+			BufferedReader jsonFile = new BufferedReader(new FileReader(fileLocation + "/InvestmentCompanys.json"));
 
-         // fromJson returns an array
-         InvestmentCompany[] investmentCompanyArray = gson.fromJson(jsonFile, InvestmentCompany[].class);
+			// Create JSON object
+			Gson gson = new GsonBuilder().create();
 
-         // Convert to arraylist for the data model
-         listOfCompanies.addAll(Arrays.asList(investmentCompanyArray));
+			// fromJson returns an array
+			InvestmentCompany[] investmentCompanyArray = gson.fromJson(jsonFile, InvestmentCompany[].class);
 
-         return listOfCompanies;
-      } catch (JsonIOException | JsonSyntaxException | FileNotFoundException exp) {
-         throw new MyFileException(exp.getMessage());
-      }
-   }
+			// Convert to arraylist for the data model
+			listOfCompanies.addAll(Arrays.asList(investmentCompanyArray));
+
+			return listOfCompanies;
+		} catch (JsonIOException | JsonSyntaxException | FileNotFoundException exp) {
+			throw new MyFileException(exp.getMessage());
+		}
+	}
 }
-
-
-
-

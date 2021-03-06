@@ -5,12 +5,9 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
 
-import utilities.date.DateFunctions;
-
 /**
  * This class creates a Investor object
  */
-
 
 public class Investor extends Person{
 	private Calendar memberSince;

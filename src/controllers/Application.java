@@ -7,20 +7,18 @@ package controllers;
 
 public class Application {
 
-   /**
-    * main entry into the application 
-    * args[0] - location of persisted data 
-    */
-   public static void main(String[] args) {
+	/**
+	 * main entry into the application args[0] - location of persisted data
+	 */
+	public static void main(String[] args) {
 
-      // Create main menu controller, the controller creates the menu form
-	   //TODO: What should  the file args be?
-      MainMenuController controller = new MainMenuController("./outputFiles/");
+		// Create main menu controller, the controller creates the menu form
 
-      // Retrieve the main menu form from the controller and make it visible
-      controller.getMainMenu().setVisible(true);
+		MainMenuController controller = new MainMenuController(args[0]);
 
-   }
+		// Retrieve the main menu form from the controller and make it visible
+		controller.getMainMenu().setVisible(true);
 
-  
+	}
+
 }

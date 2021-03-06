@@ -19,6 +19,7 @@ import controllers.inputformcontrollers.InputInvestorFormController;
 
 public class InvestorInputForm extends javax.swing.JFrame {
 
+	private static final long serialVersionUID = 1L;
 // Form fields
    private JTextField addressField;
    private JButton clearButton;

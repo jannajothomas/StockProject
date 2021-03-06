@@ -1,6 +1,5 @@
 package view.reportforms;
 
-import datamodels.Broker;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -14,7 +13,12 @@ import javax.swing.WindowConstants;
  */
 public class BrokerReportForm extends JFrame {
 
-   // Form controls
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+// Form controls
    /**
     * button to close the form
     */

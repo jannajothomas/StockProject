@@ -10,7 +10,9 @@ package exceptionhandlers;
  */
 public class InvalidDataException extends Exception {
 
-    public InvalidDataException() {
+	private static final long serialVersionUID = 1L;
+
+	public InvalidDataException() {
         super();
     }
     

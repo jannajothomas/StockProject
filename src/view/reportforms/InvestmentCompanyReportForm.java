@@ -15,8 +15,9 @@ import javax.swing.WindowConstants;
 public class InvestmentCompanyReportForm extends JFrame  {
 
      // Form controls        
-        
-    private JButton closeButton;
+
+	private static final long serialVersionUID = 1L;
+	private JButton closeButton;
     private JLabel label1;
     private JLabel label2;
     private JScrollPane scrollPanel1;
