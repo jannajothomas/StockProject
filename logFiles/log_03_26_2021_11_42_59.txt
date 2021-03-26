@@ -1,0 +1,46 @@
+Mar 26, 2021 11:43:12 AM controllers.inputformcontrollers.InputStockQuoteFormController saveData
+FINEST: Creating stock quote with the following values:
+	Symbol: FRI
+	Value: $3.00
+Mar 26, 2021 11:43:20 AM controllers.inputformcontrollers.InputStockQuoteFormController saveData
+FINEST: Creating stock quote with the following values:
+	Symbol: FFE
+	Value: $3.00
+Mar 26, 2021 11:43:34 AM controllers.inputformcontrollers.InputInvestorFormController saveData
+FINEST: Creating investor with the following values:
+	 Name: POE,
+	 Address: 3 cog,
+	 Date Of Birth: 3/26/2021,
+	 Member Since: 3/26/2021,
+	 List of Stocks: Symbol: FRI Value: $3.00,,
+	 Account Value: $300.00
+Mar 26, 2021 11:43:46 AM controllers.inputformcontrollers.InputInvestorFormController saveData
+FINEST: Creating investor with the following values:
+	 Name: MOE,
+	 Address: 3 deer,
+	 Date Of Birth: 3/26/2021,
+	 Member Since: 3/26/2021,
+	 List of Stocks: Symbol: FFE Value: $3.00,,
+	 Account Value: $300.00
+Mar 26, 2021 11:43:55 AM controllers.inputformcontrollers.InputBrokerFormController saveData
+FINEST: Creating broker with the following values:
+	 Name : Janna,
+	 Address: 3 kdfs,
+	 Date of Birth: 3/26/2021,
+	 Date of Hire: 3/26/2021,
+	 Date of Termination: 3/26/2021,
+	 Salary: $3.00,
+	 Status: Full Time,
+	 Clients: POE,
+Mar 26, 2021 11:44:02 AM controllers.inputformcontrollers.InputInvestmentCompanyFormController saveData
+FINEST: Creating investment company with the following values:
+	 Name: Hog hill Bank,
+	 List of Brokers: Janna,
+Mar 26, 2021 11:44:05 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml/comweb
+Mar 26, 2021 11:44:06 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml/comweb
+Mar 26, 2021 11:44:06 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml/comweb
+Mar 26, 2021 11:44:07 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml/comweb

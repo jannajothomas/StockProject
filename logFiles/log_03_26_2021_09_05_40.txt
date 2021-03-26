@@ -1,0 +1,44 @@
+Mar 26, 2021 10:13:20 AM controllers.inputformcontrollers.InputStockQuoteFormController saveData
+FINEST: Creating stock quote with the following values:
+	Symbol: POE
+	Value: $1,000.00
+Mar 26, 2021 10:13:27 AM controllers.inputformcontrollers.InputStockQuoteFormController saveData
+FINEST: Creating stock quote with the following values:
+	Symbol: MOE
+	Value: $7.00
+Mar 26, 2021 10:13:37 AM controllers.inputformcontrollers.InputInvestorFormController saveData
+FINEST: Creating investor with the following values:
+	 Name: JT,
+	 Address: 4  cat,
+	 Date Of Birth: 3/26/2021,
+	 Member Since: 3/26/2021,
+	 List of Stocks: Symbol: POE Value: $1,000.00,,
+	 Account Value: $100,000.00
+Mar 26, 2021 10:13:55 AM controllers.inputformcontrollers.InputBrokerFormController saveData
+FINEST: Creating broker with the following values:
+	 Name : Sue,
+	 Address: 3  covid,
+	 Date of Birth: 3/26/2021,
+	 Date of Hire: 3/26/2021,
+	 Date of Termination: 3/26/2021,
+	 Salary: $6.00,
+	 Status: Full Time,
+	 Clients: JT,
+Mar 26, 2021 10:14:04 AM controllers.inputformcontrollers.InputInvestmentCompanyFormController saveData
+FINEST: Creating investment company with the following values:
+	 Name: Hog Hil Strust,
+	 List of Brokers: Sue,
+Mar 26, 2021 10:14:06 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Problem getting database connection to uml: com.microsoft.sqlserver.jdbc.SQLServerDriver
+Mar 26, 2021 10:15:22 AM controllers.inputformcontrollers.InputStockQuoteFormController saveData
+FINEST: Creating stock quote with the following values:
+	Symbol: MEE
+	Value: $4.00
+Mar 26, 2021 10:15:25 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Problem getting database connection to uml: com.microsoft.sqlserver.jdbc.SQLServerDriver
+Mar 26, 2021 10:16:37 AM controllers.inputformcontrollers.InputStockQuoteFormController saveData
+FINEST: Creating stock quote with the following values:
+	Symbol: EEE
+	Value: $400.00
+Mar 26, 2021 10:16:40 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Problem getting database connection to uml: com.microsoft.sqlserver.jdbc.SQLServerDriver
