@@ -19,7 +19,7 @@ public final class InitializeDatabase {
     private static final String createTables[] = {
         "CREATE TABLE stockquote (tickersymbol varchar(5), value float, date DateTime, PRIMARY KEY (tickersymbol))",
         
-        "CREATE TABLE investor (name varchar(20), address varchar(30), dateOfBirth DateTime, id nvarchar(20), memberSince DateTime PRIMARY KEY (id))",
+        "CREATE TABLE investor (name varchar(20), address varchar(30), dateOfBirth DateTime, id nvarchar(20), memberSince DateTime, listofStocks nvarchar(200) PRIMARY KEY (id))",
         
         "CREATE TABLE investorquote (stock nvarchar(30), shares int FOREIGN KEY (tickersymbol))",
         

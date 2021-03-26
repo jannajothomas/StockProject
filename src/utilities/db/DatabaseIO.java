@@ -14,6 +14,7 @@ import datamodels.InvestmentCompany;
 import datamodels.Investor;
 import datamodels.StockQuote;
 import exceptionhandlers.DatabaseException;
+import exceptionhandlers.InvalidDataException;
 import exceptionhandlers.MyFileException;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -43,7 +44,7 @@ public class DatabaseIO {
         // try/catch block but then all the inserts will fail after the first failure
         for (StockQuote quote : stockquoteDataContainer.getStockQuoteList()) {
             try {
-                // Retreive the database connection and create the statement object
+                // Retrieve the database connection and create the statement object
                 Connection connection = DatabaseUtilities.openDatabaseConnection();
                 System.out.print("Code poe");
                 System.out.print(connection);
@@ -51,11 +52,13 @@ public class DatabaseIO {
 
                 // Create the string for the sql statement
                 String command = "INSERT INTO stockquote (tickersymbol, value, date)"
-                        + "VALUES ('" + quote.getTickerSymbol() + "','"
-                        + quote.getValue() + "','" + DatabaseDateUtilities.getSqlFormattedDate(quote.getQuoteDate()) + "')";
+                        + "VALUES ('" 
+                		+ quote.getTickerSymbol() + "','"
+                        + quote.getValue() + "','" 
+                        + DatabaseDateUtilities.getSqlFormattedDate(quote.getQuoteDate()) + "')";
+                
                 // Execute the statement
                 insertStatement.executeUpdate(command);
-                // Close the statement
 
             } catch (SQLException error) {
                 throw new DatabaseException("A database error occured updating"
@@ -72,18 +75,18 @@ public class DatabaseIO {
         ArrayList<StockQuote> listOfStockQuotes = new ArrayList<>();
 
         try {
-            // Retreive the database connection and create the statement object
+            // Retrieve the database connection and create the statement object
             Connection connection = DatabaseUtilities.openDatabaseConnection();
             Statement queryStatement = connection.createStatement();
 
-            // Create the string for the statement objrct
+            // Create the string for the statement object
             String command = "SELECT tickersymbol, value, date FROM stockquote ORDER BY tickersymbol";
 
             // Execute the statement object 
             ResultSet results = queryStatement.executeQuery(command);
 
             // Call private helper method to parse the result set into the array list
-            listOfStockQuotes = parseResults(results);
+            listOfStockQuotes = parseStockQuote(results);
 
         } catch (SQLException error) {
             throw new DatabaseException("A database error occured retrieve data from the stock quote table " + error.getMessage());
@@ -95,7 +98,7 @@ public class DatabaseIO {
     /**
      * Populate the array list with data from the database
      */
-    private static ArrayList<StockQuote> parseResults(ResultSet results) throws DatabaseException {
+    private static ArrayList<StockQuote> parseStockQuote(ResultSet results) throws DatabaseException {
 
         ArrayList<StockQuote> listOfStockquotes = new ArrayList<>();
 
@@ -122,17 +125,15 @@ public class DatabaseIO {
 	                Connection connection = DatabaseUtilities.openDatabaseConnection();
 	                Statement insertStatement = connection.createStatement();
 
-	             
-	                
-	                
 	                // Create the string for the sql statement
-	                String command = "INSERT INTO investor (name, address, dateOfBirth, id, memberSince)"
+	                String command = "INSERT INTO investor (name, address, dateOfBirth, id, memberSince, listOfStocks)"
 	                		+ "VALUES ('" 
 	                		+ investor.getName() + "','"
 	                		+ investor.getAddress() + "','" 
 	                		+ DatabaseDateUtilities.getSqlFormattedDate(investor.getDateOfBirth()) + "','" 
 	                		+ investor.getId() + "','"
-	                		+ DatabaseDateUtilities.getSqlFormattedDate(investor.getMemberSince()) + "')";
+	                		+ DatabaseDateUtilities.getSqlFormattedDate(investor.getMemberSince()) + "','" 
+	                		+ investor.getListOfStocks() + "')";
 
 	                // Execute the statement
 	                insertStatement.executeUpdate(command);
@@ -143,9 +144,55 @@ public class DatabaseIO {
 	                        + " investor table " + error.getMessage());
 	            }
 	        }
-		
 	}
 
+	public static List<Investor> retrieveInvestors() throws DatabaseException {
+		  ArrayList<Investor> listOfInvestors = new ArrayList<>();
+
+	        try {
+	            // Retreive the database connection and create the statement object
+	            Connection connection = DatabaseUtilities.openDatabaseConnection();
+	            Statement queryStatement = connection.createStatement();
+	            
+	            // Create the string for the statement object
+	            String command = "SELECT name, address, dateOfBirth, id, memberSince, listOfStocks FROM investors ORDER BY name";
+
+	            // Execute the statement object 
+	            ResultSet results = queryStatement.executeQuery(command);
+
+	            // Call private helper method to parse the result set into the array list
+	            listOfInvestors = parseInvestorResults(results);
+
+	        } catch (SQLException error) {
+	            throw new DatabaseException("A database error occured retrieve data from the stock quote table " + error.getMessage());
+	        }
+
+	        return listOfInvestors;
+		
+	}
+	
+    private static ArrayList<Investor> parseInvestorResults(ResultSet results) throws DatabaseException{
+
+        ArrayList<Investor> listOfInvestors = new ArrayList<>();
+
+        try {
+            while (results.next()) {
+                Investor investor = new Investor();
+                investor.setName(results.getString(1));
+                investor.setAddress(results.getString(2));
+                investor.setDateOfBirth(DatabaseDateUtilities.getJavaFormattedDate(results.getDate("dateOfBirth")));
+                //investor.setId(results.getString(4));
+                investor.setMemberSince(DatabaseDateUtilities.getJavaFormattedDate(results.getDate("memberSince")));
+                
+            }
+        } catch (NumberFormatException | SQLException | InvalidDataException e) {
+            throw new DatabaseException("Error parsing database results"
+                    + " stockquote table " + e.getMessage());
+        }
+
+        return listOfInvestors;
+    }
+	
 	public static void storeBrokers(BrokerDataContainer brokerDataContainer) throws DatabaseException {
 		for (Broker broker : BrokerDataContainer.getBrokerList()) {
             try {
@@ -155,7 +202,7 @@ public class DatabaseIO {
 
                 
                 // Create the string for the sql statement
-                String command = "INSERT INTO broker (name, address, dateOfBirth, id, memberSince)"
+                String command = "INSERT INTO broker (name, address, dateOfBirth, id, dateOfHire, dateOfTermination, salary)"
                 		+ "VALUES ('" 
                 		+ broker.getName() + "','"
                 		+ broker.getAddress() + "','" 
@@ -186,7 +233,7 @@ public class DatabaseIO {
 
                 
                 // Create the string for the sql statement
-                String command = "INSERT INTO investmentCompany (name)"
+                String command = "INSERT INTO investmentCompany (companyName)"
                 		+ "VALUES ('" 
                 		+ company.getCompanyName() + "')";
 
@@ -204,10 +251,10 @@ public class DatabaseIO {
 		
 	}
 
-	public static List<Investor> retrieveInvestors() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
+	
+
+	
 
 	public static List<Broker> retrieveBrokers() {
 		// TODO Auto-generated method stub
