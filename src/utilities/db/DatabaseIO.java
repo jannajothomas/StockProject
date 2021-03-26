@@ -5,6 +5,7 @@
  */
 package utilities.db;
 
+import datacontainers.InvestorDataContainer;
 import datacontainers.StockQuoteDataContainer;
 import datamodels.StockQuote;
 import exceptionhandlers.DatabaseException;
@@ -39,13 +40,14 @@ public class DatabaseIO {
             try {
                 // Retreive the database connection and create the statement object
                 Connection connection = DatabaseUtilities.openDatabaseConnection();
+                System.out.print("Code poe");
+                System.out.print(connection);
                 Statement insertStatement = connection.createStatement();
 
                 // Create the string for the sql statement
-                String command = "INSERT INTO uml.stockquote (tickersymbol, value, date)"
+                String command = "INSERT INTO stockquote (tickersymbol, value, date)"
                         + "VALUES ('" + quote.getTickerSymbol() + "','"
                         + quote.getValue() + "','" + DatabaseDateUtilities.getSqlFormattedDate(quote.getQuoteDate()) + "')";
-
                 // Execute the statement
                 insertStatement.executeUpdate(command);
                 // Close the statement
@@ -107,5 +109,10 @@ public class DatabaseIO {
 
         return listOfStockquotes;
     }
+
+	public static void storeInvestors(InvestorDataContainer investorDataContainer) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

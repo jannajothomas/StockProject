@@ -8,7 +8,7 @@ import controllers.Application;
 import java.sql.*;
 import java.sql.Connection;
 
-public final class DatabaseUtilities {
+public final class DatabaseUtilitiesJT {
    
     /**
      * Registers the driver code for the database.The driver communicates
@@ -23,16 +23,17 @@ public final class DatabaseUtilities {
 
         // Register the MySQL JDBC Driver
         try {
-        	Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            Application.getAPPLICATION_LOGGER().finest("Database driver loaded: " + "uml/comweb");
+            Class.forName("org.mariadb.jdbc.Driver");
+            Application.getAPPLICATION_LOGGER().finest("Database driver loaded: " + "uml");
+
             // This URL specifies we are connecting to a local database named uml.
-            String url = "jdbc:sqlserver://comweb.uml.edu:51433";
+            String url = "jdbc:mysql://localhost/uml";
+
             // Make a connection with the database. User is root, no password
-            Connection connection = DriverManager.getConnection(url, "jthom00168", "jt2255");
-            Application.getAPPLICATION_LOGGER().finest("Getting database connection: " + "uml/comweb");
+            Connection connection = DriverManager.getConnection(url, "root", "user");
+            Application.getAPPLICATION_LOGGER().finest("Getting database connection: " + "uml");
             return connection;
         } catch (ClassNotFoundException | SQLException e) {
-
             Application.getAPPLICATION_LOGGER().finest("Problem getting database connection to uml: " + e.getMessage());
             return null;
         }

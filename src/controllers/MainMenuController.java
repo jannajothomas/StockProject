@@ -130,6 +130,9 @@ public class MainMenuController implements ActionListener {
 					break;
 				}
 				DatabaseIO.storeStockQuotes(stockQuoteDataContainer);
+				DatabaseIO.storeInvestors(investorDataContainer);
+				DatabaseIO.storeBrokers(brokerDataContainer);
+				DatabaseIO.storeInvestmentCompany(investmentCompanyDataContainer);
 			} catch (MyFileException | DatabaseException exp) {
 				new FileIOErrorPopup(mainMenu, exp);
 			}
