@@ -6,19 +6,21 @@
  */
 package controllers.inputformcontrollers;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Calendar;
+import java.util.List;
+
+import controllers.Application;
 import datacontainers.BrokerDataContainer;
 import datacontainers.InvestorDataContainer;
 import datamodels.Broker;
 import datamodels.Investor;
 import exceptionhandlers.ErrorPopup;
 import exceptionhandlers.InvalidDataException;
+import exceptionhandlers.MyFileException;
 import utilities.date.DateFunctions;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Calendar;
-import java.util.List;
-
+import utilities.formatters.NumberFormatter;
 import view.inputforms.BrokerInputForm;
 
 public class InputBrokerFormController implements ActionListener {
@@ -61,8 +63,9 @@ public class InputBrokerFormController implements ActionListener {
    /**
     * Private method to save all the data on the form and create a new Broker
     * object
+ * @throws InvalidDataException 
     */
-   private void saveData() {
+   private void saveData(){
 
       // Create a new broker
       Broker newBroker = new Broker(); 
@@ -71,17 +74,15 @@ public class InputBrokerFormController implements ActionListener {
       
       // Retrieve data from all form fields and store directly into object
       try {
-    	  
-    	  // Retrieve name and address strings
 	      try {
 			newBroker.setName(form.getNameField().getText());
 	      } catch (InvalidDataException exp) {
-	    	  throw new InvalidDataException("Invalid name.  Name is required");
+	    	  throw new MyFileException("Invalid name.  Name is required");
 	      	}
 	      try {
 				newBroker.setAddress(form.getAddressField().getText());
 	      } catch (InvalidDataException exp) {
-				throw new InvalidDataException("Invalid address. Address required");
+				throw new MyFileException("Invalid address. Address required");
 	      	}
 	
 	      // Retrieve id string and convert to a long before storing in object 
@@ -89,8 +90,8 @@ public class InputBrokerFormController implements ActionListener {
 	    	  
 	    	 long idString = Integer.parseInt(form.getIdField().getText());
 			newBroker.setId(idString);
-	      } catch (InvalidDataException | NumberFormatException exp) {
-	    	  throw new InvalidDataException("Invalid ID.  ID must be entered and it must be a number");
+         } catch (NumberFormatException | InvalidDataException exp) {
+            throw new MyFileException("Invalid ID");
 	      	}
 	
 	      // Retrieve status from drop down list
@@ -98,68 +99,82 @@ public class InputBrokerFormController implements ActionListener {
 	      try {
 			newBroker.setStatus(selectedStatus);
 	      } catch (InvalidDataException exp) {
-			throw new InvalidDataException("Invalid status.  Valid status value are fulltime and partime");
+			throw new MyFileException("Invalid status.  Valid status value are fulltime and partime");
 	      	}
 	
 	     
 	      try {
 	    	  // Retrieve salary and convert to a double before storing in object
 		      String salarystring = form.getSalaryField().getText();
-		      Double salarydouble = Double.parseDouble(salarystring);
-		      newBroker.setSalary(salarydouble);
-	      } catch (InvalidDataException | NumberFormatException exp) {
-			throw new InvalidDataException("Invalid salary.  Salary must entered and must be a number");
-	      	}
+		    	  Double salarydouble = Double.parseDouble(salarystring);
+		    	  newBroker.setSalary(salarydouble);
+		      } catch (NumberFormatException | InvalidDataException exp) {
+		    	  throw new MyFileException("Invalid salary");
+		      }
       
 
-      // Retrieve the dates  and convert to Calendar objects
-      String dateString = form.getDateOfBirthFormattedTextField().getText();
-      Calendar dateOfBirth = DateFunctions.stringToDate(dateString);
-      newBroker.setDateOfBirth(dateOfBirth);
+		      // Retrieve the dates  and convert to Calendar objects
+		      String dateString = form.getDateOfBirthFormattedTextField().getText();
+		      Calendar dateOfBirth = DateFunctions.stringToDate(dateString);
+		      newBroker.setDateOfBirth(dateOfBirth);
+		
+		      dateString = form.getDateOfHireFormattedTextField().getText();
+		      Calendar dateOfHire = DateFunctions.stringToDate(dateString);
+		      newBroker.setDateOfHire(dateOfHire);
+		
+		      dateString = form.getDateOfTerminationFormattedTextField().getText();
+		      Calendar dateOfTermination = DateFunctions.stringToDate(dateString);
+		      newBroker.setDateOfTermination(dateOfTermination);
 
-      dateString = form.getDateOfHireFormattedTextField().getText();
-      Calendar dateOfHire = DateFunctions.stringToDate(dateString);
-      newBroker.setDateOfHire(dateOfHire);
 
-      dateString = form.getDateOfTerminationFormattedTextField().getText();
-      Calendar dateOfTermination = DateFunctions.stringToDate(dateString);
-      newBroker.setDateOfTermination(dateOfTermination);
+		      List clientList = (List) this.form.getDropdownClientList().getSelectedValuesList();
 
-      // Retrieve all selected clients and add to broker's client list
-      // The list only contains client names and ids.  Need to look them up
-      // in the invester data container and add pointers to the objects in
-      // the data container
-      // Retrieve the selected clients (the returned list is a list of generic objects)
-      List clientList = (List) this.form.getDropdownClientList().getSelectedValuesList();
+		      // Convert the generic objects to Strings and look them up in the investor data container
+		      for (Object selectedClient : clientList) {
+		         String selectedClientString = (String) selectedClient;
+		         String[] clientStringNameId = selectedClientString.split(":");
 
-      // Convert the generic objects to Strings and look them up in the investor data container
-      for (Object selectedClient : clientList) {
-         String selectedClientString = (String) selectedClient;
-         // This is where it probably would have been better to store the clients
-         // as a map instead of a list but oh well, the damage is done...
+	            //Hold on to the id
+	            long selectedId = Integer.parseInt(clientStringNameId[1].trim());
 
-         // Split the string into name and id.  We'll use the unique id to find
-         // the investor in the investor data container
-         String[] name_id = selectedClientString.split(":");
+	         List<Investor> investorList = investorDataContainer.getInvestorList();
+	         for (Investor investor : investorList) {
+	            if (investor.getId() == selectedId) {
+	               newBroker.addClient(investor);
+	            }
+	         }
+		  }
+		  this.brokerDataContainer.getBrokerList().add(newBroker);
+      
+			
+			StringBuilder stringBuilder = new StringBuilder(100);
+		
+		  List<Investor> listOfClients = newBroker.getListOfClients();
+		  for ( Investor investor: listOfClients) {
+			  stringBuilder.append(investor.getName() + ",");
+		  }
+		  
 
-         //Hold on to the id
-         long selectedId = Integer.parseInt(name_id[1].trim());
+		  
+		  Application.getAPPLICATION_LOGGER().finest("Creating broker with the following values:"  + 
+				"\n\t Name : " + newBroker.getName() + "," +
+				"\n\t Address: " + newBroker.getAddress() + "," + 
+				"\n\t Date of Birth: " + DateFunctions.dateToString(newBroker.getDateOfBirth()) + "," +
+				"\n\t Date of Hire: " + DateFunctions.dateToString(newBroker.getDateOfHire()) + "," +
+				"\n\t Date of Termination: " + DateFunctions.dateToString(newBroker.getDateOfTermination()) + "," +
+				"\n\t Salary: " + NumberFormatter.formatCurrency(newBroker.getSalary()) + "," +
+				"\n\t Status: " + newBroker.getStatus() + "," +
+				"\n\t Clients: " + stringBuilder.toString());
 
-         // Find the investor in the investor data container based on the id
-         // Temporay  arraylist of investors from the investor data container
-         List<Investor> investorList = investorDataContainer.getInvestorList();
-         for (Investor investor : investorList) {
-            if (investor.getId() == selectedId) {
-               newBroker.addClient(investor);
-            }
-         }
+      
+      
+
+      } catch (MyFileException exp) {
+         new ErrorPopup(form, exp);}
       }
-      this.brokerDataContainer.getBrokerList().add(newBroker);
+      
 
-      } catch (InvalidDataException exp) {
-          new ErrorPopup(form, exp);
-       	}
-   }
+   
 
    /**
     * Private method to clear the data
@@ -174,6 +189,7 @@ public class InputBrokerFormController implements ActionListener {
       form.getDateOfBirthFormattedTextField().setText("");
       form.getDateOfHireFormattedTextField().setText("");
       form.getDateOfTerminationFormattedTextField().setText("");
+      form.getDropdownClientList().clearSelection();
 
    }
 

@@ -1,10 +1,18 @@
 package testclasses;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNull;
+
 import java.text.ParseException;
 import java.util.Calendar;
-import datamodels.*;
+
+import org.junit.Test;
+
+import datamodels.Broker;
+import datamodels.InvestmentCompany;
+import datamodels.Investor;
+import datamodels.StockQuote;
 import exceptionhandlers.MyFileException;
 
 public class TestAllClassesJUnitTest {

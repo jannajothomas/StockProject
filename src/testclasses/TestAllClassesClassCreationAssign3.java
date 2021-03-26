@@ -1,17 +1,18 @@
 package testclasses;
 
+import java.util.Calendar;
+
 import datacontainers.BrokerDataContainer;
 import datacontainers.InvestmentCompanyDataContainer;
 import datacontainers.InvestorDataContainer;
 import datacontainers.StockQuoteDataContainer;
+import datamodels.Broker;
 import datamodels.InvestmentCompany;
+import datamodels.Investor;
+import datamodels.InvestorStockQuote;
 import datamodels.StockQuote;
 import exceptionhandlers.InvalidDataException;
 import exceptionhandlers.MyFileException;
-import datamodels.Broker;
-import datamodels.Investor;
-import datamodels.InvestorStockQuote;
-import java.util.Calendar;
 
 public class TestAllClassesClassCreationAssign3 {
 
@@ -147,17 +148,17 @@ public class TestAllClassesClassCreationAssign3 {
         company1.setCompanyName("Fidelity Investments");
         company1.addBroker(broker1);
         // Store in the data container
-        investmentCompanyContainer.getcompanyList().add(company1);
+        investmentCompanyContainer.getInvestmentCompanyList().add(company1);
 
         InvestmentCompany company2 = new InvestmentCompany();
         company2.setCompanyName("Charles Schwab");
         company2.addBroker(broker2);
         // Store in the data container
-        investmentCompanyContainer.getcompanyList().add(company2);
+        investmentCompanyContainer.getInvestmentCompanyList().add(company2);
 
         // Verify the container values
         for (int i = 0; i < 2; i++) {
-            System.out.println(investmentCompanyContainer.getcompanyList().get(i));
+            System.out.println(investmentCompanyContainer.getInvestmentCompanyList().get(i));
         }
 
     }  

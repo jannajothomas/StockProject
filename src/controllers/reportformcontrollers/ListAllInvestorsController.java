@@ -8,10 +8,12 @@
 package controllers.reportformcontrollers;
 
 import java.awt.event.ActionListener;
+
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.tree.DefaultMutableTreeNode;
+
 import datacontainers.InvestorDataContainer;
 import view.reportforms.InvestorReportForm;
 
@@ -47,21 +49,19 @@ public class ListAllInvestorsController implements ActionListener, TreeSelection
       }
    }
 
-   /**
-    * Implements the valueChanged method in the TreeSelectionListener interface.
-    */
-   public void valueChanged(TreeSelectionEvent e) {
-      DefaultMutableTreeNode node = (DefaultMutableTreeNode) this.form.getInvestorTree().getLastSelectedPathComponent();
+    /** 
+     * Implements the valueChanged method in the TreeSelectionListener interface. 
+     */
+    public void valueChanged(TreeSelectionEvent e) {
+        DefaultMutableTreeNode node = (DefaultMutableTreeNode)
+                           this.form.getInvestorTree().getLastSelectedPathComponent();
 
-      if (node == null) {
-         return;
-      }
+        if (node == null) return;
 
-      Object nodeInfo = node.getUserObject();
-      if (node.isLeaf()) {
-         // Display investors info
-      }
-   }
+        if (node.isLeaf()) {
+            // Display investors info
+        }
+    }
 
    // Getters used by the controller
    public InvestorReportForm getForm() {

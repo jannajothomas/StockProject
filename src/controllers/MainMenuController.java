@@ -5,7 +5,8 @@
  */
 package controllers;
 
-import controllers.reportformcontrollers.ListAllStockQuotesController;
+import java.awt.event.ActionListener;
+
 import controllers.inputformcontrollers.InputBrokerFormController;
 import controllers.inputformcontrollers.InputInvestmentCompanyFormController;
 import controllers.inputformcontrollers.InputInvestorFormController;
@@ -13,13 +14,15 @@ import controllers.inputformcontrollers.InputStockQuoteFormController;
 import controllers.reportformcontrollers.ListAllBrokersController;
 import controllers.reportformcontrollers.ListAllInvestmentCompaniesController;
 import controllers.reportformcontrollers.ListAllInvestorsController;
-import java.awt.event.ActionListener;
+import controllers.reportformcontrollers.ListAllStockQuotesController;
 import datacontainers.BrokerDataContainer;
 import datacontainers.InvestmentCompanyDataContainer;
 import datacontainers.InvestorDataContainer;
 import datacontainers.StockQuoteDataContainer;
+import exceptionhandlers.DatabaseException;
 import exceptionhandlers.FileIOErrorPopup;
 import exceptionhandlers.MyFileException;
+import utilities.db.DatabaseIO;
 import utilities.io.BrokerIO;
 import utilities.io.InvestmentCompanyIO;
 import utilities.io.InvestorIO;
@@ -28,8 +31,10 @@ import view.MainMenu;
 
 public class MainMenuController implements ActionListener {
 
-	// File location to store output files
-	private String fileLocation;
+   // File location
+   private String fileLocation;
+   // Log file location;
+   private String logfilelocation;
 
 	// The data models are instantiated here and passed to the
 	// constructors for the controllers
@@ -39,15 +44,15 @@ public class MainMenuController implements ActionListener {
 	private InvestorDataContainer investorDataContainer = new InvestorDataContainer();
 	private String saveFormat = "JSON"; // Default file constructor
 
-	/**
-	 * Constructor
-	 * 
-	 * @param fileLocation
-	 */
-	public MainMenuController(String fileLocation) {
-		// Store the file location, used in the save methods
-		this.fileLocation = fileLocation;
-	}
+   /**
+    * Constructor
+    *
+    * @param fileLocation
+    */
+   public MainMenuController(String fileLocation, String logfilelocation) {
+      this.fileLocation = fileLocation;
+      this.logfilelocation = logfilelocation;
+   }
 
 	// The main menu form gets created here. Notice it takes this controller object
 	// as an argument to the constructor
@@ -124,7 +129,8 @@ public class MainMenuController implements ActionListener {
 					InvestorIO.writeXMLFile(fileLocation, investorDataContainer);
 					break;
 				}
-			} catch (MyFileException exp) {
+				DatabaseIO.storeStockQuotes(stockQuoteDataContainer);
+			} catch (MyFileException | DatabaseException exp) {
 				new FileIOErrorPopup(mainMenu, exp);
 			}
 		} else if (menuItemClicked.equals("Load Data")) {
@@ -133,7 +139,7 @@ public class MainMenuController implements ActionListener {
 				case "JSON":
 					investorDataContainer.setInvestorList(InvestorIO.readJSONFile(fileLocation));
 					brokerDataContainer.setBrokerList(BrokerIO.readJSONFile(fileLocation));
-					investmentCompanyDataContainer.setcompanyList(InvestmentCompanyIO.readJSONFile(fileLocation));
+					investmentCompanyDataContainer.setInvestmentCompanyList(InvestmentCompanyIO.readJSONFile(fileLocation));
 					stockQuoteDataContainer.setStockQuoteList(StockQuoteIO.readJSONFile(fileLocation));
 					break;
 				case "XML":
@@ -141,13 +147,14 @@ public class MainMenuController implements ActionListener {
 					investorDataContainer.setInvestorList(InvestorIO.readXMLFile(fileLocation).getInvestorList());
 					brokerDataContainer.setBrokerList(BrokerIO.readXMLFile(fileLocation).getBrokerList());
 					investmentCompanyDataContainer
-							.setcompanyList(InvestmentCompanyIO.readXMLFile(fileLocation).getcompanyList());
+							.setInvestmentCompanyList(InvestmentCompanyIO.readXMLFile(fileLocation).getInvestmentCompanyList());
 					stockQuoteDataContainer
 							.setStockQuoteList(StockQuoteIO.readXMLFile(fileLocation).getStockQuoteList());
 					break;
 				}
+				stockQuoteDataContainer.setStockQuoteList(DatabaseIO.retrieveStockQuotes());
 
-			} catch (MyFileException exp) {
+			} catch (MyFileException | DatabaseException exp) {
 				System.out.println("in  this catch");
 				new FileIOErrorPopup(mainMenu, exp);
 			}

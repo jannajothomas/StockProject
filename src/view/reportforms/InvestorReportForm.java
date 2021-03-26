@@ -1,12 +1,9 @@
 package view.reportforms;
 
-import controllers.reportformcontrollers.ListAllInvestorsController;
-import datamodels.Investor;
-import utilities.date.DateFunctions;
-
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.util.List;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
@@ -16,6 +13,11 @@ import javax.swing.JTree;
 import javax.swing.WindowConstants;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeSelectionModel;
+
+import controllers.reportformcontrollers.ListAllInvestorsController;
+import datamodels.Investor;
+import utilities.date.DateFunctions;
+import utilities.formatters.NumberFormatter;
 
 /**
  * This class contains all the code for the investor report form. It creates the
@@ -97,7 +99,8 @@ public class InvestorReportForm extends JFrame {
                     new DefaultMutableTreeNode("Date of Birth:"+DateFunctions.dateToString(investor.getDateOfBirth()));
             DefaultMutableTreeNode memberSince = 
                     new DefaultMutableTreeNode("Member since:"+DateFunctions.dateToString(investor.getMemberSince()));
-            DefaultMutableTreeNode accountValue = new DefaultMutableTreeNode("Account value:"+investor.getAccountValue());
+            DefaultMutableTreeNode accountValue = 
+                    new DefaultMutableTreeNode("Account value:"+NumberFormatter.formatCurrency(investor.getAccountValue()));
 
             oneIinvestor.add(address);
             oneIinvestor.add(id);

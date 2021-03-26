@@ -1,9 +1,9 @@
 package view.inputforms;
 
-import datamodels.StockQuote;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.List;
+
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
@@ -16,6 +16,8 @@ import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 
 import controllers.inputformcontrollers.InputInvestorFormController;
+import datamodels.StockQuote;
+import utilities.formatters.NumberFormatter;
 
 public class InvestorInputForm extends javax.swing.JFrame {
 
@@ -130,7 +132,7 @@ public class InvestorInputForm extends javax.swing.JFrame {
       
        for (int i = 0; i < listOfStockQuotes.size(); i++) {
          dropdownListDataModel.addElement(listOfStockQuotes.get(i).getTickerSymbol()
-                 + " : " + listOfStockQuotes.get(i).getValue());
+                 + " : " + NumberFormatter.formatCurrency(listOfStockQuotes.get(i).getValue()));
       }
 
       // Link the data model to the list on the form

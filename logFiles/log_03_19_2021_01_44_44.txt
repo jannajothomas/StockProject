@@ -1,0 +1,2 @@
+Mar 19, 2021 1:45:19 PM controllers.inputformcontrollers.InputInvestorFormController saveData
+FINEST: Creating investor with the following values:Poe the cat,2  hog gill rd,3/19/2021,3/19/2021,[],0.0

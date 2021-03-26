@@ -3,8 +3,9 @@
  */
 package interfaces;
 
-import exceptionhandlers.InvalidDataException;
 import java.util.Calendar;
+
+import exceptionhandlers.InvalidDataException;
 
 public interface StockQuoteInterface {
 

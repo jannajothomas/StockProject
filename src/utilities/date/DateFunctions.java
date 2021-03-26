@@ -54,6 +54,22 @@ public class DateFunctions {
    }
 
    /**
+    * This method takes a Calendar date and returns it as a String in the format
+    * yyyy_MM_dd_hh_mm_ss
+    *
+    * @param date the date to convert
+    * @return the String representation of the date
+    */
+   public static String logFileDate(Calendar date) {
+      SimpleDateFormat formatter = new SimpleDateFormat("MM_dd_yyyy_hh_mm_ss");
+      String dateString = null;
+      if (date != null) {
+         dateString = formatter.format(date.getTime());
+      }
+      return dateString;
+   }
+           
+   /**
     * This helper method takes advantage of the fact that the enumerated values
     * have an ordinal value associated with them.  Normally I would strongly 
     * discourage the use of the ordinal method but in this case, since the 

@@ -1,10 +1,9 @@
 package view.inputforms;
 
-import datacontainers.InvestorDataContainer;
-import datamodels.Investor;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.List;
+
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -21,6 +20,8 @@ import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 
 import controllers.inputformcontrollers.InputBrokerFormController;
+import datacontainers.InvestorDataContainer;
+import datamodels.Investor;
 
 public class BrokerInputForm extends JFrame {
 

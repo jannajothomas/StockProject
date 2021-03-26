@@ -8,17 +8,19 @@ package controllers.inputformcontrollers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import datacontainers.*;
+import java.util.Calendar;
+import java.util.List;
+
+import controllers.Application;
+import datacontainers.InvestorDataContainer;
+import datacontainers.StockQuoteDataContainer;
 import datamodels.Investor;
 import datamodels.InvestorStockQuote;
 import datamodels.StockQuote;
 import exceptionhandlers.ErrorPopup;
 import exceptionhandlers.InvalidDataException;
 import utilities.date.DateFunctions;
-
-import java.util.Calendar;
-import java.util.List;
-
+import utilities.formatters.NumberFormatter;
 import view.inputforms.InvestorInputForm;
 
 public class InputInvestorFormController implements ActionListener {
@@ -130,7 +132,26 @@ public class InputInvestorFormController implements ActionListener {
          }
       }
       this.investorDataContainer.getInvestorList().add(newInvestor);
+      
+      
+  	StringBuilder stringBuilder = new StringBuilder(100);
+	
+	  List<InvestorStockQuote> listOfQuotes = newInvestor.getListOfStocks();
+	  for ( InvestorStockQuote quote: listOfQuotes) {
+		  stringBuilder.append("Symbol: " + quote.getStock().getTickerSymbol() + " Value: " + NumberFormatter.formatCurrency(quote.getStock().getValue()) + ",");
+		  
+	  }
+	  
+      
+      Application.getAPPLICATION_LOGGER().finest("Creating investor with the following values:"  + 
+    		  				"\n\t Name: " + newInvestor.getName() + "," + 
+    		  				"\n\t Address: " + newInvestor.getAddress() + "," + 
+    		  				"\n\t Date Of Birth: " + DateFunctions.dateToString(newInvestor.getDateOfBirth()) + "," +
+    		  				"\n\t Member Since: " + DateFunctions.dateToString(newInvestor.getMemberSince()) + "," +
+    		  				"\n\t List of Stocks: " + stringBuilder.toString() + "," + 
+    		  				"\n\t Account Value: " +  NumberFormatter.formatCurrency(newInvestor.getAccountValue()));
 
+      
       } catch (InvalidDataException exp) {
  	  new ErrorPopup(form,exp);}
    }

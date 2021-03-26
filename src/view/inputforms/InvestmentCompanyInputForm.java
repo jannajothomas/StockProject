@@ -3,19 +3,20 @@
  */
 package view.inputforms;
 
-import datacontainers.BrokerDataContainer;
-import datamodels.Broker;
+import java.util.List;
+
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
-import java.util.List;
-import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
 import controllers.inputformcontrollers.InputInvestmentCompanyFormController;
+import datacontainers.BrokerDataContainer;
+import datamodels.Broker;
 
 public class InvestmentCompanyInputForm extends JFrame {
 

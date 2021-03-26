@@ -7,13 +7,15 @@
  */
 package controllers.reportformcontrollers;
 
-import datamodels.*;
-import utilities.date.DateFunctions;
-
 import java.awt.event.ActionListener;
 import java.util.Vector;
+
 import javax.swing.table.DefaultTableModel;
-import datacontainers.*;
+
+import datacontainers.BrokerDataContainer;
+import datamodels.Broker;
+import utilities.date.DateFunctions;
+import utilities.formatters.NumberFormatter;
 import view.reportforms.BrokerReportForm;
 
 public class ListAllBrokersController implements ActionListener {
@@ -101,13 +103,14 @@ public class ListAllBrokersController implements ActionListener {
       for (Broker abroker : brokerDataContainer.getBrokerList()) {
 
          // Create a vector that is one row in the table
-         Vector<Comparable> tableRow = new Vector();
+         Vector tableRow = new Vector();
 
          // Add the data to the vector
          tableRow.add(abroker.getName());
          tableRow.add(abroker.getAddress());
          tableRow.add(abroker.getStatus());
-         tableRow.add(abroker.getSalary());
+         // Format the salary to USD
+         tableRow.add(NumberFormatter.formatCurrency(abroker.getSalary()));
          tableRow.add(abroker.getId());
          tableRow.add(DateFunctions.dateToString(abroker.getDateOfBirth()));
          tableRow.add(DateFunctions.dateToString(abroker.getDateOfHire()));

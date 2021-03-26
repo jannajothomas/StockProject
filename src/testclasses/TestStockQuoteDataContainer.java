@@ -1,12 +1,12 @@
 package testclasses;
 
+import java.util.Calendar;
+import java.util.Iterator;
+
 import datacontainers.StockQuoteDataContainer;
 import datamodels.StockQuote;
 import exceptionhandlers.InvalidDataException;
 import exceptionhandlers.MyFileException;
-
-import java.util.Calendar;
-import java.util.Iterator;
 
 public class TestStockQuoteDataContainer {
 

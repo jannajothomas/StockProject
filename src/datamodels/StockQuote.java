@@ -1,14 +1,15 @@
 package datamodels;
 
+import java.io.Serializable;
+import java.util.Calendar;
+import java.util.Objects;
+
 /**
  * This class creates a StockQuote object
  */
 
 import exceptionhandlers.MyFileException;
 import utilities.date.DateFunctions;
-import java.io.Serializable;
-import java.util.Calendar;
-import java.util.Objects;
 
 public class StockQuote implements Serializable {
 

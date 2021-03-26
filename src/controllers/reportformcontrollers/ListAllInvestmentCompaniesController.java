@@ -9,7 +9,9 @@ package controllers.reportformcontrollers;
 
 import java.awt.event.ActionListener;
 import java.util.Vector;
+
 import javax.swing.table.DefaultTableModel;
+
 import datacontainers.InvestmentCompanyDataContainer;
 import datamodels.Broker;
 import datamodels.InvestmentCompany;
@@ -63,7 +65,7 @@ public class ListAllInvestmentCompaniesController implements ActionListener {
       // Loop through the list and add the companies to the text area,
       // Each time adding a cr/lf between items for readibility.
       String companies = "";
-      for (InvestmentCompany company : investmentCompanyDataContainer.getcompanyList()) {
+      for (InvestmentCompany company : investmentCompanyDataContainer.getInvestmentCompanyList()) {
          companies = companies + company.getCompanyName() + "\n";
       }
       // Once all the data is in the string, set the text of the text area to the string value
@@ -88,7 +90,7 @@ public class ListAllInvestmentCompaniesController implements ActionListener {
       this.form.getCompaniesTableDisplay().setModel(defaultTableModel);
 
       // Add the companies to the table model
-      for (InvestmentCompany company : investmentCompanyDataContainer.getcompanyList()) {
+      for (InvestmentCompany company : investmentCompanyDataContainer.getInvestmentCompanyList()) {
 
          // Create a vector that is one row in the table
          Vector companyRow = new Vector();
@@ -99,7 +101,7 @@ public class ListAllInvestmentCompaniesController implements ActionListener {
          // Format the broker list, only retrieve the broker names
          String brokerList = "";
          for (Broker broker : company.getListOfBrokers()) {
-            brokerList = brokerList + broker.getName() + "\n";
+            brokerList = brokerList + broker.getName() + ", ";
          }
          // Add the broker list to the table row
          companyRow.add(brokerList);

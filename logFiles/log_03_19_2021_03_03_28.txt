@@ -1,0 +1,25 @@
+Mar 19, 2021 3:03:43 PM controllers.inputformcontrollers.InputStockQuoteFormController saveData
+FINEST: 
+Creating stock quote with the following values:
+	Symbol: AAA
+	Value: 3.0
+Mar 19, 2021 3:03:53 PM controllers.inputformcontrollers.InputInvestorFormController saveData
+FINEST: 
+Creating investor with the following values:
+	 Name: Poe,
+	 Address: 3 cat,
+	 Date Of Birth: 3/19/2021,
+	 Member Since: 3/19/2021,
+	 List of Stocks: [InvestorStockQuote{stock={"StockQuote":{"value":"3.0", "tickerSymbol":"AAA", "quoteDate":"3/19/2021"}}, shares=100}],
+	 Account Value: 300.0
+Mar 19, 2021 3:04:03 PM controllers.inputformcontrollers.InputBrokerFormController saveData
+FINEST: Creating broker with the following values:
+
+	 Name : Moe,
+	 Address: 5 cat,
+	 Date of Birth: 3/19/2021,
+	 Date of Hire: 3/19/2021,
+	 Date of Termination: 3/19/2021,
+	 Salary: 2.0,
+	 Status: Full Time,
+	 Clients: Baeldung is awesomePoe,

@@ -6,15 +6,18 @@
  */
 package controllers.inputformcontrollers;
 
-import datacontainers.BrokerDataContainer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
+
+import controllers.Application;
+import datacontainers.BrokerDataContainer;
 import datacontainers.InvestmentCompanyDataContainer;
 import datamodels.Broker;
 import datamodels.InvestmentCompany;
 import exceptionhandlers.ErrorPopup;
 import exceptionhandlers.InvalidDataException;
-import java.util.List;
+import exceptionhandlers.MyFileException;
 import view.inputforms.InvestmentCompanyInputForm;
 
 public class InputInvestmentCompanyFormController implements ActionListener {
@@ -78,7 +81,7 @@ public class InputInvestmentCompanyFormController implements ActionListener {
 	      // Set the company name in the object
 	      try {
 			newInvestmentCompany.setCompanyName(companyName);
-	      } catch (InvalidDataException e) {
+	      } catch (MyFileException e) {
 			 throw new InvalidDataException("Invalid company Name.  Company name is required");}
       
 
@@ -111,7 +114,25 @@ public class InputInvestmentCompanyFormController implements ActionListener {
             }
          }
       }
-      this.investmentCompanyDataContainer.getcompanyList().add(newInvestmentCompany);
+      this.investmentCompanyDataContainer.getInvestmentCompanyList().add(newInvestmentCompany);
+      
+      StringBuilder stringBuilder = new StringBuilder(100);
+  	
+	  List<Broker> listOfBrokers = newInvestmentCompany.getListOfBrokers();
+	  for ( Broker broker: listOfBrokers) {
+		  stringBuilder.append(broker.getName() + ",");
+	  }
+	  
+      
+      Application.getAPPLICATION_LOGGER().finest("Creating investment company with the following values:"  + 
+    		  				"\n\t Name: " + newInvestmentCompany.getCompanyName() + "," + 
+    		  				"\n\t List of Brokers: " + stringBuilder.toString());
+
+      
+      
+      
+      
+      
       } catch (InvalidDataException exp) {
     	  new ErrorPopup(form,exp);}
    }

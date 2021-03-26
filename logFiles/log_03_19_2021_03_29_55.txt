@@ -1,0 +1,12 @@
+Mar 19, 2021 3:30:09 PM controllers.inputformcontrollers.InputStockQuoteFormController saveData
+FINEST: Creating stock quote with the following values:
+	Symbol: AAA
+	Value: $44.00
+Mar 19, 2021 3:30:16 PM controllers.inputformcontrollers.InputInvestorFormController saveData
+FINEST: Creating investor with the following values:
+	 Name: Moe,
+	 Address: 3,
+	 Date Of Birth: 3/19/2021,
+	 Member Since: 3/19/2021,
+	 List of Stocks: Symbol: AAA Value: $44.00,,
+	 Account Value: $4,400.00

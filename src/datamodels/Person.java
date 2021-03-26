@@ -2,9 +2,10 @@ package datamodels;
 
 import java.util.Calendar;
 import java.util.Objects;
+
+import exceptionhandlers.InvalidDataException;
 import interfaces.IPerson;
 import utilities.date.DateFunctions;
-import exceptionhandlers.InvalidDataException;
 
 public class Person implements IPerson{
 	String name;

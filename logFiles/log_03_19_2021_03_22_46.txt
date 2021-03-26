@@ -1,0 +1,28 @@
+Mar 19, 2021 3:23:05 PM controllers.inputformcontrollers.InputStockQuoteFormController saveData
+FINEST: Creating stock quote with the following values:
+	Symbol: AAA
+	Value: 4.0
+Mar 19, 2021 3:23:09 PM controllers.inputformcontrollers.InputStockQuoteFormController saveData
+FINEST: Creating stock quote with the following values:
+	Symbol: BBB
+	Value: 5.0
+Mar 19, 2021 3:23:14 PM controllers.inputformcontrollers.InputStockQuoteFormController saveData
+FINEST: Creating stock quote with the following values:
+	Symbol: CCC
+	Value: 33344.0
+Mar 19, 2021 3:23:22 PM controllers.inputformcontrollers.InputInvestorFormController saveData
+FINEST: Creating investor with the following values:
+	 Name: Poe,
+	 Address: 3,
+	 Date Of Birth: 3/19/2021,
+	 Member Since: 3/19/2021,
+	 List of Stocks: Symbol: AAAValue: 4.0,Symbol: BBBValue: 5.0,,
+	 Account Value: 900.0
+Mar 19, 2021 3:23:32 PM controllers.inputformcontrollers.InputInvestorFormController saveData
+FINEST: Creating investor with the following values:
+	 Name: MOe,
+	 Address: 44,
+	 Date Of Birth: 3/19/2021,
+	 Member Since: 3/19/2021,
+	 List of Stocks: Symbol: AAAValue: 4.0,Symbol: BBBValue: 5.0,Symbol: CCCValue: 33344.0,,
+	 Account Value: 3335300.0

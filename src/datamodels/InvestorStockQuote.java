@@ -1,18 +1,22 @@
 package datamodels;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class InvestorStockQuote {
+/**
+ * This class creates an InvestorStockQuote object
+ */
+public class InvestorStockQuote implements Serializable {
 
-	private StockQuote stock;
-	private int shares;
-	
-	/**
-	 * no-arg constuctor
-	 */
-	public InvestorStockQuote() {
-	}
-	
+    private StockQuote stock;
+    private int shares=10;
+
+    /**
+     * no-arg constructor
+     */
+    public InvestorStockQuote() {
+    }
+
     /**
      * This constructor takes the stock and shares
      *
@@ -53,33 +57,43 @@ public class InvestorStockQuote {
 	public void setStock(StockQuote stock) {
 		this.stock = stock;
 	}
-	
-    /**
-     * Returns a String representation of the InvestorStockQuote object
-     */
+
     @Override
-    public String toString() {
-        return "{\"InvestorStockQuote\":{"
-                + "\"stock\":\"" + this.stock + "\""
-                + ", \"shares\":\"" + this.shares + "\""
-                + "}}";
+    public int hashCode() {
+        int hash = 3;
+        hash = 41 * hash + Objects.hashCode(this.stock);
+        hash = 41 * hash + this.shares;
+        return hash;
     }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(shares, stock);
-	}
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final InvestorStockQuote other = (InvestorStockQuote) obj;
+        if (this.shares != other.shares) {
+            return false;
+        }
+        if (!Objects.equals(this.stock, other.stock)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		InvestorStockQuote other = (InvestorStockQuote) obj;
-		return shares == other.shares && Objects.equals(stock, other.stock);
-	}
-	
+    @Override
+    public String toString() {
+        return "InvestorStockQuote{" + "stock=" + this.getStock() + ", shares=" + this.getShares() + '}';
+    }
+    
+    
+
 }

@@ -68,6 +68,10 @@ public class Investor extends Person{
 		return this.listOfStocks;
 	}
 	
+
+	
+	
+	
 	/**
 	 * Adds an individual stock to the Investor object
 	 * @param value is the monetary value of  the  stock quote

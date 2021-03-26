@@ -1,13 +1,14 @@
 package testclasses;
 
+import java.util.Calendar;
+
+import datamodels.Broker;
 import datamodels.InvestmentCompany;
+import datamodels.Investor;
+import datamodels.InvestorStockQuote;
 import datamodels.StockQuote;
 import exceptionhandlers.InvalidDataException;
 import exceptionhandlers.MyFileException;
-import datamodels.Broker;
-import datamodels.Investor;
-import datamodels.InvestorStockQuote;
-import java.util.Calendar;
 
 public class TestAllClassesClassCreationAssign2 {
 

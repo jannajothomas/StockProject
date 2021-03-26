@@ -1,10 +1,11 @@
 package testclasses;
 
-import exceptionhandlers.InvalidDataException;
-import exceptionhandlers.MyFileException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
+
+import exceptionhandlers.InvalidDataException;
+import exceptionhandlers.MyFileException;
 
 public class RunAllTests {
 

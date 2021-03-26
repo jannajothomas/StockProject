@@ -4,30 +4,69 @@
  */
 package datacontainers;
 
-import datamodels.Broker;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import datamodels.Broker;
+
 @XmlRootElement(name = "brokerList")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class BrokerDataContainer  {
 
-    /** Simple container that stores elements as a list, can contain duplicates 
-     *  Stores in FIFO order
-     */
-	 @XmlElement(name = "broker")   
-    private List<Broker> brokerList = new ArrayList<>();
-    
-    public List<Broker> getBrokerList() {
-        return brokerList;
-    }
+   public BrokerDataContainer() {
+   }
 
-    public void setBrokerList(List<Broker> brokerList) {
-        this.brokerList = brokerList;
-    }
+   /**
+    * Simple container that stores elements as a list, can contain duplicates
+    * Stores in FIFO order
+    */
+   // XML document element name
+   @XmlElement(name = "broker")
+   private List<Broker> brokerList = new ArrayList<>();
+
+   /**
+    * Container that stores elements as a set of unique elements Random ordering
+    */
+   private Set brokerSet = new HashSet();
+
+   /**
+    * Container that stores elements as a map, can contain duplicates Order not
+    * enforced
+    */
+   private Map brokerMap = new HashMap();
+
+   // getters and setters
+   public List<Broker> getBrokerList() {
+      return brokerList;
+   }
+
+   public void setBrokerList(List<Broker> brokerList) {
+      this.brokerList = brokerList;
+   }
+
+   public Set getBrokerSet() {
+      return brokerSet;
+   }
+
+   public void setBrokerSet(Set brokerSet) {
+      this.brokerSet = brokerSet;
+   }
+
+   public Map getBrokerMap() {
+      return brokerMap;
+   }
+
+   public void setBrokerMap(Map brokerMap) {
+      this.brokerMap = brokerMap;
+   }
+
 }

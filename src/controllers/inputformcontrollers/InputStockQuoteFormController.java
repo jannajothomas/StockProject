@@ -7,14 +7,16 @@
 package controllers.inputformcontrollers;
 
 import java.awt.event.ActionListener;
-import view.inputforms.StockQuoteInputForm;
+import java.util.Calendar;
+
+import controllers.Application;
 import datacontainers.StockQuoteDataContainer;
 import datamodels.StockQuote;
 import exceptionhandlers.ErrorPopup;
 import exceptionhandlers.MyFileException;
 import utilities.date.DateFunctions;
-
-import java.util.Calendar;
+import utilities.formatters.NumberFormatter;
+import view.inputforms.StockQuoteInputForm;
 
 public class InputStockQuoteFormController implements ActionListener {
 
@@ -27,10 +29,10 @@ public class InputStockQuoteFormController implements ActionListener {
    // Constructor 
    public InputStockQuoteFormController(StockQuoteDataContainer p_stockQuoteDataContainer) {
 
-      // Store the passed in data container(s)
+      // Store the passed in data container
       this.m_stockQuoteDataContainer = p_stockQuoteDataContainer;
 
-      // create the form, passing in this controller object to the constructor
+      // create the form
       form = new StockQuoteInputForm(this);
 
       // make the form visible
@@ -90,7 +92,12 @@ public class InputStockQuoteFormController implements ActionListener {
 
          // Everything good, save the stock quote
          this.m_stockQuoteDataContainer.getStockQuoteList().add(newQuote);
-
+         
+         // Don't log it until it actually happens!
+          // log
+        Application.getAPPLICATION_LOGGER().finest("Creating stock quote with the following values:"+
+                "\n\t" + "Symbol: " + newQuote.getTickerSymbol() + 
+                "\n\t" + "Value: " + NumberFormatter.formatCurrency(newQuote.getValue()));
       } catch (MyFileException exp) {
          new ErrorPopup(form, exp);
 

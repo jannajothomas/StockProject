@@ -18,51 +18,55 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import datamodels.InvestmentCompany;
 
-@XmlRootElement(name = "companyList")
+// XML document list element name
+@XmlRootElement(name = "investmentCompanyList")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class InvestmentCompanyDataContainer  {
 
-    /** Simple container that stores elements as a list, can contain duplicates 
-     *  Stores in FIFO order
-     */
-	 @XmlElement(name = "company") 
-    private List<InvestmentCompany> companyList = new ArrayList<>();
-    
-    /** Container that stores elements as a set of unique elements
-     *  Random ordering
-     */
-    private Set<?> companySet = new HashSet<Object>();
+   /**
+    * Simple container that stores elements as a list, can contain duplicates
+    * Stores in FIFO order
+    */
+   // XML document element name
+   @XmlElement(name = "investmentCompany")  
+   private List<InvestmentCompany> investmentCompanyList = new ArrayList<>();
 
-    /** Container that stores elements as a map, can contain duplicates
-     *  Order not enforced
-     */
-    private Map<Object, Object> companyMap = new HashMap<Object, Object>();
+   /**
+    * Container that stores elements as a set of unique elements Random ordering
+    */
+   private Set investmentCompanySet = new HashSet();
 
-    
-    
-    public List<InvestmentCompany> getcompanyList() {
-        return companyList;
-    }
+   /**
+    * Container that stores elements as a map, can contain duplicates Order not
+    * enforced
+    */
+   private Map investmentCompanyMap = new HashMap();
 
-    public void setcompanyList(List<InvestmentCompany> companyList) {
-        this.companyList = companyList;
-    }
+   // getters and setters
+   
+   public List<InvestmentCompany> getInvestmentCompanyList() {
+      return investmentCompanyList;
+   }
 
-    public Set<?> getcompanySet() {
-        return companySet;
-    }
+   public void setInvestmentCompanyList(List<InvestmentCompany> investmentCompanyList) {
+      this.investmentCompanyList = investmentCompanyList;
+   }
 
-    public void setStockQuoteSet(Set<?> companySet) {
-        this.companySet = companySet;
-    }
+   public Set getInvestmentCompanySet() {
+      return investmentCompanySet;
+   }
 
-    public Map<Object, Object> getcompanyMap() {
-        return companyMap;
-    }
+   public void setInvestmentCompanySet(Set investmentCompanySet) {
+      this.investmentCompanySet = investmentCompanySet;
+   }
 
-    public void setcompanyMap(Map<Object, Object> companyMap) {
-        this.companyMap = companyMap;
-    }
+   public Map getInvestmentCompanyMap() {
+      return investmentCompanyMap;
+   }
+
+   public void setInvestmentCompanyMap(Map investmentCompanyMap) {
+      this.investmentCompanyMap = investmentCompanyMap;
+   }
 
 
 }
