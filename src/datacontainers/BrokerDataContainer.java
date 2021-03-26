@@ -31,7 +31,7 @@ public class BrokerDataContainer  {
     */
    // XML document element name
    @XmlElement(name = "broker")
-   private List<Broker> brokerList = new ArrayList<>();
+   private static List<Broker> brokerList = new ArrayList<>();
 
    /**
     * Container that stores elements as a set of unique elements Random ordering
@@ -45,7 +45,7 @@ public class BrokerDataContainer  {
    private Map brokerMap = new HashMap();
 
    // getters and setters
-   public List<Broker> getBrokerList() {
+   public static List<Broker> getBrokerList() {
       return brokerList;
    }
 

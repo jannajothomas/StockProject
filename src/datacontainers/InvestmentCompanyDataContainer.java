@@ -29,7 +29,7 @@ public class InvestmentCompanyDataContainer  {
     */
    // XML document element name
    @XmlElement(name = "investmentCompany")  
-   private List<InvestmentCompany> investmentCompanyList = new ArrayList<>();
+   private static List<InvestmentCompany> investmentCompanyList = new ArrayList<>();
 
    /**
     * Container that stores elements as a set of unique elements Random ordering
@@ -44,7 +44,7 @@ public class InvestmentCompanyDataContainer  {
 
    // getters and setters
    
-   public List<InvestmentCompany> getInvestmentCompanyList() {
+   public static List<InvestmentCompany> getInvestmentCompanyList() {
       return investmentCompanyList;
    }
 

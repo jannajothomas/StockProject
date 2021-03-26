@@ -28,7 +28,7 @@ public class InvestorDataContainer  {
     */
    // XML document element name
    @XmlElement(name = "investor")
-   private List<Investor> investorList = new ArrayList<>();
+   private static List<Investor> investorList = new ArrayList<>();
 
    /**
     * Container that stores elements as a set of unique elements Random ordering
@@ -42,7 +42,7 @@ public class InvestorDataContainer  {
    private Map investorMap = new HashMap();
 
    // getters and setters
-   public List<Investor> getInvestorList() {
+   public static List<Investor> getInvestorList() {
       return investorList;
    }
 

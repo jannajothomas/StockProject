@@ -115,18 +115,92 @@ public class DatabaseIO {
         return listOfStockquotes;
     }
 
-	public static void storeInvestors(InvestorDataContainer investorDataContainer) {
-		// TODO Auto-generated method stub
+	public static void storeInvestors(InvestorDataContainer investorDataContainer) throws DatabaseException {
+		  for (Investor investor : InvestorDataContainer.getInvestorList()) {
+	            try {
+	                // Retrieve the database connection and create the statement object
+	                Connection connection = DatabaseUtilities.openDatabaseConnection();
+	                Statement insertStatement = connection.createStatement();
+
+	             
+	                
+	                
+	                // Create the string for the sql statement
+	                String command = "INSERT INTO investor (name, address, dateOfBirth, id, memberSince)"
+	                		+ "VALUES ('" 
+	                		+ investor.getName() + "','"
+	                		+ investor.getAddress() + "','" 
+	                		+ DatabaseDateUtilities.getSqlFormattedDate(investor.getDateOfBirth()) + "','" 
+	                		+ investor.getId() + "','"
+	                		+ DatabaseDateUtilities.getSqlFormattedDate(investor.getMemberSince()) + "')";
+
+	                // Execute the statement
+	                insertStatement.executeUpdate(command);
+	                // Close the statement
+
+	            } catch (SQLException error) {
+	                throw new DatabaseException("A database error occured updating"
+	                        + " investor table " + error.getMessage());
+	            }
+	        }
 		
 	}
 
-	public static void storeBrokers(BrokerDataContainer brokerDataContainer) {
-		// TODO Auto-generated method stub
+	public static void storeBrokers(BrokerDataContainer brokerDataContainer) throws DatabaseException {
+		for (Broker broker : BrokerDataContainer.getBrokerList()) {
+            try {
+                // Retrieve the database connection and create the statement object
+                Connection connection = DatabaseUtilities.openDatabaseConnection();
+                Statement insertStatement = connection.createStatement();
+
+                
+                // Create the string for the sql statement
+                String command = "INSERT INTO broker (name, address, dateOfBirth, id, memberSince)"
+                		+ "VALUES ('" 
+                		+ broker.getName() + "','"
+                		+ broker.getAddress() + "','" 
+                		+ DatabaseDateUtilities.getSqlFormattedDate(broker.getDateOfBirth()) + "','" 
+                		+ broker.getId() + "','"
+                		+ DatabaseDateUtilities.getSqlFormattedDate(broker.getDateOfHire()) + "','"
+                		+ DatabaseDateUtilities.getSqlFormattedDate(broker.getDateOfTermination()) + "','"
+                		+ broker.getSalary() + "')";
+
+                // Execute the statement
+                insertStatement.executeUpdate(command);
+                // Close the statement
+
+            } catch (SQLException error) {
+                throw new DatabaseException("A database error occured updating"
+                        + " broker table " + error.getMessage());
+            }
+        }
 		
 	}
 
-	public static void storeInvestmentCompany(InvestmentCompanyDataContainer investmentCompanyDataContainer) {
-		// TODO Auto-generated method stub
+	public static void storeInvestmentCompany(InvestmentCompanyDataContainer investmentCompanyDataContainer) throws DatabaseException {
+		for (InvestmentCompany company : InvestmentCompanyDataContainer.getInvestmentCompanyList()) {
+            try {
+                // Retrieve the database connection and create the statement object
+                Connection connection = DatabaseUtilities.openDatabaseConnection();
+                Statement insertStatement = connection.createStatement();
+
+                
+                // Create the string for the sql statement
+                String command = "INSERT INTO investmentCompany (name)"
+                		+ "VALUES ('" 
+                		+ company.getCompanyName() + "')";
+
+
+                // Execute the statement
+                insertStatement.executeUpdate(command);
+                // Close the statement
+
+            } catch (SQLException error) {
+                throw new DatabaseException("A database error occured updating"
+                        + " investment company table " + error.getMessage());
+            }
+        }
+		
 		
 	}
 
