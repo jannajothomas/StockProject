@@ -5,8 +5,13 @@
  */
 package utilities.db;
 
+import datacontainers.BrokerDataContainer;
+import datacontainers.InvestmentCompanyDataContainer;
 import datacontainers.InvestorDataContainer;
 import datacontainers.StockQuoteDataContainer;
+import datamodels.Broker;
+import datamodels.InvestmentCompany;
+import datamodels.Investor;
 import datamodels.StockQuote;
 import exceptionhandlers.DatabaseException;
 import exceptionhandlers.MyFileException;
@@ -113,6 +118,31 @@ public class DatabaseIO {
 	public static void storeInvestors(InvestorDataContainer investorDataContainer) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public static void storeBrokers(BrokerDataContainer brokerDataContainer) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static void storeInvestmentCompany(InvestmentCompanyDataContainer investmentCompanyDataContainer) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static List<Investor> retrieveInvestors() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public static List<Broker> retrieveBrokers() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public static List<InvestmentCompany> retrieveInvestmentCompanies() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

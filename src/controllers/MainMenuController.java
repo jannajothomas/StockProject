@@ -146,7 +146,6 @@ public class MainMenuController implements ActionListener {
 					stockQuoteDataContainer.setStockQuoteList(StockQuoteIO.readJSONFile(fileLocation));
 					break;
 				case "XML":
-					System.out.println("here");
 					investorDataContainer.setInvestorList(InvestorIO.readXMLFile(fileLocation).getInvestorList());
 					brokerDataContainer.setBrokerList(BrokerIO.readXMLFile(fileLocation).getBrokerList());
 					investmentCompanyDataContainer
@@ -156,6 +155,9 @@ public class MainMenuController implements ActionListener {
 					break;
 				}
 				stockQuoteDataContainer.setStockQuoteList(DatabaseIO.retrieveStockQuotes());
+				investorDataContainer.setInvestorList(DatabaseIO.retrieveInvestors());
+				brokerDataContainer.setBrokerList(DatabaseIO.retrieveBrokers());
+				investmentCompanyDataContainer.setInvestmentCompanyList(DatabaseIO.retrieveInvestmentCompanies());
 
 			} catch (MyFileException | DatabaseException exp) {
 				System.out.println("in  this catch");
