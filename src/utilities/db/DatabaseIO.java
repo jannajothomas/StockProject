@@ -160,7 +160,7 @@ public class DatabaseIO {
 	            listOfInvestors = parseInvestorResults(results);
 
 	        } catch (SQLException error) {
-	            throw new DatabaseException("A database error occured retrieve data from the stock quote table " + error.getMessage());
+	            throw new DatabaseException("A database error occured retrieve data from the investor table " + error.getMessage());
 	        }
 
 	        return listOfInvestors;
@@ -197,7 +197,7 @@ public class DatabaseIO {
 
                 
                 // Create the string for the sql statement
-                String command = "INSERT INTO broker (name, address, dateOfBirth, id, dateOfHire, dateOfTermination, salary, listOfClients)"
+                String command = "INSERT INTO broker (name, address, dateOfBirth, id, dateOfHire, dateOfTermination, salary, status, listOfClients)"
                 		+ "VALUES ('" 
                 		+ broker.getName() + "','"
                 		+ broker.getAddress() + "','" 
@@ -206,6 +206,7 @@ public class DatabaseIO {
                 		+ DatabaseDateUtilities.getSqlFormattedDate(broker.getDateOfHire()) + "','"
                 		+ DatabaseDateUtilities.getSqlFormattedDate(broker.getDateOfTermination()) + "','"
                 		+ broker.getSalary() + "','" 
+                		+ broker.getStatus() + "','"
                 		+ broker.getListOfClients() + "')";
 
                 // Execute the statement
@@ -252,7 +253,7 @@ public class DatabaseIO {
 	            Statement queryStatement = connection.createStatement();
 	            
 	            // Create the string for the statement object
-	            String command = "SELECT name, address, dateOfBirth, id, dateOfHire, dateOfTermination, salary, status, listOfInvestors FROM broker ORDER BY name";
+	            String command = "SELECT name, address, dateOfBirth, id, dateOfHire, dateOfTermination, salary, status, listOfClients FROM broker ORDER BY name";
 
 	            // Execute the statement object 
 	            ResultSet results = queryStatement.executeQuery(command);
@@ -260,7 +261,7 @@ public class DatabaseIO {
 	            listOfBrokers = parseBrokerResults(results);
 
 	        } catch (SQLException error) {
-	            throw new DatabaseException("A database error occured retrieve data from the stock quote table " + error.getMessage());
+	            throw new DatabaseException("A database error occured retrieve data from the broker quote table " + error.getMessage());
 	        }
 
 	        return listOfBrokers;
@@ -307,7 +308,7 @@ public class DatabaseIO {
 	            listOfCompanies = parseCompanyResults(results);
 
 	        } catch (SQLException error) {
-	            throw new DatabaseException("A database error occured retrieve data from the stock quote table " + error.getMessage());
+	            throw new DatabaseException("A database error occured retrieve data from the investment company table " + error.getMessage());
 	        }
 
 	        return listOfCompanies;
