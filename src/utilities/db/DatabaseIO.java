@@ -46,8 +46,6 @@ public class DatabaseIO {
             try {
                 // Retrieve the database connection and create the statement object
                 Connection connection = DatabaseUtilities.openDatabaseConnection();
-                System.out.print("Code poe");
-                System.out.print(connection);
                 Statement insertStatement = connection.createStatement();
 
                 // Create the string for the sql statement
@@ -155,11 +153,10 @@ public class DatabaseIO {
 	            Statement queryStatement = connection.createStatement();
 	            
 	            // Create the string for the statement object
-	            String command = "SELECT name, address, dateOfBirth, id, memberSince, listOfStocks FROM investors ORDER BY name";
+	            String command = "SELECT name, address, dateOfBirth, id, memberSince, listOfStocks FROM investor ORDER BY name";
 
 	            // Execute the statement object 
 	            ResultSet results = queryStatement.executeQuery(command);
-
 	            // Call private helper method to parse the result set into the array list
 	            listOfInvestors = parseInvestorResults(results);
 
@@ -181,15 +178,15 @@ public class DatabaseIO {
                 investor.setName(results.getString(1));
                 investor.setAddress(results.getString(2));
                 investor.setDateOfBirth(DatabaseDateUtilities.getJavaFormattedDate(results.getDate("dateOfBirth")));
-                //investor.setId(results.getString(4));
+                investor.setId(results.getLong(4));
                 investor.setMemberSince(DatabaseDateUtilities.getJavaFormattedDate(results.getDate("memberSince")));
-                
+                listOfInvestors.add(investor);
             }
         } catch (NumberFormatException | SQLException | InvalidDataException e) {
             throw new DatabaseException("Error parsing database results"
-                    + " stockquote table " + e.getMessage());
+                    + " investor table " + e.getMessage());
         }
-
+       
         return listOfInvestors;
     }
 	

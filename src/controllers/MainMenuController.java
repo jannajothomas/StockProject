@@ -160,7 +160,6 @@ public class MainMenuController implements ActionListener {
 				investmentCompanyDataContainer.setInvestmentCompanyList(DatabaseIO.retrieveInvestmentCompanies());
 
 			} catch (MyFileException | DatabaseException exp) {
-				System.out.println("in  this catch");
 				new FileIOErrorPopup(mainMenu, exp);
 			}
 		} else if (menuItemClicked.equals("XML")) {
