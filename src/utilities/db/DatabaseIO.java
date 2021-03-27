@@ -135,7 +135,6 @@ public class DatabaseIO {
 
 	                // Execute the statement
 	                insertStatement.executeUpdate(command);
-	                // Close the statement
 
 	            } catch (SQLException error) {
 	                throw new DatabaseException("A database error occured updating"
@@ -148,7 +147,7 @@ public class DatabaseIO {
 		  ArrayList<Investor> listOfInvestors = new ArrayList<>();
 
 	        try {
-	            // Retreive the database connection and create the statement object
+	            // Retrieve the database connection and create the statement object
 	            Connection connection = DatabaseUtilities.openDatabaseConnection();
 	            Statement queryStatement = connection.createStatement();
 	            
@@ -165,7 +164,6 @@ public class DatabaseIO {
 	        }
 
 	        return listOfInvestors;
-		
 	}
 	
     private static ArrayList<Investor> parseInvestorResults(ResultSet results) throws DatabaseException{
@@ -211,14 +209,12 @@ public class DatabaseIO {
 
                 // Execute the statement
                 insertStatement.executeUpdate(command);
-                // Close the statement
 
             } catch (SQLException error) {
                 throw new DatabaseException("A database error occured updating"
                         + " broker table " + error.getMessage());
             }
         }
-		
 	}
 
 	public static void storeInvestmentCompany(InvestmentCompanyDataContainer investmentCompanyDataContainer) throws DatabaseException {
@@ -237,30 +233,101 @@ public class DatabaseIO {
 
                 // Execute the statement
                 insertStatement.executeUpdate(command);
-                // Close the statement
 
             } catch (SQLException error) {
                 throw new DatabaseException("A database error occured updating"
                         + " investment company table " + error.getMessage());
             }
+        }	
+	}
+
+	public static List<Broker> retrieveBrokers() throws DatabaseException {
+		
+		 ArrayList<Broker> listOfBrokers = new ArrayList<>();
+
+	        try {
+	            // Retrieve the database connection and create the statement object
+	            Connection connection = DatabaseUtilities.openDatabaseConnection();
+	            Statement queryStatement = connection.createStatement();
+	            
+	            // Create the string for the statement object
+	            String command = "SELECT name, address, dateOfBirth, id, dateOfHire, dateOfTermination, salary, status, listOfInvestors FROM broker ORDER BY name";
+
+	            // Execute the statement object 
+	            ResultSet results = queryStatement.executeQuery(command);
+	            // Call private helper method to parse the result set into the array list
+	            listOfBrokers = parseBrokerResults(results);
+
+	        } catch (SQLException error) {
+	            throw new DatabaseException("A database error occured retrieve data from the stock quote table " + error.getMessage());
+	        }
+
+	        return listOfBrokers;
+	}
+
+	private static ArrayList<Broker> parseBrokerResults(ResultSet results) throws DatabaseException {
+        ArrayList<Broker> listOfBrokers = new ArrayList<>();
+
+        try {
+            while (results.next()) {
+                Broker broker = new Broker();
+                broker.setName(results.getString(1));
+                broker.setAddress(results.getString(2));
+                broker.setDateOfBirth(DatabaseDateUtilities.getJavaFormattedDate(results.getDate("dateOfBirth")));
+                broker.setId(results.getLong(4));
+                broker.setDateOfHire(DatabaseDateUtilities.getJavaFormattedDate(results.getDate("dateOfHire")));
+                broker.setDateOfTermination(DatabaseDateUtilities.getJavaFormattedDate(results.getDate("dateOfTermination")));
+                broker.setSalary(results.getDouble(7));
+                broker.setStatus(results.getString(8));
+                listOfBrokers.add(broker);
+            }
+        } catch (NumberFormatException | SQLException | InvalidDataException e) {
+            throw new DatabaseException("Error parsing database results"
+                    + " investor table " + e.getMessage());
         }
-		
-		
+       
+        return listOfBrokers;
 	}
 
+	public static List<InvestmentCompany> retrieveInvestmentCompanies() throws DatabaseException, MyFileException {
+		 ArrayList<InvestmentCompany> listOfCompanies = new ArrayList<>();
 
-	
+	        try {
+	            // Retrieve the database connection and create the statement object
+	            Connection connection = DatabaseUtilities.openDatabaseConnection();
+	            Statement queryStatement = connection.createStatement();
+	            
+	            // Create the string for the statement object
+	            String command = "SELECT companyName, listOfBrokers FROM investmentCompany ORDER BY companyName";
+	            
+	            // Execute the statement object 
+	            ResultSet results = queryStatement.executeQuery(command);
+	            // Call private helper method to parse the result set into the array list
+	            listOfCompanies = parseCompanyResults(results);
 
-	
+	        } catch (SQLException error) {
+	            throw new DatabaseException("A database error occured retrieve data from the stock quote table " + error.getMessage());
+	        }
 
-	public static List<Broker> retrieveBrokers() {
-		// TODO Auto-generated method stub
-		return null;
+	        return listOfCompanies;
 	}
 
-	public static List<InvestmentCompany> retrieveInvestmentCompanies() {
-		// TODO Auto-generated method stub
-		return null;
+	private static ArrayList<InvestmentCompany> parseCompanyResults(ResultSet results) throws DatabaseException, MyFileException {
+		ArrayList<InvestmentCompany> listOfCompanies = new ArrayList<>();
+
+        try {
+            while (results.next()) {
+                InvestmentCompany company = new InvestmentCompany();
+                company.setCompanyName(results.getString(1));
+                
+                listOfCompanies.add(company);
+            }
+        } catch (NumberFormatException | SQLException e) {
+            throw new DatabaseException("Error parsing database results"
+                    + " investor table " + e.getMessage());
+        }
+       
+        return listOfCompanies;
 	}
 
 }

@@ -23,9 +23,9 @@ public final class InitializeDatabase {
         
         "CREATE TABLE investorquote (stock nvarchar(30), shares int FOREIGN KEY (tickersymbol))",
         
-        "CREATE TABLE broker (name varchar(20), address varchar(30), dateOfBirth DateTime, id nvarchar(20), dateOfHire DateTime, dateOfTermination DateTime, salary float, status varchar(20) PRIMARY KEY (id))",
+        "CREATE TABLE broker (name varchar(20), address varchar(30), dateOfBirth DateTime, id nvarchar(20), dateOfHire DateTime, dateOfTermination DateTime, salary float, status varchar(20), listOfInvestors  nvarchar(200) PRIMARY KEY (id))",
         
-    	"CREATE TABLE investmentCompany (companyName nvarchar(30), PRIMARY KEY (companyName))",};
+    	"CREATE TABLE investmentCompany (companyName nvarchar(30),listOfBrokers nvarchar(200) PRIMARY KEY (companyName))",};
 
     /**
      * Table deletion strings Used to delete the tables from the database.
@@ -37,9 +37,7 @@ public final class InitializeDatabase {
         "DROP TABLE investorquote",
         "DROP TABLE broker",
         "DROP TABLE investmentCompany"};
-    
-
-
+   
     /**
      * Drops the tables listed in the dropTables array and removes all the data
      *
