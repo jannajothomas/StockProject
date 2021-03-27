@@ -228,10 +228,10 @@ public class DatabaseIO {
 
                 
                 // Create the string for the sql statement
-                String command = "INSERT INTO investmentCompany (companyName)"
+                String command = "INSERT INTO investmentCompany (companyName, listOfBrokers)"
                 		+ "VALUES ('" 
-                		+ company.getCompanyName() + "')";
-
+                		+ company.getCompanyName() + "','"
+                		+ company.getListOfBrokers() + "')";
 
                 // Execute the statement
                 insertStatement.executeUpdate(command);
@@ -321,7 +321,6 @@ public class DatabaseIO {
             while (results.next()) {
                 InvestmentCompany company = new InvestmentCompany();
                 company.setCompanyName(results.getString(1));
-                
                 listOfCompanies.add(company);
             }
         } catch (NumberFormatException | SQLException e) {
