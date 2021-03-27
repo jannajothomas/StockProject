@@ -197,7 +197,7 @@ public class DatabaseIO {
 
                 
                 // Create the string for the sql statement
-                String command = "INSERT INTO broker (name, address, dateOfBirth, id, dateOfHire, dateOfTermination, salary)"
+                String command = "INSERT INTO broker (name, address, dateOfBirth, id, dateOfHire, dateOfTermination, salary, listOfClients)"
                 		+ "VALUES ('" 
                 		+ broker.getName() + "','"
                 		+ broker.getAddress() + "','" 
@@ -205,7 +205,8 @@ public class DatabaseIO {
                 		+ broker.getId() + "','"
                 		+ DatabaseDateUtilities.getSqlFormattedDate(broker.getDateOfHire()) + "','"
                 		+ DatabaseDateUtilities.getSqlFormattedDate(broker.getDateOfTermination()) + "','"
-                		+ broker.getSalary() + "')";
+                		+ broker.getSalary() + "','" 
+                		+ broker.getListOfClients() + "')";
 
                 // Execute the statement
                 insertStatement.executeUpdate(command);
