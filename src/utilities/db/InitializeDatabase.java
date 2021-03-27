@@ -23,7 +23,7 @@ public final class InitializeDatabase {
         
         "CREATE TABLE investorquote (stock nvarchar(30), shares int FOREIGN KEY (tickersymbol))",
         
-        "CREATE TABLE broker (name varchar(20), address varchar(30), dateOfBirth DateTime, id nvarchar(20), dateOfHire DateTime, dateOfTermination DateTime, salary float, status varchar(20), listOfInvestors  nvarchar(1000) PRIMARY KEY (id))",
+        "CREATE TABLE broker (name varchar(20), address varchar(30), dateOfBirth DateTime, id nvarchar(20), dateOfHire DateTime, dateOfTermination DateTime, salary float, status varchar(20), listOfClients nvarchar(1000) PRIMARY KEY (id))",
         
     	"CREATE TABLE investmentCompany (companyName nvarchar(30),listOfBrokers nvarchar(1000) PRIMARY KEY (companyName))",};
 
