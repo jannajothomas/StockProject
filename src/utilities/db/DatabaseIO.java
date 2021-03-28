@@ -12,11 +12,17 @@ import datacontainers.StockQuoteDataContainer;
 import datamodels.Broker;
 import datamodels.InvestmentCompany;
 import datamodels.Investor;
+import datamodels.InvestorStockQuote;
 import datamodels.StockQuote;
 import exceptionhandlers.DatabaseException;
 import exceptionhandlers.InvalidDataException;
 import exceptionhandlers.MyFileException;
+
+import static org.junit.Assert.assertEquals;
+
+import java.sql.Array;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -122,19 +128,34 @@ public class DatabaseIO {
 	                // Retrieve the database connection and create the statement object
 	                Connection connection = DatabaseUtilities.openDatabaseConnection();
 	                Statement insertStatement = connection.createStatement();
+	                
 
+	                
 	                // Create the string for the sql statement
-	                String command = "INSERT INTO investor (name, address, dateOfBirth, id, memberSince, listOfStocks)"
+	                String command1 = "INSERT INTO investor (id, name, address, dateOfBirth, memberSince)"
 	                		+ "VALUES ('" 
+	                		+ investor.getId() + "','"
 	                		+ investor.getName() + "','"
 	                		+ investor.getAddress() + "','" 
 	                		+ DatabaseDateUtilities.getSqlFormattedDate(investor.getDateOfBirth()) + "','" 
-	                		+ investor.getId() + "','"
-	                		+ DatabaseDateUtilities.getSqlFormattedDate(investor.getMemberSince()) + "','" 
-	                		+ investor.getListOfStocks() + "')";
+	                		+ DatabaseDateUtilities.getSqlFormattedDate(investor.getMemberSince()) +  "')";
 
 	                // Execute the statement
-	                insertStatement.executeUpdate(command);
+	                insertStatement.executeUpdate(command1);
+	                
+	                
+	                //Loop through list of stocks
+	                for (InvestorStockQuote quote: investor.getListOfStocks()){
+	                	//For each stock create an investorquote entry
+		                String command2 = "INSERT INTO investorquote (investor_id, quote_tickersymbol, shares)"
+		                		+ "VALUES ('"
+		                		+ investor.getId()  + "','"
+		                		+ quote.getStock().getTickerSymbol()  + "','"
+		                		+ quote.getShares() + "')";
+
+		                // Execute the statement
+		                insertStatement.executeUpdate(command2);
+	                }
 
 	            } catch (SQLException error) {
 	                throw new DatabaseException("A database error occured updating"
@@ -145,42 +166,64 @@ public class DatabaseIO {
 
 	public static List<Investor> retrieveInvestors() throws DatabaseException {
 		  ArrayList<Investor> listOfInvestors = new ArrayList<>();
-
+		 
 	        try {
 	            // Retrieve the database connection and create the statement object
 	            Connection connection = DatabaseUtilities.openDatabaseConnection();
 	            Statement queryStatement = connection.createStatement();
 	            
 	            // Create the string for the statement object
-	            String command = "SELECT name, address, dateOfBirth, id, memberSince, listOfStocks FROM investor ORDER BY name";
-
+	            String command = "SELECT id, name, address, dateOfBirth, memberSince FROM investor ORDER BY name";
+	           
+	            
 	            // Execute the statement object 
-	            ResultSet results = queryStatement.executeQuery(command);
+	            ResultSet investorResults = queryStatement.executeQuery(command);
+
+	            command = "SELECT investor_id, quote_tickersymbol, shares FROM investorquote ORDER BY name";
+	            ResultSet stockResults = queryStatement.executeQuery(command);
 	            // Call private helper method to parse the result set into the array list
-	            listOfInvestors = parseInvestorResults(results);
+	            listOfInvestors = parseInvestorResults(investorResults, stockResults);
 
 	        } catch (SQLException error) {
-	            throw new DatabaseException("A database error occured retrieve data from the investor table " + error.getMessage());
+	            throw new DatabaseException("A database error occured retrieving data from the investor table " + error.getMessage());
 	        }
 
 	        return listOfInvestors;
 	}
 	
-    private static ArrayList<Investor> parseInvestorResults(ResultSet results) throws DatabaseException{
+    private static ArrayList<Investor> parseInvestorResults(ResultSet investorResults, ResultSet stockResults) throws DatabaseException{
 
         ArrayList<Investor> listOfInvestors = new ArrayList<>();
 
         try {
-            while (results.next()) {
+            while (investorResults.next()) {
                 Investor investor = new Investor();
-                investor.setName(results.getString(1));
-                investor.setAddress(results.getString(2));
-                investor.setDateOfBirth(DatabaseDateUtilities.getJavaFormattedDate(results.getDate("dateOfBirth")));
-                investor.setId(results.getLong(4));
-                investor.setMemberSince(DatabaseDateUtilities.getJavaFormattedDate(results.getDate("memberSince")));
+                investor.setId(investorResults.getLong(1));
+                investor.setName(investorResults.getString(2));
+                investor.setAddress(investorResults.getString(3));
+                investor.setDateOfBirth(DatabaseDateUtilities.getJavaFormattedDate(investorResults.getDate("dateOfBirth")));
+                investor.setMemberSince(DatabaseDateUtilities.getJavaFormattedDate(investorResults.getDate("memberSince")));
+                
+                while(stockResults.next() ) {
+                	Long invID = investorResults.getLong(1);
+                	Long thisID = stockResults.getLong(1);
+
+                	if (thisID.equals(invID)){
+                		
+                		//HOW Do i reference the stock quote to make an investor stock quote
+                	}
+     
+                }
+                
+                
+                
+                
+                
+                
+                
                 listOfInvestors.add(investor);
             }
-        } catch (NumberFormatException | SQLException | InvalidDataException e) {
+        } catch (NumberFormatException | SQLException | InvalidDataException | MyFileException e) {
             throw new DatabaseException("Error parsing database results"
                     + " investor table " + e.getMessage());
         }
@@ -194,10 +237,12 @@ public class DatabaseIO {
                 // Retrieve the database connection and create the statement object
                 Connection connection = DatabaseUtilities.openDatabaseConnection();
                 Statement insertStatement = connection.createStatement();
-
+                
+                
+         
                 
                 // Create the string for the sql statement
-                String command = "INSERT INTO broker (name, address, dateOfBirth, id, dateOfHire, dateOfTermination, salary, status, listOfClients)"
+                String command1 = "INSERT INTO broker (name, address, dateOfBirth, id, dateOfHire, dateOfTermination, salary, status)"
                 		+ "VALUES ('" 
                 		+ broker.getName() + "','"
                 		+ broker.getAddress() + "','" 
@@ -206,11 +251,24 @@ public class DatabaseIO {
                 		+ DatabaseDateUtilities.getSqlFormattedDate(broker.getDateOfHire()) + "','"
                 		+ DatabaseDateUtilities.getSqlFormattedDate(broker.getDateOfTermination()) + "','"
                 		+ broker.getSalary() + "','" 
-                		+ broker.getStatus() + "','"
-                		+ broker.getListOfClients() + "')";
+                		+ broker.getStatus() + "')";
 
                 // Execute the statement
-                insertStatement.executeUpdate(command);
+                insertStatement.executeUpdate(command1);               
+             
+                //Loop through list of stocks
+                for (Investor client: broker.getListOfClients()){
+                	//For each stock create an investorquote entry
+	                String command2 = "INSERT INTO brokerToClient (investor_id, broker_id)"
+	                		+ "VALUES ('"
+	                		+ client.getId()  + "','"
+	                		+ broker.getId() + "')";
+
+	                // Execute the statement
+	                insertStatement.executeUpdate(command2);
+                }
+                
+                
 
             } catch (SQLException error) {
                 throw new DatabaseException("A database error occured updating"

@@ -2,3 +2,6 @@ stockquotes
 sql
 xml
 unmarshaller
+investorquote
+nvarchar
+uml
