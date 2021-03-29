@@ -92,7 +92,6 @@ public final class InitializeDatabase {
                     statement.execute(dropTables[i]);
                     Application.getAPPLICATION_LOGGER().finest("Database tables dropped: " + " uml");
                 } catch (SQLException sqlException) {
-                	System.out.println(sqlException.getMessage());
                     Application.getAPPLICATION_LOGGER().finest("Problem dropping database tables for uml: " + sqlException.getMessage());
                 }
             }
@@ -110,7 +109,6 @@ public final class InitializeDatabase {
                     statement.execute(createTable);
                     Application.getAPPLICATION_LOGGER().finest("Database tables created: " + "uml");
                 }catch (SQLException sqlException) {
-                	System.out.println(sqlException.getMessage());
                     Application.getAPPLICATION_LOGGER().finest("Problem creating database tables for uml: " + sqlException.getMessage());
                 }
             }

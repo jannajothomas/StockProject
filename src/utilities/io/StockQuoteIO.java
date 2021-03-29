@@ -86,7 +86,6 @@ public class StockQuoteIO implements Serializable {
 	 */
 	public static void writeSerializedFile(String fileLocation, StockQuoteDataContainer datacontainer)
 			throws MyFileException {
-		System.out.println(fileLocation + "/stockquotes.ser");
 		try {
 			// Create output file
 			ObjectOutputStream serializedFile = new ObjectOutputStream(
