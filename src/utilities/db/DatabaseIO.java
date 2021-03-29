@@ -240,41 +240,21 @@ public class DatabaseIO {
 	            Statement queryStatement = connection.createStatement();
 	            
 	            //Get a list of IDs from the db.  This let me know how many and gives me a list to iterate through
-	            String command = "SELECT id FROM investor";
-	            ResultSet investorIDs = queryStatement.executeQuery(command);
-	            
-	            //For the list of investors
-	            while (investorIDs.next()) {
-	            	//GET A SINGLE INVESTOR AND ADD BASIC INFO
-	            		//Create a sql statement to retrieve an investor
-	            		Long investorID = investorIDs.getLong(1);
-	            		
-	            		//Use binding to get a single record
-	            		command = "SELECT id, name, address, dateOfBirth, memberSince FROM investor WHERE id = ?";
-	            		PreparedStatement pstmt = connection.prepareStatement(command);
-	            		pstmt.setLong(1, investorID);
-	            		ResultSet singleInvestor = pstmt.executeQuery();
-		            	
-		            	//   Parse the results (the result set should be of size 1) and create an investor  		
-	            		Investor parsedSingleInvestor = parseInvestorResults(singleInvestor);
-	            		
-	            	//CREATE AND ADD EACH STOCKQUOTE ASSOCIATED WITH THE INVESTOR
-	            		//   Create a sql statement to retrieve all the investor quotes using that single investor id
-	            		command = "SELECT quote_tickersymbol, shares FROM investorquote WHERE investor_id = ?";
-	            		pstmt = connection.prepareStatement(command);
-	            		pstmt.setLong(1, investorID);
-	            		ResultSet investorQuotes = pstmt.executeQuery();
-	            		
-	            		ArrayList <InvestorStockQuote> parsedInvestorStockQuotes = parseInvestorStockQuotes(investorQuotes);
-	            		//   Once you have the stock quotes, create the investor stock quote object and store in the investor object.
-            			for(InvestorStockQuote investorStockQuote: parsedInvestorStockQuotes) {
-	            			parsedSingleInvestor.addStock(investorStockQuote);
-	            			
-            			}
-            		listOfInvestors.add(parsedSingleInvestor);
+	            String command = "SELECT id, name, address, dateOfBirth, memberSince FROM investor";
+	            ResultSet investors = queryStatement.executeQuery(command);
+	            listOfInvestors = parseInvestorListResults(investors);
+	           
+	            for (Investor investor: listOfInvestors) {
+	           //   Create a sql statement to retrieve all the stocks associated with the investor ID
+	            	command = "SELECT quote_tickersymbol, shares FROM investorquote WHERE investor_id = ?";
+	            	PreparedStatement pstmt = connection.prepareStatement(command);
+	            	pstmt.setLong(1, investor.getId());
+	            	ResultSet unparsedInvestorStockQuotes = pstmt.executeQuery();
+	            	ArrayList<InvestorStockQuote> listOfParsedStockQuotes = parseInvestorStockQuotes(unparsedInvestorStockQuotes);
+	            	for(InvestorStockQuote parsedInvestorStockQuote: listOfParsedStockQuotes) {
+	            		investor.addStock(parsedInvestorStockQuote);
+	            	}
 	            }
-
-
 	        } catch (SQLException | MyFileException error) {
 	            throw new DatabaseException("A database error occured retrieving data from the investor table " + error.getMessage());
 	        }
@@ -282,30 +262,31 @@ public class DatabaseIO {
 	        return listOfInvestors;
 	}
 	
-
-	private static ArrayList<InvestorStockQuote> parseInvestorStockQuotes(
-			ResultSet investorQuotes) throws SQLException, MyFileException {
+	//provided the stock quotes for a particular investor
+	//need to returna  parsed list of investor stock quotes
+	private static ArrayList<InvestorStockQuote> parseInvestorStockQuotes( ResultSet investorQuotes) throws SQLException, MyFileException {
 		ArrayList<InvestorStockQuote> investorStockQuotes = new ArrayList<>();
-		 Connection connection = DatabaseUtilities.openDatabaseConnection();
-		 while (investorQuotes.next()) {
-
-			// Retrieving the stock quotes using this list 
-     		String command = "SELECT tickersymbol, value, date FROM stockquote WHERE tickersymbol IN (?) ";
-     		PreparedStatement pstmt = connection.prepareStatement(command);
-     		pstmt = connection.prepareStatement(command);
-     		pstmt.setString(1, investorQuotes.getString(1));
-     		ResultSet stockQuotes = pstmt.executeQuery();
+		 
+		
+			Connection connection = DatabaseUtilities.openDatabaseConnection();
+			while (investorQuotes.next()) {
+				// Retrieving the stock quotes using this list 
+				String command = "SELECT tickersymbol, value, date FROM stockquote WHERE tickersymbol IN (?) ";
+				PreparedStatement pstmt = connection.prepareStatement(command);
+				pstmt = connection.prepareStatement(command);
+				pstmt.setString(1, investorQuotes.getString(1));
+				ResultSet stockQuotes = pstmt.executeQuery();
      		
+				stockQuotes.next();
      		
+				StockQuote stockQuote = new StockQuote();
+				stockQuote.setTickerSymbol(stockQuotes.getString(1));
+				stockQuote.setValue(stockQuotes.getFloat(2));
+				stockQuote.setQuoteDate(DatabaseDateUtilities.getJavaFormattedDate(stockQuotes.getDate("date")));
      		
-     		stockQuotes.next();
-     		StockQuote stockQuote = new StockQuote();
-     		stockQuote.setTickerSymbol(stockQuotes.getString(1));
-     		stockQuote.setValue(stockQuotes.getFloat(2));
-     		stockQuote.setQuoteDate(DatabaseDateUtilities.getJavaFormattedDate(stockQuotes.getDate("date")));
-     		InvestorStockQuote investorStockQuote = new InvestorStockQuote();
-     		investorStockQuote.setStock(stockQuote);
-     		investorStockQuote.setShares(investorQuotes.getInt(2));
+				InvestorStockQuote investorStockQuote = new InvestorStockQuote();
+				investorStockQuote.setStock(stockQuote);
+				investorStockQuote.setShares(investorQuotes.getInt(2));
 
      		investorStockQuotes.add(investorStockQuote);
 		 }
@@ -313,41 +294,6 @@ public class DatabaseIO {
 		return investorStockQuotes;
 	}
 
-	private static String parseInvestorQuotes(ResultSet listOfQuotes) throws DatabaseException{
-		 StringBuilder str = new StringBuilder();
-		 try {
-				 while (listOfQuotes.next()) {
-				str.append(listOfQuotes.getString(1));
-				 //investorQuotes.add(listOfQuotes.getString(1));
-			 }
-		 }catch (NumberFormatException | SQLException e) {
-	            throw new DatabaseException("Error parsing investor Quotes"
-	            		+ " stockquotes table " + e.getMessage());
-        }
-		return str.toString();
-	}
-	
-    private static Investor parseInvestorResults(ResultSet singleInvestor) throws DatabaseException{
-    	 Investor investor = new Investor();
-         try {
-        	    singleInvestor.next();
-                investor.setId(singleInvestor.getLong(1));
-                investor.setName(singleInvestor.getString(2));
-                investor.setAddress(singleInvestor.getString(3));
-                investor.setDateOfBirth(DatabaseDateUtilities.getJavaFormattedDate(singleInvestor.getDate("dateOfBirth")));
-                investor.setMemberSince(DatabaseDateUtilities.getJavaFormattedDate(singleInvestor.getDate("memberSince")));
-            
-        } catch (NumberFormatException | SQLException | InvalidDataException e) {
-            throw new DatabaseException("Error parsing investor database results"
-                    + " investor table " + e.getMessage());
-        }
-       
-        return investor;
-    }
-	
-	
-
-	
 	private static ArrayList<Investor> parseInvestorListResults(ResultSet results) throws DatabaseException {
         ArrayList<Investor> listOfInvestors = new ArrayList<>();
 
