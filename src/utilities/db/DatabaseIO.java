@@ -38,7 +38,7 @@ public class DatabaseIO {
      */
     public static void storeStockQuotes(StockQuoteDataContainer stockquoteDataContainer) throws DatabaseException {
 
-        //Loopthrough the list of stock quotes. 
+        //Loo pthrough the list of stock quotes. 
         for (StockQuote quote : stockquoteDataContainer.getStockQuoteList()) {
             try {
                 // Retrieve the database connection and create the statement object
@@ -262,8 +262,6 @@ public class DatabaseIO {
 	        return listOfInvestors;
 	}
 	
-	//provided the stock quotes for a particular investor
-	//need to returna  parsed list of investor stock quotes
 	private static ArrayList<InvestorStockQuote> parseInvestorStockQuotes( ResultSet investorQuotes) throws SQLException, MyFileException {
 		ArrayList<InvestorStockQuote> investorStockQuotes = new ArrayList<>();
 		 
