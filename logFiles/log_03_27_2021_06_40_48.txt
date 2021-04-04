@@ -1,0 +1,22 @@
+Mar 27, 2021 6:41:02 AM controllers.inputformcontrollers.InputBrokerFormController saveData
+FINEST: Creating broker with the following values:
+	 Name : Susan,
+	 Address: 4 Phone,
+	 Date of Birth: 3/27/2021,
+	 Date of Hire: 3/27/2021,
+	 Date of Termination: 3/27/2021,
+	 Salary: $33.00,
+	 Status: Full Time,
+	 Clients: 
+Mar 27, 2021 6:41:05 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml/comweb
+Mar 27, 2021 6:41:06 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml/comweb
+Mar 27, 2021 6:41:06 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml/comweb
+Mar 27, 2021 6:41:07 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml/comweb
+Mar 27, 2021 6:41:07 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml/comweb
+Mar 27, 2021 6:41:07 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml/comweb

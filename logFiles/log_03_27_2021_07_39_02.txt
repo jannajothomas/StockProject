@@ -1,0 +1,40 @@
+Mar 27, 2021 7:39:15 AM controllers.inputformcontrollers.InputStockQuoteFormController saveData
+FINEST: Creating stock quote with the following values:
+	Symbol: AAA
+	Value: $10.00
+Mar 27, 2021 7:39:20 AM controllers.inputformcontrollers.InputStockQuoteFormController saveData
+FINEST: Creating stock quote with the following values:
+	Symbol: BBB
+	Value: $20.00
+Mar 27, 2021 7:39:33 AM controllers.inputformcontrollers.InputInvestorFormController saveData
+FINEST: Creating investor with the following values:
+	 Name: MOE,
+	 Address: 3  Upstairs,
+	 Date Of Birth: 3/27/2021,
+	 Member Since: 3/27/2021,
+	 List of Stocks: Symbol: AAA Value: $10.00,,
+	 Account Value: $1,000.00
+Mar 27, 2021 7:39:44 AM controllers.inputformcontrollers.InputInvestorFormController saveData
+FINEST: Creating investor with the following values:
+	 Name: POE,
+	 Address: 4 craz man,
+	 Date Of Birth: 3/27/2021,
+	 Member Since: 3/27/2021,
+	 List of Stocks: Symbol: AAA Value: $10.00,Symbol: BBB Value: $20.00,,
+	 Account Value: $3,000.00
+Mar 27, 2021 7:40:17 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml/comweb
+Mar 27, 2021 7:40:18 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml/comweb
+Mar 27, 2021 7:40:18 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml/comweb
+Mar 27, 2021 7:40:19 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml/comweb
+Mar 27, 2021 7:40:19 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml/comweb
+Mar 27, 2021 7:40:19 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml/comweb
+Mar 27, 2021 7:41:28 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml/comweb
+Mar 27, 2021 7:41:29 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml/comweb

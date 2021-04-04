@@ -1,0 +1,30 @@
+Mar 27, 2021 6:30:17 AM controllers.inputformcontrollers.InputStockQuoteFormController saveData
+FINEST: Creating stock quote with the following values:
+	Symbol: AAA
+	Value: $2.00
+Mar 27, 2021 6:30:27 AM controllers.inputformcontrollers.InputInvestorFormController saveData
+FINEST: Creating investor with the following values:
+	 Name: POE,
+	 Address: 3  cat,
+	 Date Of Birth: 3/27/2021,
+	 Member Since: 3/27/2021,
+	 List of Stocks: Symbol: AAA Value: $2.00,,
+	 Account Value: $200.00
+Mar 27, 2021 6:30:42 AM controllers.inputformcontrollers.InputBrokerFormController saveData
+FINEST: Creating broker with the following values:
+	 Name : Susan,
+	 Address: 4 Phone,
+	 Date of Birth: 3/27/2021,
+	 Date of Hire: 3/27/2021,
+	 Date of Termination: 3/27/2021,
+	 Salary: $44.00,
+	 Status: Full Time,
+	 Clients: POE,
+Mar 27, 2021 6:30:48 AM controllers.inputformcontrollers.InputInvestmentCompanyFormController saveData
+FINEST: Creating investment company with the following values:
+	 Name: Hog Hill,
+	 List of Brokers: Susan,
+Mar 27, 2021 6:30:52 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml/comweb
+Mar 27, 2021 6:30:53 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml/comweb

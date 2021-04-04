@@ -1,0 +1,4 @@
+Mar 26, 2021 3:40:44 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml/comweb
+Mar 26, 2021 3:40:59 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Problem getting database connection to uml: The TCP/IP connection to the host comweb.uml.edu, port 51433 has failed. Error: "connect timed out. Verify the connection properties. Make sure that an instance of SQL Server is running on the host and accepting TCP/IP connections at the port. Make sure that TCP connections to the port are not blocked by a firewall.".

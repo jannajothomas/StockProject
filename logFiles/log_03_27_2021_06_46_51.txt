@@ -1,0 +1,14 @@
+Mar 27, 2021 6:47:35 AM controllers.inputformcontrollers.InputBrokerFormController saveData
+FINEST: Creating broker with the following values:
+	 Name : Susan,
+	 Address: 25 Hog Hill Rd,
+	 Date of Birth: 10/12/1983,
+	 Date of Hire: 10/12/2005,
+	 Date of Termination: 3/27/2021,
+	 Salary: $170,000.00,
+	 Status: Full Time,
+	 Clients: 
+Mar 27, 2021 6:47:42 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml/comweb
+Mar 27, 2021 6:47:43 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml/comweb

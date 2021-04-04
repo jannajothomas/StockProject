@@ -1,0 +1,76 @@
+Mar 26, 2021 1:36:07 PM controllers.inputformcontrollers.InputStockQuoteFormController saveData
+FINEST: Creating stock quote with the following values:
+	Symbol: AAA
+	Value: $1.00
+Mar 26, 2021 1:36:13 PM controllers.inputformcontrollers.InputStockQuoteFormController saveData
+FINEST: Creating stock quote with the following values:
+	Symbol: ZZZ
+	Value: $2.00
+Mar 26, 2021 1:36:25 PM controllers.inputformcontrollers.InputInvestorFormController saveData
+FINEST: Creating investor with the following values:
+	 Name: POE,
+	 Address: 1 bed,
+	 Date Of Birth: 3/26/2021,
+	 Member Since: 3/26/2021,
+	 List of Stocks: Symbol: ZZZ Value: $2.00,,
+	 Account Value: $200.00
+Mar 26, 2021 1:36:34 PM controllers.inputformcontrollers.InputInvestorFormController saveData
+FINEST: Creating investor with the following values:
+	 Name: MOE,
+	 Address: 2  cat,
+	 Date Of Birth: 3/26/2021,
+	 Member Since: 3/26/2021,
+	 List of Stocks: Symbol: AAA Value: $1.00,,
+	 Account Value: $100.00
+Mar 26, 2021 1:36:55 PM controllers.inputformcontrollers.InputBrokerFormController saveData
+FINEST: Creating broker with the following values:
+	 Name : Janna,
+	 Address: 3 Cat,
+	 Date of Birth: 3/26/2021,
+	 Date of Hire: 3/26/2021,
+	 Date of Termination: 3/26/2021,
+	 Salary: $4.00,
+	 Status: Full Time,
+	 Clients: POE,
+Mar 26, 2021 1:37:06 PM controllers.inputformcontrollers.InputBrokerFormController saveData
+FINEST: Creating broker with the following values:
+	 Name : Sue,
+	 Address: 6 cat,
+	 Date of Birth: 3/26/2021,
+	 Date of Hire: 3/26/2021,
+	 Date of Termination: 3/26/2021,
+	 Salary: $6.00,
+	 Status: Full Time,
+	 Clients: MOE,
+Mar 26, 2021 1:37:13 PM controllers.inputformcontrollers.InputInvestmentCompanyFormController saveData
+FINEST: Creating investment company with the following values:
+	 Name: Hog hill co,
+	 List of Brokers: Janna,Sue,
+Mar 26, 2021 1:37:17 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml/comweb
+Mar 26, 2021 1:37:18 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml/comweb
+Mar 26, 2021 1:37:18 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml/comweb
+Mar 26, 2021 1:37:18 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml/comweb
+Mar 26, 2021 1:37:19 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml/comweb
+Mar 26, 2021 1:37:19 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml/comweb
+Mar 26, 2021 1:37:19 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml/comweb
+Mar 26, 2021 1:37:19 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml/comweb
+Mar 26, 2021 1:37:19 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml/comweb
+Mar 26, 2021 1:37:19 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml/comweb
+Mar 26, 2021 1:37:19 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml/comweb
+Mar 26, 2021 1:37:20 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml/comweb
+Mar 26, 2021 1:37:20 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml/comweb
+Mar 26, 2021 1:37:20 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml/comweb

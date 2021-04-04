@@ -1,0 +1,20 @@
+Mar 26, 2021 8:28:42 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml/comweb
+Mar 26, 2021 8:28:43 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml/comweb
+Mar 26, 2021 8:28:43 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml/comweb
+Mar 26, 2021 8:28:43 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml/comweb
+Mar 26, 2021 8:29:31 PM controllers.inputformcontrollers.InputInvestorFormController saveData
+FINEST: Creating investor with the following values:
+	 Name: Poe,
+	 Address: 7 snake,
+	 Date Of Birth: 3/26/2021,
+	 Member Since: 3/26/2021,
+	 List of Stocks: Symbol: AAA Value: $10.00,,
+	 Account Value: $1,000.00
+Mar 26, 2021 8:29:47 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml/comweb
+Mar 26, 2021 8:29:47 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml/comweb

@@ -1,0 +1,44 @@
+Mar 29, 2021 1:58:00 PM controllers.inputformcontrollers.InputBrokerFormController saveData
+FINEST: Creating broker with the following values:
+	 Name : Janna,
+	 Address: 5 Hog,
+	 Date of Birth: 3/29/2021,
+	 Date of Hire: 3/29/2021,
+	 Date of Termination: 3/29/2021,
+	 Salary: $5.00,
+	 Status: Full Time,
+	 Clients: 
+Mar 29, 2021 1:58:08 PM controllers.inputformcontrollers.InputBrokerFormController saveData
+FINEST: Creating broker with the following values:
+	 Name : Susan,
+	 Address: 7 hog,
+	 Date of Birth: 3/29/2021,
+	 Date of Hire: 3/29/2021,
+	 Date of Termination: 3/29/2021,
+	 Salary: $7.00,
+	 Status: Full Time,
+	 Clients: 
+Mar 29, 2021 1:58:15 PM controllers.inputformcontrollers.InputInvestmentCompanyFormController saveData
+FINEST: Creating investment company with the following values:
+	 Name: Hog hill,
+	 List of Brokers: Janna,Susan,
+Mar 29, 2021 1:58:18 PM controllers.inputformcontrollers.InputInvestmentCompanyFormController saveData
+FINEST: Creating investment company with the following values:
+	 Name: pds,
+	 List of Brokers: Susan,
+Mar 29, 2021 1:58:23 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml
+Mar 29, 2021 1:58:24 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml
+Mar 29, 2021 1:58:24 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml
+Mar 29, 2021 1:58:24 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml
+Mar 29, 2021 1:58:24 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml
+Mar 29, 2021 1:58:24 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml
+Mar 29, 2021 1:58:24 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml
+Mar 29, 2021 1:58:24 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml

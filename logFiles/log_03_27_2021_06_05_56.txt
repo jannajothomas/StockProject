@@ -1,0 +1,20 @@
+Mar 27, 2021 6:06:06 PM controllers.inputformcontrollers.InputStockQuoteFormController saveData
+FINEST: Creating stock quote with the following values:
+	Symbol: CCC
+	Value: $44.00
+Mar 27, 2021 6:06:17 PM controllers.inputformcontrollers.InputInvestorFormController saveData
+FINEST: Creating investor with the following values:
+	 Name: POE,
+	 Address: 4 Scatch,
+	 Date Of Birth: 3/27/2021,
+	 Member Since: 3/27/2021,
+	 List of Stocks: Symbol: CCC Value: $44.00,,
+	 Account Value: $4,400.00
+Mar 27, 2021 6:06:20 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml
+Mar 27, 2021 6:06:20 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml
+Mar 27, 2021 6:06:20 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml
+Mar 27, 2021 6:06:20 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml

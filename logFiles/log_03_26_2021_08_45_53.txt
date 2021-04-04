@@ -1,0 +1,20 @@
+Mar 26, 2021 8:46:10 PM controllers.inputformcontrollers.InputInvestorFormController saveData
+FINEST: Creating investor with the following values:
+	 Name: Moe,
+	 Address: 8 mad,
+	 Date Of Birth: 3/26/2021,
+	 Member Since: 3/26/2021,
+	 List of Stocks: ,
+	 Account Value: $0.00
+Mar 26, 2021 8:46:14 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml/comweb
+Mar 26, 2021 8:46:15 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml/comweb
+Mar 26, 2021 8:46:23 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml/comweb
+Mar 26, 2021 8:46:23 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml/comweb
+Mar 26, 2021 8:46:23 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml/comweb
+Mar 26, 2021 8:46:23 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml/comweb

@@ -1,0 +1,28 @@
+Mar 28, 2021 3:59:33 PM controllers.inputformcontrollers.InputStockQuoteFormController saveData
+FINEST: Creating stock quote with the following values:
+	Symbol: AAA
+	Value: $2.00
+Mar 28, 2021 3:59:39 PM controllers.inputformcontrollers.InputInvestorFormController saveData
+FINEST: Creating investor with the following values:
+	 Name: MOE,
+	 Address: 3,
+	 Date Of Birth: 3/28/2021,
+	 Member Since: 3/28/2021,
+	 List of Stocks: Symbol: AAA Value: $2.00,,
+	 Account Value: $200.00
+Mar 28, 2021 3:59:43 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml
+Mar 28, 2021 3:59:43 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml
+Mar 28, 2021 3:59:43 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml
+Mar 28, 2021 3:59:43 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml
+Mar 28, 2021 4:00:15 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml
+Mar 28, 2021 4:00:15 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml
+Mar 28, 2021 4:00:15 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml
+Mar 28, 2021 4:00:15 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml

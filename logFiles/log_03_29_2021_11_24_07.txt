@@ -1,0 +1,14 @@
+Mar 29, 2021 11:24:28 AM controllers.inputformcontrollers.InputBrokerFormController saveData
+FINEST: Creating broker with the following values:
+	 Name : Janna,
+	 Address: 2 Hog,
+	 Date of Birth: 3/29/2021,
+	 Date of Hire: 3/29/2021,
+	 Date of Termination: 3/29/2021,
+	 Salary: $3.00,
+	 Status: Full Time,
+	 Clients: 
+Mar 29, 2021 11:24:30 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml
+Mar 29, 2021 11:24:30 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml

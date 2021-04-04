@@ -1,0 +1,8 @@
+Mar 29, 2021 10:15:41 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml
+Mar 29, 2021 10:15:41 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml
+Mar 29, 2021 10:15:41 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml
+Mar 29, 2021 10:15:41 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml

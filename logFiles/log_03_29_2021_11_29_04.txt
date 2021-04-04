@@ -1,0 +1,28 @@
+Mar 29, 2021 11:29:24 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml
+Mar 29, 2021 11:29:24 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml
+Mar 29, 2021 11:29:24 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml
+Mar 29, 2021 11:29:24 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml
+Mar 29, 2021 11:29:24 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml
+Mar 29, 2021 11:29:24 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml
+Mar 29, 2021 11:29:24 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml
+Mar 29, 2021 11:29:24 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml
+Mar 29, 2021 11:29:24 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml
+Mar 29, 2021 11:29:24 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml
+Mar 29, 2021 11:30:55 AM controllers.inputformcontrollers.InputInvestmentCompanyFormController saveData
+FINEST: Creating investment company with the following values:
+	 Name: Hog Hill Neighbors,
+	 List of Brokers: Sue,
+Mar 29, 2021 11:30:58 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml
+Mar 29, 2021 11:30:58 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml

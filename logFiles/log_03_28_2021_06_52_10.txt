@@ -1,0 +1,46 @@
+Mar 28, 2021 6:52:47 AM controllers.inputformcontrollers.InputStockQuoteFormController saveData
+FINEST: Creating stock quote with the following values:
+	Symbol: AAA
+	Value: $4.00
+Mar 28, 2021 6:52:56 AM controllers.inputformcontrollers.InputInvestorFormController saveData
+FINEST: Creating investor with the following values:
+	 Name: POE,
+	 Address: 3,
+	 Date Of Birth: 3/28/2021,
+	 Member Since: 3/28/2021,
+	 List of Stocks: Symbol: AAA Value: $4.00,,
+	 Account Value: $400.00
+Mar 28, 2021 6:53:02 AM controllers.inputformcontrollers.InputInvestorFormController saveData
+FINEST: Creating investor with the following values:
+	 Name: MOE,
+	 Address: 44,
+	 Date Of Birth: 3/28/2021,
+	 Member Since: 3/28/2021,
+	 List of Stocks: Symbol: AAA Value: $4.00,,
+	 Account Value: $400.00
+Mar 28, 2021 6:53:13 AM controllers.inputformcontrollers.InputBrokerFormController saveData
+FINEST: Creating broker with the following values:
+	 Name : Susan,
+	 Address: 33,
+	 Date of Birth: 3/28/2021,
+	 Date of Hire: 3/28/2021,
+	 Date of Termination: 3/28/2021,
+	 Salary: $33,333.00,
+	 Status: Full Time,
+	 Clients: POE,MOE,
+Mar 28, 2021 6:53:17 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml
+Mar 28, 2021 6:53:17 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml
+Mar 28, 2021 6:53:17 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml
+Mar 28, 2021 6:53:17 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml
+Mar 28, 2021 6:53:17 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml
+Mar 28, 2021 6:53:17 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml
+Mar 28, 2021 6:53:17 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml
+Mar 28, 2021 6:53:17 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml

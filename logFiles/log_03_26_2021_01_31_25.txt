@@ -1,0 +1,42 @@
+Mar 26, 2021 1:31:40 PM controllers.inputformcontrollers.InputStockQuoteFormController saveData
+FINEST: Creating stock quote with the following values:
+	Symbol: rrr
+	Value: $2.00
+Mar 26, 2021 1:31:48 PM controllers.inputformcontrollers.InputInvestorFormController saveData
+FINEST: Creating investor with the following values:
+	 Name: jkldsa,
+	 Address: 323,
+	 Date Of Birth: 3/26/2021,
+	 Member Since: 3/26/2021,
+	 List of Stocks: ,
+	 Account Value: $0.00
+Mar 26, 2021 1:31:56 PM controllers.inputformcontrollers.InputBrokerFormController saveData
+FINEST: Creating broker with the following values:
+	 Name : JKFLjdios,
+	 Address: fesaf,
+	 Date of Birth: 3/26/2021,
+	 Date of Hire: 3/26/2021,
+	 Date of Termination: 3/26/2021,
+	 Salary: $5.00,
+	 Status: Full Time,
+	 Clients: 
+Mar 26, 2021 1:32:00 PM controllers.inputformcontrollers.InputInvestmentCompanyFormController saveData
+FINEST: Creating investment company with the following values:
+	 Name: dfalsfjeasf,
+	 List of Brokers: 
+Mar 26, 2021 1:32:03 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml/comweb
+Mar 26, 2021 1:32:04 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml/comweb
+Mar 26, 2021 1:32:04 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml/comweb
+Mar 26, 2021 1:32:04 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml/comweb
+Mar 26, 2021 1:32:04 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml/comweb
+Mar 26, 2021 1:32:04 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml/comweb
+Mar 26, 2021 1:32:04 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml/comweb
+Mar 26, 2021 1:32:05 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml/comweb

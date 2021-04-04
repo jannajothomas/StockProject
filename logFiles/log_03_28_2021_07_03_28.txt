@@ -1,0 +1,52 @@
+Mar 28, 2021 7:03:39 AM controllers.inputformcontrollers.InputInvestorFormController saveData
+FINEST: Creating investor with the following values:
+	 Name: MOE,
+	 Address: 1,
+	 Date Of Birth: 3/28/2021,
+	 Member Since: 3/28/2021,
+	 List of Stocks: ,
+	 Account Value: $0.00
+Mar 28, 2021 7:03:45 AM controllers.inputformcontrollers.InputInvestorFormController saveData
+FINEST: Creating investor with the following values:
+	 Name: POE,
+	 Address: 2,
+	 Date Of Birth: 3/28/2021,
+	 Member Since: 3/28/2021,
+	 List of Stocks: ,
+	 Account Value: $0.00
+Mar 28, 2021 7:03:55 AM controllers.inputformcontrollers.InputBrokerFormController saveData
+FINEST: Creating broker with the following values:
+	 Name : Janna,
+	 Address: 3,
+	 Date of Birth: 3/28/2021,
+	 Date of Hire: 3/28/2021,
+	 Date of Termination: 3/28/2021,
+	 Salary: $3.00,
+	 Status: Full Time,
+	 Clients: MOE,
+Mar 28, 2021 7:04:08 AM controllers.inputformcontrollers.InputBrokerFormController saveData
+FINEST: Creating broker with the following values:
+	 Name : Susan,
+	 Address: 4,
+	 Date of Birth: 3/28/2021,
+	 Date of Hire: 3/28/2021,
+	 Date of Termination: 3/28/2021,
+	 Salary: $4.00,
+	 Status: Full Time,
+	 Clients: MOE,POE,
+Mar 28, 2021 7:04:11 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml
+Mar 28, 2021 7:04:11 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml
+Mar 28, 2021 7:04:11 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml
+Mar 28, 2021 7:04:11 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml
+Mar 28, 2021 7:04:11 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml
+Mar 28, 2021 7:04:11 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml
+Mar 28, 2021 7:04:11 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml
+Mar 28, 2021 7:04:11 AM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml

@@ -1,0 +1,96 @@
+Mar 29, 2021 12:23:52 PM controllers.inputformcontrollers.InputBrokerFormController saveData
+FINEST: Creating broker with the following values:
+	 Name : Janna,
+	 Address: 7 Hog,
+	 Date of Birth: 3/29/2021,
+	 Date of Hire: 3/29/2021,
+	 Date of Termination: 3/29/2021,
+	 Salary: $7.00,
+	 Status: Full Time,
+	 Clients: 
+Mar 29, 2021 12:23:55 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml
+Mar 29, 2021 12:23:55 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml
+Mar 29, 2021 12:24:11 PM controllers.inputformcontrollers.InputStockQuoteFormController saveData
+FINEST: Creating stock quote with the following values:
+	Symbol: AAA
+	Value: $72.00
+Mar 29, 2021 12:24:17 PM controllers.inputformcontrollers.InputStockQuoteFormController saveData
+FINEST: Creating stock quote with the following values:
+	Symbol: BBB
+	Value: $13.00
+Mar 29, 2021 12:24:29 PM controllers.inputformcontrollers.InputInvestorFormController saveData
+FINEST: Creating investor with the following values:
+	 Name: POE,
+	 Address: 3  Cat,
+	 Date Of Birth: 3/29/2021,
+	 Member Since: 3/29/2021,
+	 List of Stocks: Symbol: AAA Value: $72.00,Symbol: BBB Value: $13.00,,
+	 Account Value: $8,500.00
+Mar 29, 2021 12:24:42 PM controllers.inputformcontrollers.InputBrokerFormController saveData
+FINEST: Creating broker with the following values:
+	 Name : Sue,
+	 Address: 5 Hog,
+	 Date of Birth: 3/29/2021,
+	 Date of Hire: 3/29/2021,
+	 Date of Termination: 3/29/2021,
+	 Salary: $5.00,
+	 Status: Full Time,
+	 Clients: POE,
+Mar 29, 2021 12:24:45 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml
+Mar 29, 2021 12:24:45 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml
+Mar 29, 2021 12:24:45 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml
+Mar 29, 2021 12:24:45 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml
+Mar 29, 2021 12:24:45 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml
+Mar 29, 2021 12:24:45 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml
+Mar 29, 2021 12:24:45 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml
+Mar 29, 2021 12:24:45 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml
+Mar 29, 2021 12:25:37 PM controllers.inputformcontrollers.InputStockQuoteFormController saveData
+FINEST: Creating stock quote with the following values:
+	Symbol: AAA
+	Value: $72.00
+Mar 29, 2021 12:25:41 PM controllers.inputformcontrollers.InputStockQuoteFormController saveData
+FINEST: Creating stock quote with the following values:
+	Symbol: BBB
+	Value: $13.00
+Mar 29, 2021 12:25:53 PM controllers.inputformcontrollers.InputInvestorFormController saveData
+FINEST: Creating investor with the following values:
+	 Name: MOE,
+	 Address: 2 Cat,
+	 Date Of Birth: 3/29/2021,
+	 Member Since: 3/29/2021,
+	 List of Stocks: Symbol: AAA Value: $72.00,Symbol: AAA Value: $72.00,Symbol: BBB Value: $13.00,Symbol: BBB Value: $13.00,,
+	 Account Value: $17,000.00
+Mar 29, 2021 12:26:02 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml
+Mar 29, 2021 12:26:02 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml
+Mar 29, 2021 12:26:02 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml
+Mar 29, 2021 12:26:02 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml
+Mar 29, 2021 12:26:02 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml
+Mar 29, 2021 12:26:02 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml
+Mar 29, 2021 12:26:33 PM controllers.inputformcontrollers.InputInvestmentCompanyFormController saveData
+FINEST: Creating investment company with the following values:
+	 Name: Hog Hill Neighbors,
+	 List of Brokers: Janna,Sue,
+Mar 29, 2021 12:26:38 PM controllers.inputformcontrollers.InputInvestmentCompanyFormController saveData
+FINEST: Creating investment company with the following values:
+	 Name: Peds  West,
+	 List of Brokers: Sue,
+Mar 29, 2021 12:26:40 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml
+Mar 29, 2021 12:26:40 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml

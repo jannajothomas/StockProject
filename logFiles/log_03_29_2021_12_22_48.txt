@@ -1,0 +1,42 @@
+Mar 29, 2021 12:23:08 PM controllers.inputformcontrollers.InputInvestorFormController saveData
+FINEST: Creating investor with the following values:
+	 Name: MOE,
+	 Address: 2 Cat,
+	 Date Of Birth: 3/29/2021,
+	 Member Since: 3/29/2021,
+	 List of Stocks: ,
+	 Account Value: $0.00
+Mar 29, 2021 12:23:17 PM controllers.inputformcontrollers.InputBrokerFormController saveData
+FINEST: Creating broker with the following values:
+	 Name : Janna,
+	 Address: 7 Hog,
+	 Date of Birth: 3/29/2021,
+	 Date of Hire: 3/29/2021,
+	 Date of Termination: 3/29/2021,
+	 Salary: $7.00,
+	 Status: Full Time,
+	 Clients: MOE,
+Mar 29, 2021 12:23:20 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml
+Mar 29, 2021 12:23:20 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml
+Mar 29, 2021 12:23:20 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml
+Mar 29, 2021 12:23:20 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml
+Mar 29, 2021 12:23:20 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml
+Mar 29, 2021 12:23:20 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml
+Mar 29, 2021 12:23:20 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml
+Mar 29, 2021 12:23:20 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml
+Mar 29, 2021 12:23:20 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml
+Mar 29, 2021 12:23:20 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml
+Mar 29, 2021 12:23:20 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Database driver loaded: uml
+Mar 29, 2021 12:23:20 PM utilities.db.DatabaseUtilities openDatabaseConnection
+FINEST: Getting database connection: uml
